@@ -1,0 +1,364 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Primary Palette ─────────────────────── */
+  --color-primary: #921829;
+  --color-primary-hover: #75111E;
+  --color-primary-light: #B82B3E;
+  --color-accent: #E85D75;
+  --color-background: #FAFAFA;
+  /* Off-white for less eye strain, higher premium feel */
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1A1A;
+  /* Darker, richer text */
+  --color-text-secondary: #6B7280;
+  --color-border: #F1E5E7;
+  --color-trust-gold: #D6A848;
+  /* More elegant gold */
+
+  /* ── Extended Palette ────────────────────── */
+  --color-primary-50: #FFF5F7;
+  --color-primary-100: #FFE6EB;
+  --color-primary-200: #F1D4DB;
+  --color-primary-300: #E09BAA;
+  --color-primary-400: #D06B80;
+  --color-primary-500: #B53245;
+  --color-primary-600: #9B1C2E;
+  --color-primary-700: #7A1523;
+  --color-primary-800: #5C101A;
+  --color-primary-900: #3D0B12;
+
+  /* ── Semantic Colors ─────────────────────── */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* ── Glass & Depth ───────────────────────── */
+  --color-glass-white: rgba(255, 255, 255, 0.8);
+  --color-glass-dark: rgba(45, 52, 54, 0.8);
+  --color-overlay: rgba(155, 28, 46, 0.06);
+
+  /* ── Typography & Fluid Scales ───────────── */
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Fluid Headings */
+  --text-h1: clamp(2.5rem, 5vw + 1rem, 5rem);
+  --text-h1--line-height: 1.05;
+  --text-h1--letter-spacing: -0.05em;
+
+  --text-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.025em;
+
+  --text-h3: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+  --text-h3--line-height: 1.2;
+
+  /* Semantic Text Sizes */
+  --text-micro: 0.625rem;
+  /* 10px */
+  --text-mini: 0.6875rem;
+  /* 11px */
+  --text-tiny: 0.8125rem;
+  /* 13px */
+  --text-base: 0.9375rem;
+  /* 15px */
+  --text-medium: 1.05rem;
+  /* 16.8px */
+  --text-large: 1.125rem;
+  /* 18px */
+  --text-xl: 1.35rem;
+  /* 21.6px */
+
+  /* ── Ultra-Premium Shadows ───────────────── */
+  --shadow-soft: 0 4px 24px -4px rgba(0, 0, 0, 0.03), 0 16px 40px -8px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 30px 60px -15px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(241, 229, 231, 0.6);
+  --shadow-elevated: 0 20px 40px -10px rgba(146, 24, 41, 0.08), 0 40px 80px -20px rgba(146, 24, 41, 0.12);
+  --shadow-glow: 0 0 40px -10px rgba(146, 24, 41, 0.3);
+  --shadow-inner-glow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+
+  /* ── Transition Tokens ───────────────────── */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-gravitational: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-orbital: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-cinematic: 800ms;
+
+  /* ── Spacing Rhythm ──────────────────────── */
+  --spacing-section: clamp(4rem, 10vw, 8rem);
+  --spacing-section-lg: clamp(6rem, 15vw, 12rem);
+
+  /* ── Border Radius ───────────────────────── */
+  --radius-small: 0.5rem;
+  --radius-medium: 0.75rem;
+  --radius-large: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.5rem;
+  --radius-full: 9999px;
+
+  /* ── Ω Gravitational Axes ─────────────────── */
+  --gravity-pull: 0;
+  --ambient-warmth: 0;
+  --depth-layer: 0;
+  --cursor-proximity: 0;
+
+  /* ── Z-Index Hierarchy ───────────────────── */
+  --z-hide: -1;
+  --z-base: 0;
+  --z-sticky: 50;
+  --z-header: 60;
+  --z-dropdown: 100;
+  --z-overlay: 150;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-max: 9999;
+}
+
+/* ── Glass Utilities ───────────────────────── */
+.glass {
+  background: var(--color-glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(241, 212, 219, 0.3);
+}
+
+.glass-dark {
+  background: var(--color-glass-dark);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* ── Global Base Setup ─────────────────────── */
+@layer components {
+  .container-fluid {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full;
+  }
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Pollux: Prevent iOS Safari Auto-Zoom on inputs by strictly enforcing 16px min size */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1rem);
+  }
+}
+
+body {
+  position: relative;
+  /* Very subtle global grain */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--color-background);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Noise Overlay (Component Level) ───────── */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Gradient Text ─────────────────────────── */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #9B1C2E 0%, #E85D75 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Animated Gradient Background ──────────── */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #FFF5F7, #FFFFFF, #FFE6EB, #FFF5F7);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* ── Ω Atmospheric Breathing ──────────────── */
+@keyframes atmosphere-breathe {
+
+  0%,
+  100% {
+    opacity: 0.012;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.018;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(146, 24, 41, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 30px -5px rgba(146, 24, 41, 0.15);
+  }
+}
+
+@keyframes orbital-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chromatic-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  25% {
+    filter: hue-rotate(2deg);
+  }
+
+  50% {
+    filter: hue-rotate(0deg);
+  }
+
+  75% {
+    filter: hue-rotate(-2deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes depth-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 30px 60px -15px rgba(0, 0, 0, 0.06);
+  }
+
+  50% {
+    box-shadow: 0 14px 36px -5px rgba(0, 0, 0, 0.06), 0 36px 72px -15px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* ── Ω Utility Classes ────────────────────── */
+.omega-breathe {
+  animation: atmosphere-breathe 8s ease-in-out infinite;
+}
+
+.omega-glow {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.omega-orbital {
+  animation: orbital-rotate 20s linear infinite;
+}
+
+.omega-chromatic {
+  animation: chromatic-shift 12s ease-in-out infinite;
+}
+
+.omega-depth {
+  animation: depth-pulse 6s ease-in-out infinite;
+}
+
+.omega-3d-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.omega-glass-deep {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ── Scroll Progress Bar ───────────────────── */
+.scroll-progress {
+  background: linear-gradient(90deg, #9B1C2E, #E85D75);
+  transform-origin: left;
+}
+
+/* ── Focus Styles ──────────────────────────── */
+*:focus-visible {
+  outline: 2px solid #9B1C2E;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Selection ─────────────────────────────── */
+::selection {
+  background-color: #9B1C2E;
+  color: white;
+}
+
+/* ── Smooth Scroll ─────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
