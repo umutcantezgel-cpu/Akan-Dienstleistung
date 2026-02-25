@@ -37,34 +37,28 @@ describe('ContactForm Integration Tests', () => {
         render(<ContactForm />);
 
         // Verify standard inputs exist
-        expect(screen.getByLabelText(/Vorname/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/Nachname/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/E-Mail Adresse/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/Ihre Nachricht/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/Wie dürfen wir Sie ansprechen\?/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/Ihre beste E-Mail Adresse/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/Worum geht es genau\? \(Ihre Nachricht\)/i)).toBeInTheDocument();
 
         // Verify submit button exists
-        expect(screen.getByRole('button', { name: /Nachricht absenden/i })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /Kostenlose Erstberatung anfordern/i })).toBeInTheDocument();
     });
 
     it('requires the privacy policy checkbox to submit', async () => {
         const user = userEvent.setup();
         render(<ContactForm />);
 
-        const submitBtn = screen.getByRole('button', { name: /Nachricht absenden/i });
+        const submitBtn = screen.getByRole('button', { name: /Kostenlose Erstberatung anfordern/i });
 
-        // Form should not submit if privacy not checked (our custom logic prevents even fetch)
-        // We can simulate filling it out, clicking submit, and checking if loading state happens
-
-        await user.type(screen.getByLabelText(/Vorname/i), 'Max');
-        await user.type(screen.getByLabelText(/Nachname/i), 'Muster');
-        await user.type(screen.getByLabelText(/E-Mail Adresse/i), 'max@muster.de');
-        await user.type(screen.getByLabelText(/Ihre Nachricht/i), 'Diese Nachricht ist lang genug damit Zod zufrieden ist.');
+        await user.type(screen.getByLabelText(/Wie dürfen wir Sie ansprechen\?/i), 'Max Mustermann');
+        await user.type(screen.getByLabelText(/Ihre beste E-Mail Adresse/i), 'max@muster.de');
+        await user.type(screen.getByLabelText(/Worum geht es genau\? \(Ihre Nachricht\)/i), 'Diese Nachricht ist lang genug damit Zod zufrieden ist.');
 
         // Do not click privacy
         await user.click(submitBtn);
 
-        // It shouldn't trigger loading state if we didn't mock fetch, but even simpler: 
-        // submit shouldn't be disabled immediately if it just returned
+        // submit shouldn't be disabled immediately if it just returned because privacy isn't checked
         expect(submitBtn).not.toBeDisabled();
     });
 });

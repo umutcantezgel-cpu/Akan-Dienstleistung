@@ -4,9 +4,11 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, ChevronDown, Check, AlertCircle, ShieldCheck } from 'lucide-react';
 import { springs } from '@/shared/styles/animations';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, type ContactFormData } from '@/features/contact-form/api/schema';
+import ContactSuccessState from './ContactSuccessState';
+import ContactInput from './ContactInput';
 import { ComponentErrorBoundary } from '@/features/error-handling/components/ErrorBoundaries';
 
 // ═══════════════════════════════════════════════════════════
@@ -20,20 +22,10 @@ export default function ContactForm() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [privacyChecked, setPrivacyChecked] = useState(false);
 
-    /* eslint-disable react-hooks/purity */
-    const confettiConfig = useMemo(() => Array.from({ length: 12 }).map((_, i) => ({
-        x: (Math.random() - 0.5) * 300,
-        y: (Math.random() - 0.5) * 300,
-        rotate: Math.random() * 360,
-        duration: 1 + Math.random(),
-        color: ['#921829', '#D6A848', '#1a202c', '#64748b'][i % 4] || '#D6A848'
-    })), []);
-    /* eslint-enable react-hooks/purity */
-
     const {
         register,
         handleSubmit: rxSubmit,
-        watch,
+        control,
         formState: { errors, submitCount },
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
@@ -43,7 +35,7 @@ export default function ContactForm() {
         mode: 'onTouched'
     });
 
-    const formValues = watch();
+    const formValues = useWatch({ control }) as Partial<ContactFormData>;
     const filledCount = ['name', 'email', 'phone', 'service', 'message'].filter(f => !!formValues[f as keyof ContactFormData]).length;
 
     const onSubmit = async (data: ContactFormData) => {
@@ -72,121 +64,16 @@ export default function ContactForm() {
         }
     };
 
-    // Synaptic Input Field Component
-    const renderInput = ({ id, label, type = 'text', required = false, isTextArea = false, inputMode, autoComplete }: {
-        id: keyof ContactFormData; label: string; type?: string; required?: boolean; isTextArea?: boolean; inputMode?: 'text' | 'tel' | 'email' | 'none' | 'decimal' | 'numeric' | 'search' | 'url'; autoComplete?: string;
-    }) => {
-        const isFocused = focusedField === id;
-        const hasValue = Boolean(formValues[id]);
-        const floatLabel = isFocused || hasValue;
-        const error = errors[id];
-
-        const { ref, onChange, onBlur, name } = register(id);
-
-        return (
-            <div className="relative group/input flex flex-col" style={{ zIndex: isFocused ? 10 : 1 }}>
-                {/* Floating Label */}
-                <motion.label
-                    htmlFor={id}
-                    initial={false}
-                    animate={{
-                        y: floatLabel ? (isTextArea ? -36 : -32) : (isTextArea ? 16 : 0),
-                        x: floatLabel ? 0 : 20,
-                        scale: floatLabel ? 0.8 : 1,
-                        color: error ? '#ef4444' : (floatLabel ? 'rgba(155, 28, 46, 1)' : 'rgba(100, 116, 139, 0.7)'),
-                    }}
-                    transition={springs.snappy}
-                    className="absolute left-0 pointer-events-none origin-left font-display font-medium px-1 bg-white/0 backdrop-blur-none"
-                    style={{
-                        top: isTextArea ? '0' : '50%',
-                        marginTop: !floatLabel && !isTextArea ? '-12px' : '0',
-                        opacity: 1
-                    }}
-                >
-                    {label} {required && '*'}
-                </motion.label>
-
-                {/* Input / Textarea */}
-                <div className={`relative overflow-hidden rounded-xl bg-background border transition-colors ${error ? 'border-red-500 hover:border-red-600' : 'border-border group-hover/input:border-primary/30'}`}>
-                    {isTextArea ? (
-                        <motion.textarea
-                            id={id}
-                            required={required}
-                            rows={5}
-                            name={name}
-                            ref={ref}
-                            onChange={onChange}
-                            onFocus={() => setFocusedField(id)}
-                            onBlur={(e) => {
-                                setFocusedField(null);
-                                onBlur(e);
-                            }}
-                            animate={{
-                                backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)',
-                                boxShadow: isFocused ? 'inset 0 2px 10px rgba(0,0,0,0.02)' : 'none',
-                            }}
-                            className={`w-full px-6 py-4 outline-none resize-none text-text-primary font-medium bg-transparent relative z-10 ${isFocused && !hasValue ? 'animate-pulse-slow' : ''}`}
-                        />
-                    ) : (
-                        <motion.input
-                            type={type}
-                            id={id}
-                            required={required}
-                            name={name}
-                            ref={ref}
-                            inputMode={inputMode}
-                            autoComplete={autoComplete}
-                            onChange={onChange}
-                            onFocus={() => setFocusedField(id)}
-                            onBlur={(e) => {
-                                setFocusedField(null);
-                                onBlur(e);
-                            }}
-                            animate={{
-                                backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)',
-                                boxShadow: isFocused ? 'inset 0 2px 10px rgba(0,0,0,0.02)' : 'none',
-                            }}
-                            className="w-full px-6 py-4 outline-none text-text-primary text-base font-medium bg-transparent relative z-10 min-h-[56px] h-14"
-                        />
-                    )}
-
-                    {/* Wandering Glow (Focus State) */}
-                    <AnimatePresence>
-                        {isFocused && !error && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden rounded-b-xl z-20"
-                            >
-                                <motion.div
-                                    initial={{ x: '-100%' }}
-                                    animate={{ x: '100%' }}
-                                    transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-                                    className="w-full h-full bg-gradient-to-r from-transparent via-primary to-transparent blur-[1px]"
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-
-                {/* Error Message */}
-                <AnimatePresence>
-                    {error && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -10, height: 0 }}
-                            animate={{ opacity: 1, y: 0, height: 'auto' }}
-                            exit={{ opacity: 0, y: -10, height: 0 }}
-                            className="text-red-500 text-sm mt-2 font-medium flex items-center gap-1.5 px-2"
-                        >
-                            <AlertCircle className="w-3.5 h-3.5" />
-                            {error.message}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        );
-    };
+    // Synaptic Input Fields are now imported from ContactInput.tsx
+    const inputProps = (id: keyof ContactFormData) => ({
+        id,
+        register,
+        error: errors[id],
+        hasValue: Boolean(formValues[id]),
+        isFocused: focusedField === id,
+        onFocus: () => setFocusedField(id),
+        onBlurFocus: () => setFocusedField(null)
+    });
 
     return (
         <div className={`relative ${focusedField ? 'z-[100]' : 'z-10'}`}>
@@ -260,10 +147,10 @@ export default function ContactForm() {
                                 <form onSubmit={rxSubmit(onSubmit)} className="space-y-10" noValidate>
                                     {/* Input Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
-                                        {renderInput({ id: 'name', label: 'Name', required: true, autoComplete: 'name' })}
-                                        {renderInput({ id: 'phone', label: 'Telefonnummer (Optional)', type: 'tel', inputMode: 'tel', autoComplete: 'tel' })}
+                                        <ContactInput {...inputProps('name')} label="Wie dürfen wir Sie ansprechen?" required autoComplete="name" />
+                                        <ContactInput {...inputProps('phone')} label="Unter welcher Nummer erreichen wir Sie? (Optional)" type="tel" inputMode="tel" autoComplete="tel" />
                                         <div className="col-span-1 md:col-span-2">
-                                            {renderInput({ id: 'email', label: 'E-Mail Adresse', type: 'email', required: true, inputMode: 'email', autoComplete: 'email' })}
+                                            <ContactInput {...inputProps('email')} label="Ihre beste E-Mail Adresse" type="email" required inputMode="email" autoComplete="email" />
                                         </div>
                                     </div>
 
@@ -279,18 +166,19 @@ export default function ContactForm() {
                                             }}
                                             className="absolute left-0 pointer-events-none origin-left font-display font-medium px-1"
                                         >
-                                            Interesse an Leistung
+                                            Wofür interessieren Sie sich?
                                         </motion.label>
-                                        <div className={`relative rounded-xl overflow-hidden border bg-background ${errors.service ? 'border-red-500 hover:border-red-600' : 'border-border'}`}>
+                                        <div className={`relative rounded-xl overflow-hidden border bg-background transition-all duration-300 ${errors.service ? 'border-red-500' : (focusedField === 'service' ? 'border-primary ring-1 ring-primary' : 'border-border md:hover:border-primary/30')}`}>
                                             <select
                                                 id="service"
-                                                className="w-full px-6 py-4 outline-none text-text-primary font-medium bg-transparent appearance-none h-14 relative z-10"
+                                                className="w-full px-6 outline-none text-[16px] text-text-primary font-medium bg-transparent appearance-none h-[52px] relative z-10"
                                                 {...register('service')}
                                                 onFocus={() => setFocusedField('service')}
                                                 onBlur={(e) => {
                                                     setFocusedField(null);
                                                     register('service').onBlur(e);
                                                 }}
+                                                style={{ backgroundColor: focusedField === 'service' ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)' }}
                                             >
                                                 <option value="" disabled className="text-text-secondary">Bitte wählen...</option>
                                                 <option value="unterhaltsreinigung">Unterhaltsreinigung</option>
@@ -302,23 +190,6 @@ export default function ContactForm() {
                                             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-text-secondary z-20">
                                                 <ChevronDown className="h-5 w-5" />
                                             </div>
-                                            <AnimatePresence>
-                                                {focusedField === 'service' && !errors.service && (
-                                                    <motion.div
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        exit={{ opacity: 0 }}
-                                                        className="absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden rounded-b-xl z-20"
-                                                    >
-                                                        <motion.div
-                                                            initial={{ x: '-100%' }}
-                                                            animate={{ x: '100%' }}
-                                                            transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-                                                            className="w-full h-full bg-gradient-to-r from-transparent via-primary to-transparent blur-[1px]"
-                                                        />
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
                                         </div>
                                         <AnimatePresence>
                                             {errors.service && (
@@ -335,7 +206,7 @@ export default function ContactForm() {
                                         </AnimatePresence>
                                     </div>
 
-                                    {renderInput({ id: 'message', label: 'Ihre Nachricht', required: true, isTextArea: true })}
+                                    <ContactInput {...inputProps('message')} label="Worum geht es genau? (Ihre Nachricht)" required isTextArea />
 
                                     {/* Liquid Toggle Checkbox */}
                                     <div className="flex flex-col">
@@ -420,6 +291,7 @@ export default function ContactForm() {
                                                         <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                                                         <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                                                         <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                                                        <span className="ml-2 font-medium">Ihre Anfrage wird sicher übertragen...</span>
                                                     </motion.div>
                                                 ) : (
                                                     <motion.div
@@ -430,7 +302,7 @@ export default function ContactForm() {
                                                         className="flex items-center gap-3 z-10"
                                                     >
                                                         <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                                        Vorab-Anfrage kostenlos senden
+                                                        Kostenlose Erstberatung anfordern
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
@@ -447,70 +319,7 @@ export default function ContactForm() {
                             </ComponentErrorBoundary>
                         </motion.div>
                     ) : (
-                        <motion.div
-                            key="success"
-                            data-testid="success-message"
-                            initial={{ scale: 0.5, opacity: 0, filter: 'blur(20px)' }}
-                            animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-                            transition={{ duration: 0.6, type: 'spring', bounce: 0.5 }}
-                            className="py-16 flex flex-col items-center text-center relative z-10"
-                        >
-                            {/* Confetti Particles */}
-                            {confettiConfig.map((confetti: { x: number; y: number; rotate: number; duration: number; color: string }, i: number) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
-                                    animate={{
-                                        x: confetti.x,
-                                        y: confetti.y,
-                                        scale: [0, 1, 0],
-                                        opacity: [1, 1, 0],
-                                        rotate: confetti.rotate
-                                    }}
-                                    transition={{ duration: confetti.duration, ease: 'easeOut' }}
-                                    className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full"
-                                    style={{ backgroundColor: confetti.color }}
-                                />
-                            ))}
-
-                            <motion.div
-                                initial={{ scale: 0, rotate: -180 }}
-                                animate={{ scale: 1, rotate: 0 }}
-                                transition={{ ...springs.bouncy, delay: 0.2 }}
-                                className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-6 shadow-inner-glow border border-border"
-                            >
-                                <CheckCircle2 className="w-12 h-12 text-green-500 drop-shadow-sm" />
-                            </motion.div>
-                            <motion.h2
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4 }}
-                                className="text-3xl font-bold text-text-primary mb-4 font-display"
-                            >
-                                Nachricht gesendet!
-                            </motion.h2>
-                            <motion.p
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                className="text-text-secondary max-w-sm mx-auto leading-relaxed"
-                            >
-                                Vielen Dank für Ihr Vertrauen! Ihre Anfrage ist bei uns eingegangen und wird persönlich bearbeitet – kein Callcenter, keine Wartemusik.
-                            </motion.p>
-
-                            {/* Next Steps (Reduces post-conversion anxiety) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7 }}
-                                className="mt-8 flex flex-col items-center gap-2 text-sm text-text-secondary"
-                            >
-                                <span className="font-bold text-text-primary">Was passiert jetzt?</span>
-                                <span>✓ Wir prüfen Ihre Anfrage noch heute</span>
-                                <span>✓ Persönlicher Rückruf innerhalb von 24h</span>
-                                <span>✓ Kostenloses Angebot – garantiert unverbindlich</span>
-                            </motion.div>
-                        </motion.div>
+                        <ContactSuccessState key="success" />
                     )}
                 </AnimatePresence>
             </div>

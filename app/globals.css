@@ -1,122 +1,206 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Primary Palette ─────────────────────── */
-  --color-primary: #921829;
-  --color-primary-hover: #75111E;
-  --color-primary-light: #B82B3E;
-  --color-accent: #E85D75;
-  --color-background: #FAFAFA;
-  /* Off-white for less eye strain, higher premium feel */
+  /* ──── BASE COLORS (Raw Values) ──── */
+  --color-wine-50: #FFF5F7;
+  --color-wine-100: #FFE6EB;
+  --color-wine-200: #F1D4DB;
+  --color-wine-300: #E09BAA;
+  --color-wine-400: #D06B80;
+  --color-wine-500: #B53245;
+  --color-wine-600: #921829;
+  --color-wine-700: #7A1523;
+  --color-wine-800: #5C101A;
+  --color-wine-900: #3D0B12;
+
+  /* ── AKAN Coral (LT-8.1) ── */
+  --color-coral-300: #FFB3C1;
+  --color-coral-400: #FF8FA3;
+  --color-coral-500: #E85D75;
+  --color-coral-600: #D64563;
+
+  /* ── AKAN Rosé (LT-8.1) ── */
+  --color-rose-50: #FFF0F3;
+  --color-rose-100: #FFE0E6;
+  --color-rose-200: #FFC2D1;
+
+  --color-gold-400: #E6BC5C;
+  --color-gold-500: #D6A848;
+  --color-gold-600: #B88A2D;
+
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F4F4F5;
+  --color-gray-200: #E4E4E7;
+  --color-gray-300: #D4D4D8;
+  --color-gray-400: #A1A1AA;
+  --color-gray-500: #71717A;
+  --color-gray-600: #52525B;
+  --color-gray-700: #3F3F46;
+  --color-gray-800: #27272A;
+  --color-gray-900: #18181B;
+
+  /* ── Glass Tokens ── */
+  --color-glass-white: rgba(255, 255, 255, 0.7);
+  --color-glass-dark: rgba(10, 10, 15, 0.8);
+
+  /* ──── SEMANTIC TOKENS (Referential) ──── */
+  --color-primary: var(--color-wine-600);
+  --color-primary-hover: var(--color-wine-700);
+  --color-primary-light: var(--color-wine-400);
+
+  --color-accent: var(--color-gold-500);
+  --color-accent-hover: var(--color-gold-600);
+
+  --color-background: var(--color-gray-50);
   --color-surface: #FFFFFF;
-  --color-text-primary: #1A1A1A;
-  /* Darker, richer text */
-  --color-text-secondary: #6B7280;
-  --color-border: #F1E5E7;
-  --color-trust-gold: #D6A848;
-  /* More elegant gold */
 
-  /* ── Extended Palette ────────────────────── */
-  --color-primary-50: #FFF5F7;
-  --color-primary-100: #FFE6EB;
-  --color-primary-200: #F1D4DB;
-  --color-primary-300: #E09BAA;
-  --color-primary-400: #D06B80;
-  --color-primary-500: #B53245;
-  --color-primary-600: #9B1C2E;
-  --color-primary-700: #7A1523;
-  --color-primary-800: #5C101A;
-  --color-primary-900: #3D0B12;
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-500);
+  --color-text-inverse: #FFFFFF;
 
-  /* ── Semantic Colors ─────────────────────── */
+  --color-border: var(--color-gray-200);
+
+  /* ──── HYPER-CONTEXTUAL (SINGULARITY) TOKENS ──── */
+  --color-theme-primary: rgb(var(--theme-primary, 155 28 46));
+  --color-theme-bg: rgb(var(--theme-bg, 250 250 250));
+  --color-theme-text: rgb(var(--theme-text, 17 24 39));
+  --color-theme-glow: var(--singularity-glow, rgba(155, 28, 46, 0.1));
+
+  --spacing-complexity-grid: var(--complexity-grid, 1rem);
+  --blur-singularity: var(--blur-factor, 20px);
+
+  /* ── Status Colors ── */
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
   --color-info: #3B82F6;
 
-  /* ── Glass & Depth ───────────────────────── */
-  --color-glass-white: rgba(255, 255, 255, 0.8);
-  --color-glass-dark: rgba(45, 52, 54, 0.8);
-  --color-overlay: rgba(155, 28, 46, 0.06);
+  /* ──── SPACING TOKENS (Strict 4px/8px Grid) ──── */
+  --spacing-1: 0.25rem;
+  /* 4px */
+  --spacing-2: 0.5rem;
+  /* 8px */
+  --spacing-3: 0.75rem;
+  /* 12px */
+  --spacing-4: 1rem;
+  /* 16px */
+  --spacing-6: 1.5rem;
+  /* 24px */
+  --spacing-8: 2rem;
+  /* 32px */
+  --spacing-12: 3rem;
+  /* 48px */
+  --spacing-16: 4rem;
+  /* 64px */
+  --spacing-24: 6rem;
+  /* 96px */
+  --spacing-32: 8rem;
+  /* 128px */
 
-  /* ── Typography & Fluid Scales ───────────── */
-  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Semantic Section Rhythms */
+  --spacing-section: clamp(4rem, 8vw, 8rem);
+  --spacing-gap: clamp(1rem, 2vw, 2rem);
 
-  /* Fluid Headings */
-  --text-h1: clamp(2.5rem, 5vw + 1rem, 5rem);
-  --text-h1--line-height: 1.05;
-  --text-h1--letter-spacing: -0.05em;
+  /* ──── BREAKPOINTS (AKAN Mobile-First) ──── */
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 640px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1280px;
 
-  --text-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
-  --text-h2--line-height: 1.1;
-  --text-h2--letter-spacing: -0.025em;
+  /* ──── TYPOGRAPHY SCALES (Fluid) ──── */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --text-h3: clamp(1.5rem, 3vw + 1rem, 2.5rem);
-  --text-h3--line-height: 1.2;
+  --text-xs: clamp(0.75rem, 1vw + 0.5rem, 0.8125rem);
+  --text-sm: clamp(0.875rem, 1vw + 0.6rem, 0.9375rem);
+  --text-base: clamp(0.938rem, 1vw + 0.75rem, 1.125rem);
+  /* Fließtext: 15-18px */
+  --text-lg: clamp(1.125rem, 1.5vw + 0.875rem, 1.25rem);
+  --text-xl: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+  --text-2xl: clamp(1.5rem, 3vw + 1.25rem, 2rem);
+  --text-3xl: clamp(2rem, 4vw + 1.5rem, 2.5rem);
+  --text-4xl: clamp(2.5rem, 5vw + 2rem, 3.5rem);
+  --text-5xl: clamp(3.5rem, 7vw + 2.5rem, 5rem);
+  --text-6xl: clamp(4.5rem, 9vw + 3.5rem, 7rem);
 
-  /* Semantic Text Sizes */
-  --text-micro: 0.625rem;
-  /* 10px */
-  --text-mini: 0.6875rem;
-  /* 11px */
-  --text-tiny: 0.8125rem;
-  /* 13px */
-  --text-base: 0.9375rem;
-  /* 15px */
-  --text-medium: 1.05rem;
-  /* 16.8px */
-  --text-large: 1.125rem;
-  /* 18px */
-  --text-xl: 1.35rem;
-  /* 21.6px */
+  /* Masterplan Headline Clamps */
+  --text-h1: clamp(1.75rem, 5vw + 1rem, 3.5rem);
+  /* H1: 28-56px */
+  --text-h2: clamp(1.5rem, 4.5vw + 1rem, 2.5rem);
+  /* H2: 24-40px */
+  --text-h3: clamp(1.25rem, 4vw + 0.8rem, 2rem);
+  /* H3: 20-32px */
 
-  /* ── Ultra-Premium Shadows ───────────────── */
-  --shadow-soft: 0 4px 24px -4px rgba(0, 0, 0, 0.03), 0 16px 40px -8px rgba(0, 0, 0, 0.04);
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 30px 60px -15px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(241, 229, 231, 0.6);
-  --shadow-elevated: 0 20px 40px -10px rgba(146, 24, 41, 0.08), 0 40px 80px -20px rgba(146, 24, 41, 0.12);
-  --shadow-glow: 0 0 40px -10px rgba(146, 24, 41, 0.3);
-  --shadow-inner-glow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  /* ──── ELEVATION & DEPTH (Weinrot-tinted) ──── */
+  --shadow-xs: 0 1px 2px 0 rgba(146, 24, 41, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(146, 24, 41, 0.1), 0 1px 2px -1px rgba(146, 24, 41, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(146, 24, 41, 0.1), 0 2px 4px -2px rgba(146, 24, 41, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(146, 24, 41, 0.1), 0 4px 6px -4px rgba(146, 24, 41, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(146, 24, 41, 0.1), 0 8px 10px -6px rgba(146, 24, 41, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(146, 24, 41, 0.25);
 
-  /* ── Transition Tokens ───────────────────── */
+  --shadow-glow: 0 0 24px -4px rgba(146, 24, 41, 0.3);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* ──── ANIMATION & KINETICS ──── */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --ease-gravitational: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-orbital: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
   --duration-fast: 150ms;
-  --duration-normal: 300ms;
+  --duration-base: 300ms;
   --duration-slow: 500ms;
-  --duration-cinematic: 800ms;
+  --duration-epic: 1000ms;
 
-  /* ── Spacing Rhythm ──────────────────────── */
-  --spacing-section: clamp(4rem, 10vw, 8rem);
-  --spacing-section-lg: clamp(6rem, 15vw, 12rem);
-
-  /* ── Border Radius ───────────────────────── */
-  --radius-small: 0.5rem;
-  --radius-medium: 0.75rem;
-  --radius-large: 1.25rem;
-  --radius-xl: 1.75rem;
-  --radius-2xl: 2.5rem;
+  /* ──── RADII ──── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
   --radius-full: 9999px;
 
-  /* ── Ω Gravitational Axes ─────────────────── */
-  --gravity-pull: 0;
-  --ambient-warmth: 0;
-  --depth-layer: 0;
-  --cursor-proximity: 0;
-
-  /* ── Z-Index Hierarchy ───────────────────── */
-  --z-hide: -1;
+  /* ──── Z-INDEX SYSTEM ──── */
+  --z-bg: -1;
   --z-base: 0;
   --z-sticky: 50;
-  --z-header: 60;
-  --z-dropdown: 100;
-  --z-overlay: 150;
+  --z-overlay: 100;
   --z-modal: 200;
   --z-toast: 300;
-  --z-max: 9999;
+
+  /* ──── NOCTIS DARK MODE PREP (LT-8.4) ──── */
+  --color-dark-base: #0A0A0F;
+  --color-dark-primary: #FF6B81;
+  --color-dark-surface: #1A1A2E;
+  --color-dark-border: #2A2A3E;
+}
+
+/* ── Photography Filter System (LT-8.5) ────── */
+.photo-standard {
+  filter: brightness(1.02) saturate(0.95);
+  transition: filter var(--duration-base) var(--ease-smooth);
+}
+
+.photo-standard:hover {
+  filter: brightness(1.05) saturate(1.0);
+}
+
+.photo-warm {
+  filter: brightness(1.04) saturate(1.05) sepia(0.08);
+  transition: filter var(--duration-base) var(--ease-smooth);
+}
+
+.photo-vivid {
+  filter: brightness(1.06) saturate(1.15) contrast(1.05);
+  transition: filter var(--duration-base) var(--ease-smooth);
+}
+
+.photo-muted {
+  filter: brightness(0.98) saturate(0.75) contrast(0.95);
+  transition: filter var(--duration-base) var(--ease-smooth);
 }
 
 /* ── Glass Utilities ───────────────────────── */
@@ -138,6 +222,38 @@
   .container-fluid {
     @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full;
   }
+
+  /* ── FLUID GRID ARCHITECTURE (LT-2.7) ── */
+  .grid-fluid-columns {
+    display: grid;
+    /* Auto-fit columns down to 300px min width */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-section-sm);
+    /* Fallback */
+    gap: clamp(1.5rem, 4vw, 3rem);
+    /* Fluid gap */
+  }
+
+  /* Adaptive Min Height for Feature Layers */
+  .min-h-fluid {
+    min-height: clamp(300px, 40vh, 600px);
+  }
+
+  /* ── MACRO TYPOGRAPHY (Optimal Reading Length) ── */
+  .text-measure {
+    max-width: 65ch;
+    /* ~65 characters */
+  }
+
+  .text-measure-short {
+    max-width: 45ch;
+    /* For intro texts and lead paragraphs */
+  }
+
+  .text-measure-heading {
+    max-width: 25ch;
+    /* Headlines should wrap early to maintain impact */
+  }
 }
 
 @layer base {
@@ -149,6 +265,12 @@
   h5,
   h6 {
     font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-[3px] ring-primary/40 ring-offset-2;
   }
 
   /* Pollux: Prevent iOS Safari Auto-Zoom on inputs by strictly enforcing 16px min size */
@@ -156,6 +278,39 @@
   textarea,
   select {
     font-size: max(16px, 1rem);
+  }
+
+  /* POLLUX: Touch-Target Minimums (WCAG 2.5.8 — 44×44px) */
+  button,
+  a,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+  }
+
+  /* POLLUX: CTA Buttons full-width on mobile with 56px height */
+  @media (max-width: 640px) {
+
+    .cta-primary,
+    [data-cta="primary"] {
+      width: 100%;
+      min-height: 56px;
+    }
+  }
+
+  /* POLLUX: Optimal body text readability */
+  p,
+  li,
+  dd {
+    line-height: 1.6;
+  }
+
+  /* POLLUX: Safe-area insets for notch devices */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
@@ -337,18 +492,44 @@ body::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
+.text-shadow-elevated {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* SFO-03: Advanced SVG Drawing Effect for Premium B2B Icons */
+.svg-draw-effect svg path,
+.svg-draw-effect svg circle,
+.svg-draw-effect svg rect,
+.svg-draw-effect svg line,
+.svg-draw-effect svg polyline,
+.svg-draw-effect svg polygon {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .svg-draw-effect svg path,
+.group:hover .svg-draw-effect svg circle,
+.group:hover .svg-draw-effect svg rect,
+.group:hover .svg-draw-effect svg line,
+.group:hover .svg-draw-effect svg polyline,
+.group:hover .svg-draw-effect svg polygon,
+.svg-draw-effect:hover svg path,
+.svg-draw-effect:hover svg circle,
+.svg-draw-effect:hover svg rect,
+.svg-draw-effect:hover svg line,
+.svg-draw-effect:hover svg polyline,
+.svg-draw-effect:hover svg polygon {
+  stroke-dashoffset: 0;
+}
+
 /* ── Scroll Progress Bar ───────────────────── */
 .scroll-progress {
   background: linear-gradient(90deg, #9B1C2E, #E85D75);
   transform-origin: left;
 }
 
-/* ── Focus Styles ──────────────────────────── */
-*:focus-visible {
-  outline: 2px solid #9B1C2E;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
+/* Removed generic focus-visible; using Tailwind focus-visible utility directly on components */
 
 /* ── Selection ─────────────────────────────── */
 ::selection {
@@ -360,5 +541,59 @@ body::after {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* ── Premium Leaflet Overrides (MAP-03 / MAP-04 / MAP-09) ── */
+.leaflet-container {
+  background: #0a0a0c !important;
+  font-family: inherit !important;
+}
+
+.custom-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.premium-leaflet-popup .leaflet-popup-content-wrapper {
+  background: rgba(10, 10, 12, 0.9) !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(155, 28, 46, 0.15);
+  padding: 0;
+  overflow: hidden;
+  color: white;
+}
+
+.premium-leaflet-popup .leaflet-popup-content {
+  margin: 0 !important;
+}
+
+.premium-leaflet-popup .leaflet-popup-tip-container {
+  display: none;
+  /* Hide the default generic white triangle */
+}
+
+.premium-leaflet-popup a.leaflet-popup-close-button {
+  color: rgba(255, 255, 255, 0.4) !important;
+  padding: 6px 10px 0 0 !important;
+  font-size: 16px !important;
+}
+
+.premium-leaflet-popup a.leaflet-popup-close-button:hover {
+  color: white !important;
+  background: transparent !important;
+}
+
+/* ── Leaflet Radius Animation (MAP-05) ── */
+.animated-leaflet-radius {
+  animation: svg-radius-dash 100s linear infinite;
+}
+
+@keyframes svg-radius-dash {
+  to {
+    stroke-dashoffset: -1000;
   }
 }

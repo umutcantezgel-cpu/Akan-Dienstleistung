@@ -2,116 +2,171 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Phone, Menu, X, MapPin } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'motion/react';
+import { motion, AnimatePresence, useMotionValueEvent, useScroll, useTransform, useSpring, useVelocity } from 'motion/react';
 import Button from '@/shared/components/Button';
-import { springs, staggerContainer, fadeInUp } from '@/shared/styles/animations';
-import { useAppStore } from '@/shared/store/useAppStore';
-
-const navLinks = [
-  { href: '/', label: 'Startseite' },
-  { href: '/services', label: 'Leistungen' },
-  { href: '/ueber-uns', label: 'Über uns' },
-  { href: '/galerie', label: 'Galerie' },
-  { href: '/contact', label: 'Kontakt' },
-];
+import { springs } from '@/shared/styles/animations';
+import { useNavigationStore } from '../store/useNavigationStore';
+import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav';
+import AkanLogo from '@/shared/components/AkanLogo';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen } = useAppStore();
-  const { scrollY } = useScroll();
+  const [isHidden, setIsHidden] = useState(false);
+  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen } = useNavigationStore();
+  const pathname = usePathname();
 
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+
+  const rawLogoRotate = useTransform(scrollY, [0, -150], [0, 360]);
+  const logoRotate = useSpring(rawLogoRotate, { stiffness: 400, damping: 25 });
+
+  // HE-01: Smart-Sticky Observer Engine
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsScrolled(latest > 50);
+    const isCurrentlyScrolled = latest > 80;
+    setIsScrolled(isCurrentlyScrolled);
+
+    // Context-Aware Header Hiding Logic:
+    // Glides out of view on scroll down, materializes on scroll up
+    const currentVelocity = scrollVelocity.get();
+    if (isCurrentlyScrolled && currentVelocity > 150) {
+      setIsHidden(true);
+    } else if (currentVelocity < -150 || !isCurrentlyScrolled) {
+      setIsHidden(false);
+    }
   });
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // HE-08: Escape-Key Listener for Accessibility
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [isMobileMenuOpen]);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen, setMobileMenuOpen]);
+
+  // HE-02: Hyperlokales Kontext-Bewusstsein (Contextual Telemetry)
+  let contextLabel = null;
+  let customCta = "Erstberatung";
+  let phoneLabel = "nordhessen";
+
+  if (pathname?.startsWith('/standorte/')) {
+    const city = pathname.split('/').pop()?.replace(/-/g, ' ');
+    if (city) {
+      const capitalizedCity = city.charAt(0).toUpperCase() + city.slice(1);
+      contextLabel = `Lokal: ${capitalizedCity}`;
+      customCta = `Angebot für ${capitalizedCity}`;
+      phoneLabel = capitalizedCity.toLowerCase();
+    }
+  }
 
   return (
     <>
       <motion.header
         initial={false}
-        animate={isScrolled ? 'shrunk' : 'expanded'}
+        animate={isHidden ? 'hidden' : isScrolled ? 'shrunk' : 'expanded'}
         variants={{
-          expanded: {
-            height: 100,
-            boxShadow: 'none',
-            backgroundColor: 'rgba(255, 255, 255, 0)',
-            borderBottomColor: 'rgba(241, 229, 231, 0)'
-          },
-          shrunk: {
-            height: 72,
-            boxShadow: '0 8px 32px -8px rgba(155, 28, 46, 0.06), 0 1px 3px rgba(0,0,0,0.04)',
-            backgroundColor: 'rgba(255, 255, 255, 0.88)',
-            borderBottomColor: 'var(--color-border)'
-          },
+          expanded: { y: 0, height: 64, boxShadow: 'none', backgroundColor: 'rgba(255, 255, 255, 0)' },
+          shrunk: { y: 0, height: 56, boxShadow: '0 2px 20px rgba(0,0,0,0.08)', backgroundColor: 'rgba(255, 255, 255, 0.98)' },
+          hidden: { y: '-100%', height: 56, boxShadow: 'none', backgroundColor: 'rgba(255, 255, 255, 0.98)' }
         }}
-        transition={springs.snappy}
-        className="fixed w-full top-0 z-50 backdrop-blur-xl border-b"
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className={`fixed w-full top-0 z-[100] backdrop-blur-[20px] transition-colors duration-300`}
       >
+        {/* Optional wine-red gradient on initial state */}
+        <AnimatePresence>
+          {!isScrolled && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none -z-10"
+            />
+          )}
+        </AnimatePresence>
+
         <div className="container-fluid h-full">
           <div className="flex justify-between items-center h-full">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center gap-4 group">
+            <Link href="/" className="flex-shrink-0 flex items-center group focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 focus-visible:ring-offset-2 rounded-xl">
               <motion.div
-                whileHover={{ scale: 1.05, rotate: 2 }}
+                style={{ rotate: logoRotate }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white font-light text-2xl font-display shadow-glow transition-shadow group-hover:shadow-[0_0_40px_-10px_rgba(146,24,41,0.5)]"
+                className="flex items-center justify-center transition-shadow group-hover:shadow-[0_0_40px_-10px_rgba(146,24,41,0.5)] origin-center"
               >
-                A
+                <AkanLogo className="w-36 h-[3.25rem] sm:w-44 sm:h-16" />
               </motion.div>
-              <div>
-                <span className="block text-xl font-bold text-text-primary leading-none tracking-tight font-display transition-colors group-hover:text-primary">AKAN</span>
-                <span className="block text-micro font-semibold text-text-secondary tracking-[0.25em] uppercase mt-1.5 opacity-80">Dienstleistung</span>
+              <div className="flex flex-col relative shrink-0 justify-center">
+
+                {/* Context Indicator Badge */}
+                <AnimatePresence>
+                  {contextLabel && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -10, scale: 0.9 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      exit={{ opacity: 0, x: -10, scale: 0.9 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="absolute -right-3 top-0 translate-x-full bg-primary/10 border border-primary/20 backdrop-blur-md px-2 py-0.5 rounded-full flex items-center gap-1.5 shadow-sm hidden lg:flex"
+                    >
+                      <div className="w-1 h-1 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(155,28,46,0.8)]" />
+                      <span className="text-[9px] font-bold text-primary uppercase tracking-widest whitespace-nowrap">{contextLabel}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex space-x-8 lg:space-x-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative text-tiny uppercase tracking-widest text-text-secondary hover:text-text-primary font-bold transition-colors group py-2"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </Link>
-              ))}
-            </nav>
+            <DesktopNav />
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <div className="flex flex-col items-end mr-2">
+            <div className="hidden xl:flex items-center gap-4 xl:gap-6 shrink-0">
+              <div className="flex flex-col items-end whitespace-nowrap">
                 <span className="flex items-center text-micro text-text-secondary font-medium tracking-wide lowercase">
-                  <MapPin className="w-3 h-3 mr-1 opacity-70" /> nordhessen & umgebung
+                  <MapPin className="w-3 h-3 mr-1 opacity-70" aria-hidden="true" /> {phoneLabel}
                 </span>
-                <a href="tel:+4915234754386" className="flex items-center text-sm tracking-wider text-text-primary font-bold group hover:text-primary transition-colors mt-0.5">
-                  <Phone className="w-3.5 h-3.5 mr-1.5 text-primary opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all" />
+                <a
+                  href="tel:+4915234754386"
+                  aria-label="Telefonisch kontaktieren: 0152 34754386"
+                  className="flex items-center text-sm tracking-wider text-text-primary font-bold group hover:text-primary transition-colors mt-0.5 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+                >
+                  <Phone className="w-3.5 h-3.5 mr-1.5 text-primary opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all" aria-hidden="true" />
                   0152 34754386
                 </a>
               </div>
               <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }}>
-                <Button href="/contact" variant="primary" className="px-7 py-3 text-tiny tracking-wide font-bold shadow-elevated omega-glow">
-                  Kostenlose Erstberatung
+                <Button href="/contact" variant="primary" className="px-5 py-2.5 text-tiny tracking-wide font-bold shadow-elevated whitespace-nowrap">
+                  {customCta}
                 </Button>
               </motion.div>
             </div>
 
             {/* Mobile Hamburger */}
-            <div className="md:hidden flex items-center">
+            <div className="xl:hidden flex items-center gap-4">
+              <a href="tel:+4915234754386" className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="Anrufen">
+                <Phone className="w-4 h-4" aria-hidden="true" />
+              </a>
               <motion.button
                 type="button"
                 aria-label={isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
-                className="text-text-primary hover:text-primary focus:outline-none relative z-[60] w-12 h-12 flex items-center justify-center p-2"
+                aria-expanded={isMobileMenuOpen}
+                className="text-text-primary hover:text-primary focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 focus-visible:ring-offset-2 rounded-lg relative z-[60] w-12 h-12 flex items-center justify-center"
                 onClick={toggleMobileMenu}
                 whileTap={{ scale: 0.9 }}
               >
@@ -124,7 +179,7 @@ export default function Navbar() {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="w-8 h-8" />
+                      <X className="w-8 h-8" strokeWidth={2} aria-hidden="true" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -134,7 +189,7 @@ export default function Navbar() {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="w-8 h-8" />
+                      <Menu className="w-8 h-8" aria-hidden="true" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -144,58 +199,8 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* ── Full-Screen Mobile Menu ─────────────── */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden"
-          >
-            <motion.nav
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-col items-center gap-8"
-            >
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  variants={fadeInUp}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-3xl font-bold text-text-primary hover:text-primary transition-colors font-display"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.div variants={fadeInUp} className="pt-8 border-t border-border w-48 text-center">
-                <a
-                  href="tel:+4915234754386"
-                  className="flex items-center justify-center text-primary font-bold text-lg mb-6"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  0152 34754386
-                </a>
-                <Button
-                  href="/contact"
-                  variant="primary"
-                  className="w-full text-center tracking-wide"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Kostenlose Erstberatung
-                </Button>
-              </motion.div>
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Full-Screen Mobile Menu */}
+      <MobileNav />
     </>
   );
 }

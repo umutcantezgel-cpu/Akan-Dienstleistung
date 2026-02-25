@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState, useMemo } from 'react';
-import { motion, useInView, type Variants } from 'motion/react';
+import { motion, type Variants } from 'motion/react';
 import { fadeInUp, staggerContainer } from '@/shared/styles/animations';
 
 interface AnimatedSectionProps {
@@ -35,18 +34,16 @@ export default function AnimatedSection({
     amount = 0.15,
     as = 'div',
 }: AnimatedSectionProps) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once, amount });
     const Component = MOTION_MAP[as] || motion.div;
     const containerVariants = stagger ? staggerContainer : variants;
 
     return (
         <Component
-            ref={ref}
             className={className}
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+            whileInView="visible"
+            viewport={{ once, amount, margin: "0px 0px -50px 0px" }}
             transition={delay ? { delay } : {}}
         >
             {children}

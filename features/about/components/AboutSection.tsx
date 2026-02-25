@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { Star, ShieldCheck, Clock, Users } from 'lucide-react';
+import { Star, ShieldCheck, Clock, Users, CheckCircle2, Award } from 'lucide-react';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import Image from 'next/image';
 import AnimatedSection, { AnimatedItem } from '@/shared/components/AnimatedSection';
 import { fadeInLeft, fadeInRight, fadeInUp, springs } from '@/shared/styles/animations';
@@ -23,7 +24,7 @@ export default function AboutSection() {
                             transition={springs.snappy}
                             className="flex items-center gap-6 p-8 bg-background rounded-3xl border border-border shadow-soft group hover:shadow-card transition-all duration-300"
                         >
-                            <Image src="https://picsum.photos/100/100?random=4" alt="Team" width={80} height={80} className="rounded-full object-cover border-4 border-surface shadow-sm" />
+                            <ImagePlaceholder width={80} height={80} alt="Team" className="rounded-full object-cover border-4 border-surface shadow-sm" />
                             <div>
                                 <p className="text-text-primary font-bold text-lg tracking-tight">Zeynep &amp; Cemal Hilaloglu</p>
                                 <p className="text-tiny uppercase tracking-wider text-text-secondary font-semibold mt-1">Ihre Ansprechpartner</p>
@@ -52,7 +53,7 @@ export default function AboutSection() {
                                                 transition={{ duration: 0.5 }}
                                                 className="flex-shrink-0 w-10 h-10 rounded-lg bg-surface flex items-center justify-center"
                                             >
-                                                <item.icon className={`${item.iconColor} w-5 h-5`} />
+                                                <item.icon className={`${item.iconColor} w-5 h-5 svg-draw-effect`} />
                                             </motion.div>
                                             <div>
                                                 <h5 className="font-bold text-text-primary text-sm mb-1">{item.title}</h5>

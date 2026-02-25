@@ -9,6 +9,8 @@ import { triggerSuccessVibration } from '@/shared/utils/rewards';
 // OMEGA Ω-25 — BackToTop Anti-Gravity Launch
 // Appears with ring expansion, clicks trigger engine glow,
 // haptics, and accelerating scroll physics back to top.
+// Mobile: Rests above Sticky Action Bar.
+// Desktop: Bottom Left (to avoid Right Side Sales CTA dock).
 // ═══════════════════════════════════════════════════════════
 
 export default function BackToTop() {
@@ -26,7 +28,7 @@ export default function BackToTop() {
             }
         };
 
-        window.addEventListener('scroll', toggleVisibility);
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
@@ -73,7 +75,7 @@ export default function BackToTop() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0, transition: { duration: 0.2 } }}
                     whileHover="hover"
-                    className="fixed bottom-6 right-6 z-50 flex items-center justify-center pointer-events-none"
+                    className="fixed z-[98] flex items-center justify-center pointer-events-none bottom-[108px] right-4 lg:bottom-10 lg:left-10 lg:right-auto"
                 >
                     {/* Ring Expansion Materialization Effect */}
                     <motion.div
@@ -98,7 +100,7 @@ export default function BackToTop() {
                     <button
                         onClick={scrollToTop}
                         aria-label="Zum Anfang scrollen"
-                        className="relative w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(146,24,41,0.5)] border border-white/20 hover:bg-primary-hover transition-colors overflow-hidden pointer-events-auto"
+                        className="relative w-12 h-12 bg-[#0a0a0c]/80 backdrop-blur-xl text-white rounded-full flex items-center justify-center shadow-elevated border border-white/10 hover:bg-primary transition-colors overflow-hidden pointer-events-auto group"
                     >
                         {/* Hover Radar Sweep */}
                         <motion.div
@@ -119,9 +121,9 @@ export default function BackToTop() {
                                 scale: [1, 0.9, 1.1, 1], // Vibration distortion
                             } : {}}
                             transition={isLaunching ? { duration: 0.2, repeat: Infinity } : {}}
-                            className="relative z-10"
+                            className="relative z-10 group-hover:-translate-y-1 transition-transform"
                         >
-                            <ArrowUp className="w-6 h-6" />
+                            <ArrowUp className="w-5 h-5 text-white/80 group-hover:text-white" />
                         </motion.div>
                     </button>
                 </motion.div>

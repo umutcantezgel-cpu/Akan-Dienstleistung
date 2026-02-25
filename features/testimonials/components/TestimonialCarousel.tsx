@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { springs } from '@/shared/styles/animations';
+import { useRef, useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import type { Testimonial } from '@/config/site';
+import TestimonialCard from '@/shared/components/TestimonialCard';
 
 // ═══════════════════════════════════════════════════════════
-// OMEGA Ω-06 — Testimonial Carousel Orbital System
-// 3D depth scaling, orbital dot navigation, quote glow
+// OMEGA Ω-06 — Framer Motion Testimonial Carousel
+// Implements TOUCH-02 with Physics: stiffness 80, damping 10
+// Desktop: 3 cards, Tablet: 2 cards, Mobile: 1 card
 // ═══════════════════════════════════════════════════════════
 
 interface TestimonialCarouselProps {
@@ -16,188 +17,140 @@ interface TestimonialCarouselProps {
     autoPlayInterval?: number;
 }
 
-export default function TestimonialCarousel({
-    testimonials,
-    autoPlayInterval = 5000,
-}: TestimonialCarouselProps) {
-    const [current, setCurrent] = useState(0);
-    const [direction, setDirection] = useState(1);
-    const [isPaused, setIsPaused] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+export default function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [cardWidth, setCardWidth] = useState(0);
+    const [visibleCards, setVisibleCards] = useState(1);
 
-    const total = testimonials.length;
+    const updateMeasurements = () => {
+        if (containerRef.current) {
+            const containerW = containerRef.current.clientWidth;
+            // Bestimme sichtbare Karten anhand der Breakpoints aus Tailwind
+            let visible = 1;
+            if (containerW >= 1024) visible = 3; // lg
+            else if (containerW >= 640) visible = 2; // sm
 
-    const goTo = useCallback((index: number, dir: number) => {
-        setDirection(dir);
-        setCurrent(index);
-    }, []);
+            setVisibleCards(visible);
 
-    const goNext = useCallback(() => {
-        goTo((current + 1) % total, 1);
-    }, [current, total, goTo]);
+            // cardWidth + gap (24px) muss in den Container passen.
+            // Die CSS Klassen der Karten regeln die %-Breiten.
+            const rawCardWidth = containerW >= 1024 ? (containerW - 48) / 3 : containerW >= 640 ? (containerW - 24) / 2 : containerW;
+            setCardWidth(rawCardWidth);
 
-    const goPrev = useCallback(() => {
-        goTo((current - 1 + total) % total, -1);
-    }, [current, total, goTo]);
-
-    // Autoplay
-    useEffect(() => {
-        if (isPaused) return;
-        timerRef.current = setInterval(goNext, autoPlayInterval);
-        return () => { if (timerRef.current) clearInterval(timerRef.current); };
-    }, [goNext, autoPlayInterval, isPaused]);
-
-    // Keyboard navigation
-    useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => {
-            if (e.key === 'ArrowLeft') goPrev();
-            if (e.key === 'ArrowRight') goNext();
-        };
-        window.addEventListener('keydown', handleKey);
-        return () => window.removeEventListener('keydown', handleKey);
-    }, [goNext, goPrev]);
-
-    const slideVariants = {
-        enter: (dir: number) => ({
-            x: dir > 0 ? 200 : -200,
-            opacity: 0,
-            scale: 0.88,
-            rotateY: dir > 0 ? 8 : -8,
-            filter: 'blur(6px)',
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-            scale: 1,
-            rotateY: 0,
-            filter: 'blur(0px)',
-            transition: { ...springs.gentle, filter: { duration: 0.3 } },
-        },
-        exit: (dir: number) => ({
-            x: dir > 0 ? -200 : 200,
-            opacity: 0,
-            scale: 0.88,
-            rotateY: dir > 0 ? -8 : 8,
-            filter: 'blur(6px)',
-            transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
-        }),
+            // Korrigiere Index falls Resize outside of bounds geht
+            const maxIdx = testimonials.length - visible;
+            setCurrentIndex(prev => Math.min(prev, Math.max(0, maxIdx)));
+        }
     };
 
-    const testimonial = testimonials[current];
-    if (!testimonial) return null;
+    useEffect(() => {
+        // Run once on mount after ref is attached
+        if (containerRef.current && cardWidth === 0) {
+            updateMeasurements();
+        }
+        window.addEventListener('resize', updateMeasurements);
+        return () => window.removeEventListener('resize', updateMeasurements);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [testimonials.length]);
+
+    const maxIndex = Math.max(0, testimonials.length - visibleCards);
+
+    const scroll = (direction: 'left' | 'right') => {
+        if (direction === 'left' && currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+        } else if (direction === 'right' && currentIndex < maxIndex) {
+            setCurrentIndex(prev => prev + 1);
+        }
+    };
+
+    const handleDragEnd = (e: any, { offset }: any) => {
+        const swipe = offset.x;
+
+        // TOUCH-02: min-distance 50px threshold
+        if (swipe < -50 && currentIndex < maxIndex) {
+            scroll('right');
+        } else if (swipe > 50 && currentIndex > 0) {
+            scroll('left');
+        }
+    };
+
+    if (!testimonials?.length) return null;
+
+    // 24px is the gap space (gap-6)
+    const translateX = -(currentIndex * (cardWidth + 24));
 
     return (
-        <div
-            className="relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            role="region"
-            aria-label="Kundenstimmen"
-            aria-roledescription="carousel"
-        >
-            {/* Slide Area with perspective container */}
-            <div className="relative overflow-hidden min-h-[280px] flex items-center" style={{ perspective: 1200 }}>
-                <AnimatePresence mode="wait" custom={direction}>
-                    <motion.div
-                        key={current}
-                        custom={direction}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        className="w-full"
-                        role="group"
-                        aria-roledescription="slide"
-                        aria-label={`${current + 1} von ${total}`}
-                    >
-                        <div className="max-w-3xl mx-auto text-center px-12 relative">
-                            {/* Decorative quote mark */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                animate={{ opacity: 0.06, scale: 1 }}
-                                transition={{ delay: 0.2, duration: 0.5 }}
-                                className="absolute -top-6 left-1/2 -translate-x-1/2"
-                            >
-                                <Quote className="w-20 h-20 text-primary" />
-                            </motion.div>
-
-                            {/* Stars with orbital entrance */}
-                            <div className="flex justify-center gap-1.5 mb-6">
-                                {[...Array(testimonial.rating)].map((_, j) => (
-                                    <motion.div
-                                        key={j}
-                                        initial={{ opacity: 0, scale: 0, rotate: -180, y: -10 }}
-                                        animate={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
-                                        transition={{ delay: j * 0.08 + 0.1, ...springs.bouncy }}
-                                    >
-                                        <Star className="w-5 h-5 text-trust-gold fill-current drop-shadow-[0_2px_4px_rgba(214,168,72,0.3)]" />
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            {/* Quote with text glow */}
-                            <blockquote className="text-xl md:text-2xl text-text-primary font-medium leading-relaxed mb-8 italic">
-                                &ldquo;{testimonial.text}&rdquo;
-                            </blockquote>
-
-                            {/* Author with entrance */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                <p className="font-bold text-text-primary text-lg font-display">{testimonial.author}</p>
-                                <p className="text-sm text-text-secondary">{testimonial.role}</p>
-                            </motion.div>
+        <div className="relative group" ref={containerRef}>
+            {/* Scroll Container */}
+            <div className="overflow-hidden pb-12 pt-4 px-4 sm:px-0">
+                <motion.div
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }} // Elastic resistance bounds, we manage the true X via animate
+                    dragElastic={0.15}
+                    onDragEnd={handleDragEnd}
+                    initial={false}
+                    animate={{ x: translateX }}
+                    transition={{ type: 'spring', stiffness: 80, damping: 10 }} // TOUCH-02 physics
+                    className="flex gap-6 cursor-grab active:cursor-grabbing w-max touch-pan-y"
+                >
+                    {testimonials.map((testimonial, index) => (
+                        <div
+                            key={index}
+                            className="shrink-0 w-[calc(100vw-32px)] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                        >
+                            <TestimonialCard
+                                author={testimonial.author}
+                                role={testimonial.role}
+                                text={testimonial.text}
+                                rating={testimonial.rating || 5}
+                                delay={0} // Disable initial CSS animation delay for smooth dragging
+                            />
                         </div>
-                    </motion.div>
-                </AnimatePresence>
+                    ))}
+                </motion.div>
             </div>
 
-            {/* Navigation Arrows with hover glow */}
-            <motion.button
-                onClick={goPrev}
-                whileHover={{ scale: 1.08, x: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-border shadow-sm flex items-center justify-center hover:bg-surface hover:border-primary/30 hover:shadow-[0_4px_16px_rgba(155,28,46,0.1)] transition-all group"
-                aria-label="Vorheriges Testimonial"
-            >
-                <ChevronLeft className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors" />
-            </motion.button>
-            <motion.button
-                onClick={goNext}
-                whileHover={{ scale: 1.08, x: 3 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-border shadow-sm flex items-center justify-center hover:bg-surface hover:border-primary/30 hover:shadow-[0_4px_16px_rgba(155,28,46,0.1)] transition-all group"
-                aria-label="Nächstes Testimonial"
-            >
-                <ChevronRight className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors" />
-            </motion.button>
+            {/* Navigation Buttons (Desktop) */}
+            <div className="absolute top-1/2 -translate-y-[calc(50%+24px)] left-0 right-0 justify-between pointer-events-none px-2 sm:-mx-6 z-10 hidden sm:flex">
+                <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: currentIndex > 0 ? 1 : 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => scroll('left')}
+                    disabled={currentIndex === 0}
+                    className="w-12 h-12 rounded-full bg-white border border-border shadow-md flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary/30 transition-colors pointer-events-auto disabled:opacity-50 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 -ml-4"
+                    aria-label="Vorherige Kundenstimmen"
+                >
+                    <ChevronLeft className="w-6 h-6" />
+                </motion.button>
 
-            {/* Orbital Dot Indicators */}
-            <div className="flex justify-center gap-2.5 mt-8" role="tablist" aria-label="Testimonial wählen">
-                {testimonials.map((_, i) => (
-                    <motion.button
+                <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: currentIndex < maxIndex ? 1 : 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => scroll('right')}
+                    disabled={currentIndex === maxIndex}
+                    className="w-12 h-12 rounded-full bg-white border border-border shadow-md flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary/30 transition-colors pointer-events-auto disabled:opacity-50 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 -mr-4"
+                    aria-label="Nächste Kundenstimmen"
+                >
+                    <ChevronRight className="w-6 h-6" />
+                </motion.button>
+            </div>
+
+            {/* Pagination Indicators (Mobile) */}
+            <div className="flex justify-center mt-2 sm:hidden gap-2" aria-hidden="true">
+                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                    <button
                         key={i}
-                        onClick={() => goTo(i, i > current ? 1 : -1)}
-                        whileHover={{ scale: 1.3 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="relative"
-                        role="tab"
-                        aria-selected={i === current}
-                        aria-label={`Testimonial ${i + 1}`}
-                    >
-                        <div className={`w-3 h-3 rounded-full transition-all duration-500 ${i === current ? 'bg-primary scale-100' : 'bg-border hover:bg-primary/40 scale-100'
-                            }`} />
-                        {i === current && (
-                            <motion.div
-                                layoutId="testimonialDot"
-                                className="absolute -inset-1 rounded-full border-2 border-primary/40"
-                                transition={{ ...springs.snappy, layout: { duration: 0.3 } }}
-                            />
-                        )}
-                    </motion.button>
+                        onClick={() => setCurrentIndex(i)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-primary scale-125' : 'bg-border hover:bg-border/80'}`}
+                        aria-label={`Gehe zu Kundenstimme ${i + 1}`}
+                    />
                 ))}
+                <span className="sr-only">Wische nach links oder rechts für mehr Testimonials</span>
             </div>
         </div>
     );

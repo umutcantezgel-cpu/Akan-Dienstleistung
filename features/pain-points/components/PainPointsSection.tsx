@@ -49,7 +49,7 @@ export default function PainPointsSection() {
                             className="bg-background p-8 rounded-[2rem] border border-border/50 shadow-sm relative group hover:shadow-elevated transition-shadow duration-500"
                         >
                             <div className="w-14 h-14 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-red-100 transition-all duration-300">
-                                <point.icon className="w-7 h-7" />
+                                <point.icon className="w-7 h-7 svg-draw-effect" />
                             </div>
                             <h3 className="text-xl font-bold text-text-primary mb-3 font-display">{point.title}</h3>
                             <p className="text-text-secondary leading-relaxed">{point.description}</p>

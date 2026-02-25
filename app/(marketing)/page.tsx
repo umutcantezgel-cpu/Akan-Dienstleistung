@@ -9,12 +9,17 @@ const ServicesSection = dynamic(() => import('@/features/services/components/Ser
 const TargetGroupFunnels = dynamic(() => import('@/features/funnels/components/TargetGroupFunnels'));
 const ProofSection = dynamic(() => import('@/features/trust-signals/components/ProofSection'));
 const AboutSection = dynamic(() => import('@/features/about/components/AboutSection'));
-const StatsSection = dynamic(() => import('@/features/stats/components/StatsSection'));
+const TrustSection = dynamic(() => import('@/features/trust-signals/components/TrustSection'));
 const TeamSection = dynamic(() => import('@/features/team/components/TeamSection'));
-const TestimonialsSection = dynamic(() => import('@/features/testimonials/components/TestimonialsSection'));
 const FaqSection = dynamic(() => import('@/features/faq/components/FaqSection'));
 const HistorySection = dynamic(() => import('@/features/history/components/HistorySection'));
 const CtaSection = dynamic(() => import('@/features/cta/components/CtaSection'));
+const ContactForm = dynamic(() => import('@/features/contact-form/components/ContactForm'), { ssr: false });
+const TestimonialCarousel = dynamic(() => import('@/features/testimonials/components/TestimonialCarousel'));
+const StatsRing = dynamic(() => import('@/features/stats/components/StatsRing'), { ssr: false });
+const BeforeAfterGallery = dynamic(() => import('@/features/before-after/components/BeforeAfterGallery'), { ssr: false });
+const Timeline = dynamic(() => import('@/features/timeline/components/Timeline'));
+import { testimonials, timeline } from '@/config/site';
 import { FeatureErrorBoundary } from '@/features/error-handling/components/ErrorBoundaries';
 
 export default function HomePage() {
@@ -69,27 +74,6 @@ export default function HomePage() {
             'item': 'https://akandienstleistung.de'
           }
         ]
-      },
-      {
-        '@type': 'FAQPage',
-        'mainEntity': [
-          {
-            '@type': 'Question',
-            'name': 'Bieten Sie auch am Wochenende Reinigungsdienste an?',
-            'acceptedAnswer': {
-              '@type': 'Answer',
-              'text': 'Ja, nach Absprache bieten wir unsere Dienstleistungen auch am Wochenende an, um Ihren Betriebsablauf so wenig wie möglich zu stören.'
-            }
-          },
-          {
-            '@type': 'Question',
-            'name': 'Sind Reinigungsmittel im Preis inbegriffen?',
-            'acceptedAnswer': {
-              '@type': 'Answer',
-              'text': 'Ja, wir bringen alle benötigten professionellen und umweltfreundlichen Reinigungsmittel selbst mit.'
-            }
-          }
-        ]
       }
     ]
   };
@@ -117,28 +101,30 @@ export default function HomePage() {
         <TargetGroupFunnels />
       </FeatureErrorBoundary>
       <FeatureErrorBoundary featureName="Trust/Logos">
-        <ProofSection />
+        <ProofSection galleryComponent={<BeforeAfterGallery />} />
       </FeatureErrorBoundary>
       <FeatureErrorBoundary featureName="Über Uns">
         <AboutSection />
       </FeatureErrorBoundary>
-      <FeatureErrorBoundary featureName="Statistiken">
-        <StatsSection />
-      </FeatureErrorBoundary>
-      <FeatureErrorBoundary featureName="Team">
-        <TeamSection />
-      </FeatureErrorBoundary>
-      <FeatureErrorBoundary featureName="Testimonials">
-        <TestimonialsSection />
+      <FeatureErrorBoundary featureName="Trust & Stats">
+        <TrustSection
+          statsComponents={[
+            <StatsRing key="s1" value={98} label="Kundenbindung" color="#9B1C2E" />,
+            <StatsRing key="s2" value={200} maxValue={200} suffix="+" label="Betreute Objekte" color="#E85D75" />,
+            <StatsRing key="s3" value={100} label="Terminzuverlässigkeit" color="#FFD700" />,
+            <StatsRing key="s4" value={10} maxValue={10} suffix="+" label="Jahre Erfahrung" color="#22C55E" />
+          ]}
+          testimonialsComponent={<TestimonialCarousel testimonials={testimonials} />}
+        />
       </FeatureErrorBoundary>
       <FeatureErrorBoundary featureName="FAQ">
         <FaqSection />
       </FeatureErrorBoundary>
       <FeatureErrorBoundary featureName="Historie">
-        <HistorySection />
+        <HistorySection timelineComponent={<Timeline events={timeline} />} />
       </FeatureErrorBoundary>
       <FeatureErrorBoundary featureName="Kontakt CTA">
-        <CtaSection />
+        <CtaSection contactForm={<ContactForm />} />
       </FeatureErrorBoundary>
     </>
   );

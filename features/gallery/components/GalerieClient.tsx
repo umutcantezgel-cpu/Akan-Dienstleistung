@@ -4,19 +4,17 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { Camera, ArrowRight } from 'lucide-react';
 import GalleryGrid, { type GalleryImage } from '@/features/gallery/components/GalleryGrid';
-import AnimatedSection from '@/shared/components/AnimatedSection';
-import { fadeInUp } from '@/shared/styles/animations';
 
 const galleryImages: GalleryImage[] = [
-    { src: 'https://picsum.photos/800/600?random=20', title: 'Bauendreinigung Wohnkomplex Kassel', category: 'Bauendreinigung' },
-    { src: 'https://picsum.photos/800/600?random=21', title: 'Fensterreinigung Bürogebäude', category: 'Fensterreinigung' },
-    { src: 'https://picsum.photos/800/600?random=22', title: 'Unterhaltsreinigung Arztpraxis', category: 'Unterhaltsreinigung' },
-    { src: 'https://picsum.photos/800/600?random=23', title: 'Industriereinigung Lagerhalle', category: 'Industriereinigung' },
-    { src: 'https://picsum.photos/800/600?random=24', title: 'Treppenhausreinigung', category: 'Unterhaltsreinigung' },
-    { src: 'https://picsum.photos/800/600?random=25', title: 'Glasfassade nach Reinigung', category: 'Fensterreinigung' },
-    { src: 'https://picsum.photos/800/600?random=26', title: 'Büroreinigung nach Feierabend', category: 'Unterhaltsreinigung' },
-    { src: 'https://picsum.photos/800/600?random=27', title: 'Grundreinigung Produktionshalle', category: 'Industriereinigung' },
-    { src: 'https://picsum.photos/800/600?random=28', title: 'Neubau-Feinreinigung', category: 'Bauendreinigung' },
+    { src: '/images/galerie/industriereinigung/akan-deckenventilator-reinigung-industriehalle-vorher.webp', title: 'Deckenventilator-Reinigung Industriehalle', category: 'Industriereinigung' },
+    { src: '/images/galerie/fensterreinigung/akan-fensterreinigung-fensterfront-komplett-sauber.webp', title: 'Fensterfront komplett sauber', category: 'Fensterreinigung' },
+    { src: '/images/galerie/industriereinigung/akan-industriehalle-reinigung-krananlage-perspektive.webp', title: 'Industriehalle Krananlage — Perspektive', category: 'Industriereinigung' },
+    { src: '/images/galerie/fensterreinigung/akan-fensterreinigung-panoramafenster-bergblick-ergebnis.webp', title: 'Panoramafenster mit Bergblick — Ergebnis', category: 'Fensterreinigung' },
+    { src: '/images/galerie/industriereinigung/akan-pvc-streifenvorhang-gereinigt-industrieanlage.webp', title: 'PVC-Streifenvorhang gereinigt', category: 'Industriereinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-gewerbereinigung-glasfassade-gebaeude-aussen.webp', title: 'Glasfassade Gewerbegebäude — Außenansicht', category: 'Fensterreinigung' },
+    { src: '/images/galerie/fensterreinigung/akan-glasreinigung-mitarbeiter-branded-hoodie.webp', title: 'AKAN Mitarbeiter bei der Glasreinigung', category: 'Fensterreinigung' },
+    { src: '/images/galerie/industriereinigung/akan-lueftungsreinigung-remko-aggregat-detail.webp', title: 'Lüftungsreinigung REMKO Aggregat — Detail', category: 'Industriereinigung' },
+    { src: '/images/galerie/glasreinigung/akan-wintergarten-reinigung-ergebnis-innenansicht.webp', title: 'Wintergarten Reinigung — Innenansicht', category: 'Fensterreinigung' },
 ];
 
 export default function GalerieClient() {
@@ -25,7 +23,7 @@ export default function GalerieClient() {
             <section className="bg-background pt-32 pb-20 lg:pt-48 lg:pb-24 border-b border-border relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-surface/50 to-transparent pointer-events-none"></div>
                 <div className="container-fluid text-center relative z-10">
-                    <AnimatedSection variants={fadeInUp}>
+                    <div className="animate-fade-in-up">
                         <div className="inline-flex items-center justify-center gap-3 px-5 py-2 rounded-full bg-surface border border-border mb-8 shadow-inner-glow">
                             <Camera className="w-4 h-4 text-primary" />
                             <span className="text-primary font-bold tracking-[0.25em] uppercase text-mini">Referenzen</span>
@@ -36,7 +34,7 @@ export default function GalerieClient() {
                         <p className="text-large font-light text-text-secondary max-w-2xl mx-auto leading-[1.8]">
                             Ein Bild sagt mehr als tausend Worte. Überzeugen Sie sich selbst von der Qualität unserer Arbeit in Gudensberg und Umgebung.
                         </p>
-                    </AnimatedSection>
+                    </div>
                 </div>
             </section>
 
@@ -46,7 +44,7 @@ export default function GalerieClient() {
                         <GalleryGrid images={galleryImages} />
                     </Suspense>
 
-                    <AnimatedSection className="mt-24 text-center" variants={fadeInUp}>
+                    <div className="mt-24 text-center animate-fade-in-up">
                         <h3 className="text-h2 font-bold text-text-primary mb-10 font-display tracking-tight leading-[1.1]">Überzeugt von unserer Qualität?</h3>
                         <Link
                             href="/contact"
@@ -55,7 +53,7 @@ export default function GalerieClient() {
                             Kostenloses Angebot anfordern
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                    </AnimatedSection>
+                    </div>
                 </div>
             </section>
         </>

@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 export const revalidate = 604800; // ISR: 7 days
 import { History, Lightbulb, Settings, ShieldCheck, Handshake, Shield, MapPin, Award, Building2, Leaf, BadgeCheck, ArrowRight } from 'lucide-react';
+import DynamicMap from '@/features/locations/components/DynamicMap';
+import ReadMoreExpander from '@/shared/components/ReadMoreExpander';
 
 export const metadata = {
   title: 'Über Uns | Ihre Reinigungsfirma in Gudensberg & Nordhessen',
@@ -23,17 +25,19 @@ export default function About() {
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
                 <span className="text-mini font-bold text-text-secondary uppercase tracking-[0.2em]">Unsere Geschichte</span>
               </div>
-              <h1 className="text-h1 font-bold tracking-tighter text-text-primary mb-8 leading-[1.05] font-display drop-shadow-sm">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-text-primary mb-8 leading-[1.05] font-display drop-shadow-sm">
                 Vom Traum zur <span className="text-primary">digitalen Exzellenz</span>
               </h1>
-              <div className="text-large md:text-xl font-light text-text-secondary max-w-2xl mb-10 leading-[1.8]">
-                <p className="mb-6">
-                  Im Jahr 2024 wurde AKAN Dienstleistung mit einer klaren Vision gegründet: Den Dienstleistungssektor in Nordhessen nicht nur zu bedienen, sondern durch digitale Innovation und kompromisslose Qualität neu zu definieren.
-                </p>
-                <p>
-                  Was als Vision begann, fundiert auf solidem Handwerk und Erfahrung. Unsere Objektleiterin Zeynep bringt über <strong className="font-bold text-text-primary">10 Jahre Branchenexpertise</strong> in unser Familienunternehmen ein. Diese Dekade an Erfahrung ist das Fundament, auf dem wir modernste Prozesse und echte Kundenorientierung aufbauen.
-                </p>
-              </div>
+              <ReadMoreExpander maxHeight={120}>
+                <div className="text-large md:text-xl font-light text-text-secondary max-w-2xl mb-10 leading-[1.8]">
+                  <p className="mb-6">
+                    Im Jahr 2024 wurde AKAN Dienstleistung mit einer klaren Vision gegründet: Den Dienstleistungssektor in Nordhessen nicht nur zu bedienen, sondern durch digitale Innovation und kompromisslose Qualität neu zu definieren.
+                  </p>
+                  <p>
+                    Was als Vision begann, fundiert auf solidem Handwerk und Erfahrung. Unsere Objektleiterin Zeynep bringt über <strong className="font-bold text-text-primary">10 Jahre Branchenexpertise</strong> in unser Familienunternehmen ein. Diese Dekade an Erfahrung ist das Fundament, auf dem wir modernste Prozesse und echte Kundenorientierung aufbauen.
+                  </p>
+                </div>
+              </ReadMoreExpander>
               <div className="flex flex-col sm:flex-row gap-5">
                 <a href="#team" className="inline-flex justify-center items-center px-8 py-4 text-base font-bold tracking-wide rounded-xl text-white bg-primary hover:bg-primary-hover transition-all shadow-elevated font-display group">
                   Unser Team kennenlernen
@@ -45,7 +49,7 @@ export default function About() {
             </div>
             <div className="order-1 lg:order-2 relative">
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-3xl transform rotate-3"></div>
-              <ImagePlaceholder originalSrc="https://picsum.photos/800/600?random=5" alt="Büroreinigung" width={800} height={600} className="relative rounded-[2.5rem] shadow-elevated w-full h-auto object-cover aspect-[4/3] transform transition hover:scale-[1.02] duration-700 border border-border/60" />
+              <ImagePlaceholder alt="Professionell gereinigtes Büro" className="relative rounded-[2.5rem] shadow-elevated w-full h-auto object-cover aspect-[4/3] transform transition hover:scale-[1.02] duration-700 border border-border/60" />
               <div className="absolute -bottom-8 -left-8 bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-card border border-border max-w-xs animate-bounce" style={{ animationDuration: '4s' }}>
                 <div className="flex items-center gap-5">
                   <div className="w-14 h-14 rounded-[1rem] bg-surface flex items-center justify-center text-trust-gold shadow-inner-glow">
@@ -66,7 +70,7 @@ export default function About() {
         <div className="container-fluid">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-5">Das Herz von AKAN</h2>
-            <h3 className="text-h2 font-bold text-text-primary mb-8 font-display leading-[1.1]">Familie Hilaloglu</h3>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-8 font-display leading-[1.1]">Familie Hilaloglu</h3>
             <p className="text-large font-light text-text-secondary leading-[1.8]">
               Wir sind mehr als ein Unternehmen – wir sind eine Familie mit einer gemeinsamen Mission: Makellose Sauberkeit für Gudensberg und Umgebung.
             </p>
@@ -74,7 +78,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
             <div className="group relative bg-white rounded-[2rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-soft hover:shadow-card">
               <div className="aspect-[16/9] overflow-hidden relative border-b border-border/50">
-                <ImagePlaceholder originalSrc="https://picsum.photos/800/450?random=6" alt="Cemal Hilaloglu" fill className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700" />
+                <ImagePlaceholder alt="Cemal Hilaloglu – Inhaber & Gründer" fill className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-8 lg:p-12">
                 <div className="flex justify-between items-start mb-8">
@@ -100,7 +104,7 @@ export default function About() {
             </div>
             <div className="group relative bg-white rounded-[2rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-soft hover:shadow-card">
               <div className="aspect-[16/9] overflow-hidden relative border-b border-border/50">
-                <ImagePlaceholder originalSrc="https://picsum.photos/800/450?random=7" alt="Zeynep Hilaloglu" fill className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700" />
+                <ImagePlaceholder alt="Zeynep Hilaloglu – Objektleiterin" fill className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-8 lg:p-12">
                 <div className="flex justify-between items-start mb-8">
@@ -132,7 +136,7 @@ export default function About() {
         <div className="container-fluid">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-5">Unsere Werte</h2>
-            <h3 className="text-h2 font-bold text-text-primary font-display leading-[1.1]">Das Fundament unserer Arbeit</h3>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary font-display leading-[1.1]">Das Fundament unserer Arbeit</h3>
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             <div className="bg-surface p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
@@ -171,7 +175,7 @@ export default function About() {
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <div className="lg:col-span-5">
               <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-5">Unser Team</h2>
-              <h3 className="text-h2 font-bold text-text-primary mb-8 font-display leading-[1.1]">Starke Mannschaft, starke Leistung</h3>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-8 font-display leading-[1.1]">Starke Mannschaft, starke Leistung</h3>
               <p className="text-large font-light text-text-secondary mb-12 leading-[1.8]">
                 Unser 10-köpfiges Team ist der Motor von AKAN. Jedes Mitglied wird sorgfältig geschult und bringt Leidenschaft sowie Fachwissen mit, um Ihre Anforderungen täglich zu übertreffen.
               </p>
@@ -195,7 +199,7 @@ export default function About() {
             <div className="lg:col-span-7">
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-elevated group aspect-[16/9] border border-border/60">
                 <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
-                <ImagePlaceholder originalSrc="https://picsum.photos/1200/800?random=8" alt="AKAN Team" fill className="object-cover transform group-hover:scale-[1.03] transition-transform duration-1000" />
+                <ImagePlaceholder alt="Das AKAN Reinigungsteam in Nordhessen" fill className="object-cover transform group-hover:scale-[1.03] transition-transform duration-1000" />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-text-primary/95 via-text-primary/50 to-transparent p-10 z-20">
                   <p className="text-white font-bold text-2xl font-display drop-shadow-md tracking-tight">Unser Team in Nordhessen</p>
                 </div>
@@ -210,7 +214,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
               <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-5">Lokal verankert</h2>
-              <h3 className="text-h2 font-bold text-text-primary mb-8 font-display leading-[1.1]">Verwurzelt in Nordhessen</h3>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-8 font-display leading-[1.1]">Verwurzelt in Nordhessen</h3>
               <p className="text-large font-light text-text-secondary mb-12 leading-[1.8]">
                 Wir sind stolz darauf, unsere Region zu stärken. Von unserem Hauptsitz in Gudensberg aus bedienen wir Kunden im gesamten Umkreis mit kurzen Anfahrtswegen, schneller Reaktionszeit und maximaler Flexibilität.
               </p>
@@ -232,17 +236,8 @@ export default function About() {
                 Verfügbarkeit prüfen <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-            <div className="relative h-[600px] w-full bg-surface rounded-[2.5rem] overflow-hidden border border-border/60 shadow-elevated">
-              <ImagePlaceholder originalSrc="https://picsum.photos/800/800?random=9" alt="Karte Nordhessen" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 opacity-90" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-border flex items-center gap-4 animate-bounce" style={{ animationDuration: '3s' }}>
-                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-inner-glow">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="font-bold text-text-primary tracking-tight">Gudensberg</p>
-                  <p className="text-tiny font-bold text-text-secondary uppercase tracking-widest mt-1">Zentrale</p>
-                </div>
-              </div>
+            <div className="relative w-full rounded-[2.5rem] overflow-hidden border border-border/60 shadow-elevated">
+              <DynamicMap location={{ name: 'Melsungen', entfernung: 'HQ' } as any} zoom={9} />
             </div>
           </div>
         </div>

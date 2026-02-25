@@ -1,5 +1,7 @@
 import { MapPin, Phone, Mail, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import ContactForm from '@/features/contact-form/components/ContactForm';
+import dynamic from 'next/dynamic';
+const ContactForm = dynamic(() => import('@/features/contact-form/components/ContactForm'));
+const DynamicMap = dynamic(() => import('@/features/locations/components/DynamicMap'));
 
 import type { Metadata } from 'next';
 
@@ -9,6 +11,10 @@ export const metadata: Metadata = {
   keywords: ['Reinigungsfirma Kontakt', 'Gebäudereinigung Angebot', 'Gudensberg', 'Kassel', 'Reinigungsservice Preisanfrage', 'AKAN Dienstleistung'],
 };
 
+const hqLocation = {
+  name: 'Gudensberg',
+  entfernung: 'Hauptstandort'
+} as any;
 
 export default function Contact() {
   return (
@@ -18,7 +24,7 @@ export default function Contact() {
         <div className="absolute inset-0 opacity-10"></div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white rounded-[5rem] blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
         <div className="container-fluid relative z-10 text-center">
-          <h1 className="text-h1 font-bold text-white mb-6 tracking-tighter font-display drop-shadow-sm">
+          <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-bold text-white mb-6 tracking-tighter font-display drop-shadow-sm leading-tight">
             Kontaktieren Sie <span className="text-white/80">uns</span>
           </h1>
           <p className="text-large md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-[1.8]">
@@ -126,26 +132,8 @@ export default function Contact() {
       </div>
 
       {/* Map Section */}
-      <div className="w-full h-[500px] lg:h-[600px] bg-surface relative overflow-hidden group">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39999.99999999999!2d9.366667!3d51.183333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb3d0000000000%3A0x0000000000000000!2sGudensberg!5e0!3m2!1sde!2sde!4v1600000000000!5m2!1sde!2sde"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen={false}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="absolute inset-0 grayscale contrast-[1.15] opacity-80 transition-opacity duration-700 group-hover:opacity-100"
-          title="Google Maps Standort Gudensberg"
-        ></iframe>
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.05)] bg-gradient-to-t from-background via-transparent to-transparent opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md p-8 rounded-[2rem] shadow-elevated border border-border/60 text-center pointer-events-auto hover:scale-105 transition-transform duration-500 hover:shadow-card">
-          <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-inner-glow">
-            <MapPin className="w-6 h-6 text-white" />
-          </div>
-          <h4 className="font-bold text-text-primary text-xl font-display tracking-tight hover:text-primary transition-colors cursor-default drop-shadow-sm">AKAN Dienstleistung</h4>
-          <p className="text-tiny font-bold text-text-secondary mt-1.5 uppercase tracking-widest cursor-default">Gudensberg, Hessen</p>
-        </div>
+      <div className="w-full">
+        <DynamicMap location={hqLocation} />
       </div>
     </>
   );

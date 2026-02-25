@@ -1,44 +1,59 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  themeColor: '#9B1C2E',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
 
 export const revalidate = 86400; // Global ISR Baseline (24 hours)
 
-import { Montserrat, Open_Sans } from 'next/font/google';
+import { Outfit, Inter } from 'next/font/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import './globals.css';
+
+// ── Critical Path (SSR) ────────────────────────────────────
 import Navbar from '@/features/navigation/components/Navbar';
 import Footer from '@/features/footer/components/Footer';
 import ScrollProgress from '@/shared/components/ScrollProgress';
-import SocialProofToast from '@/shared/components/SocialProofToast';
-import BackToTop from '@/shared/components/BackToTop';
-import CursorTrail from '@/shared/components/CursorTrail';
-import StickyCTA from '@/shared/components/StickyCTA';
 import { WebVitals } from '@/shared/components/WebVitals';
+import SkipLink from '@/shared/components/SkipLink';
 
-const montserrat = Montserrat({
+// ── Client-Only Visual Effects (Lazy-loaded) ───────────────
+import ClientEffects from '@/shared/components/ClientEffects';
+import ThemeInjector from '@/features/singularity/components/ThemeInjector';
+import ConsentBanner from '@/features/consent/components/ConsentBanner';
+import PrivacyTrigger from '@/features/consent/components/PrivacyTrigger';
+
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-outfit',
   display: 'swap',
+  adjustFontFallback: false,
 });
 
-const openSans = Open_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-open-sans',
+  variable: '--font-inter',
   display: 'swap',
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
+  manifest: '/manifest.json',
   metadataBase: new URL('https://akandienstleistung.de'),
   title: {
-    default: 'AKAN Dienstleistung | Professionelle Reinigung in Gudensberg',
+    default: 'Gebäudereinigung Nordhessen – AKAN Dienstleistung – Professionell & Zuverlässig',
     template: '%s | AKAN Dienstleistung'
   },
-  description: 'Unterhaltsreinigung, Fensterreinigung, Bauendreinigung und Industriereinigung mit 10 Jahren Erfahrung und höchstem Qualitätsanspruch in Gudensberg und Umgebung.',
+  description: 'Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Unterhaltsreinigung ✓ Fensterreinigung ✓ Bauendreinigung ✓ Kostenlose Erstberatung!',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'AKAN Dienstleistung | Professionelle Gebäudereinigung',
-    description: 'Unterhaltsreinigung, Fensterreinigung und Bauendreinigung in Gudensberg und Umgebung. 10 Jahre Erfahrung.',
+    title: 'Gebäudereinigung Nordhessen – AKAN Dienstleistung',
+    description: 'Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Kostenlose Erstberatung anfordern!',
     url: 'https://akandienstleistung.de',
     siteName: 'AKAN Dienstleistung',
     locale: 'de_DE',
@@ -77,24 +92,30 @@ const jsonLd = {
     "opens": "08:00",
     "closes": "18:00"
   },
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Gudensberg"
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.1764,
+      "longitude": 9.3562
     },
-    {
-      "@type": "City",
-      "name": "Kassel"
-    },
-    {
-      "@type": "City",
-      "name": "Fritzlar"
-    },
-    {
-      "@type": "City",
-      "name": "Baunatal"
-    }
-  ],
+    "geoRadius": "50000"
+  },
+  "priceRange": "€€",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128",
+    "bestRating": "5"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+4915234754386",
+    "contactType": "customer service",
+    "availableLanguage": ["German", "Turkish"],
+    "areaServed": "DE"
+  },
+  "sameAs": [],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Reinigungsdienstleistungen",
@@ -131,26 +152,42 @@ const jsonLd = {
   }
 };
 
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Startseite",
+    "item": "https://akan-dienstleistung.de"
+  }]
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${montserrat.variable} ${openSans.variable} scroll-smooth`}>
-      <body className="font-sans bg-background text-text-primary antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+    <html lang="de" className={`${outfit.variable} ${inter.variable} scroll-smooth`}>
+      <body className="font-sans bg-theme-bg text-theme-text transition-colors duration-[800ms] antialiased leading-[1.6] selection:bg-theme-primary selection:text-white flex flex-col min-h-screen relative" suppressHydrationWarning>
+        <ThemeInjector />
+        <ClientEffects />
         <NuqsAdapter>
+          <SkipLink />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+          />
           <WebVitals />
           <ScrollProgress />
           <Navbar />
-          <main className="flex-grow pt-24">
+          <main id="main-content" className="flex-grow pt-24 relative z-10" tabIndex={-1}>
             {children}
           </main>
           <Footer />
-          <SocialProofToast />
-          <BackToTop />
-          <CursorTrail />
-          <StickyCTA />
+          <ConsentBanner />
+          <PrivacyTrigger />
         </NuqsAdapter>
       </body>
     </html>

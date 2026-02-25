@@ -52,6 +52,8 @@ export default function AnimatedCounter({
         <motion.span
             ref={ref}
             className={className}
+            aria-live="polite"
+            aria-atomic="true"
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}

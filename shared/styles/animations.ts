@@ -16,6 +16,17 @@ export const springs = {
     elastic: { type: 'spring' as const, stiffness: 200, damping: 5, mass: 0.5 },
 };
 
+// ── AKAN Brand Motion Language ──────────────────────────────
+// LT-7.1: Three core motion philosophies
+export const akanSprings = {
+    /** Standard — balanced, professional transitions */
+    standard: { type: 'spring' as const, stiffness: 150, damping: 25, mass: 1 },
+    /** Energetisch — punchy, attention-grabbing CTAs & reveals */
+    energetisch: { type: 'spring' as const, stiffness: 250, damping: 20, mass: 0.8 },
+    /** Sanft — deliberate, thorough movements reflecting Gründlichkeit */
+    sanft: { type: 'spring' as const, stiffness: 80, damping: 30, mass: 1.2 },
+};
+
 // ── Easing Presets ──────────────────────────────────────────
 export const easings = {
     smooth: [0.4, 0, 0.2, 1] as const,

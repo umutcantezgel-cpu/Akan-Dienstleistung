@@ -133,7 +133,7 @@ export default function SocialProofToast({
                             className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center text-text-secondary/50 hover:text-text-primary bg-surface/50 rounded-full transition-colors"
                             aria-label="Schließen"
                         >
-                            <X className="w-4 h-4" strokeWidth={3} />
+                            <X className="w-4 h-4" strokeWidth={2} />
                         </motion.button>
                     </div>
                 </motion.div>

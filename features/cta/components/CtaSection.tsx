@@ -1,57 +1,103 @@
-import Link from 'next/link';
-import { Phone, MessageCircle, ArrowRight } from 'lucide-react';
-import { motion } from 'motion/react';
-import ParticleCanvas from '@/shared/components/ParticleCanvas';
-import KineticHeading from '@/shared/components/KineticHeading';
-import AnimatedSection from '@/shared/components/AnimatedSection';
-import { scaleIn } from '@/shared/styles/animations';
+'use client';
 
-export default function CtaSection() {
+import { CheckCircle2, ShieldCheck, MapPin, Clock } from 'lucide-react';
+import AnimatedSection, { AnimatedItem } from '@/shared/components/AnimatedSection';
+import { fadeInUp, staggerContainer } from '@/shared/styles/animations';
+
+// ═══════════════════════════════════════════════════════════
+// OMEGA Ω-09 — CTA Section (Split Layout)
+// High-conversion split layout: Benefits/Trust (Left) + Direct Form (Right)
+// ═══════════════════════════════════════════════════════════
+
+export default function CtaSection({ contactForm }: { contactForm?: React.ReactNode }) {
     return (
-        <section className="relative py-section-lg bg-primary overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <ParticleCanvas
-                    particleCount={40}
-                    colors={['rgba(255,255,255,0.4)', 'rgba(255,255,255,0.2)', 'rgba(232,93,117,0.5)']}
-                    speed={0.15}
-                    maxRadius={2}
-                    connectDistance={60}
-                    mouseRepel={false}
-                />
-            </div>
-            <AnimatedSection className="max-w-4xl mx-auto px-6 text-center relative z-10" variants={scaleIn}>
-                <KineticHeading as="h2" className="text-h2 font-bold text-white mb-8 leading-[1.1]">
-                    Lassen Sie uns gemeinsam herausfinden, wie Ihr Gebäude strahlen kann.
-                </KineticHeading>
-                <p className="text-large font-light text-white/90 mb-12 max-w-2xl mx-auto leading-[1.8]">
-                    Kostenlos. Unverbindlich. Persönlich. Ein Anruf genügt – und wir erstellen Ihnen ein maßgeschneidertes Reinigungskonzept, das sich rechnet.
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-5">
-                    <motion.div whileHover={{ scale: 1.02, y: -4 }} whileTap={{ scale: 0.98 }}>
-                        <Link href="/contact" className="bg-white hover:bg-surface text-primary tracking-wide text-base font-bold py-5 px-10 rounded-xl shadow-elevated transition-colors font-display inline-flex items-center justify-center w-full sm:w-auto">
-                            Kostenloses Angebot anfordern
-                            <ArrowRight className="ml-3 w-5 h-5" />
-                        </Link>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.02, y: -4 }} whileTap={{ scale: 0.98 }}>
-                        <a href="tel:+4915234754386" className="bg-transparent border border-white/40 hover:bg-white/10 text-white tracking-wide text-base font-bold py-5 px-10 rounded-xl transition-all font-display flex items-center justify-center w-full sm:w-auto">
-                            <Phone className="w-5 h-5 mr-3" />
-                            0152 34754386
-                        </a>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.02, y: -4 }} whileTap={{ scale: 0.98 }}>
-                        <a
-                            href="https://wa.me/4915234754386?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20professionelle%20Reinigung."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-[#25D366] hover:bg-[#20BD5A] text-white tracking-wide text-base font-bold py-5 px-10 rounded-xl transition-all font-display flex items-center justify-center w-full sm:w-auto"
-                        >
-                            <MessageCircle className="w-5 h-5 mr-3" />
-                            WhatsApp
-                        </a>
-                    </motion.div>
+        <section className="relative py-section-lg bg-surface overflow-hidden border-t border-border">
+            {/* Ambient Base Glow */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+
+            <div className="container-fluid relative z-10">
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
+
+                    {/* Left: Headline, Benefits, Trust */}
+                    <div className="w-full lg:w-5/12 shrink-0">
+                        <AnimatedSection variants={fadeInUp} className="mb-10 text-center lg:text-left">
+                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-4">Angebot anfordern</h2>
+                            <h3 className="text-h2 font-bold text-text-primary leading-tight font-display mb-6">
+                                Bereit für makellose <span className="text-gradient-primary">Sauberkeit?</span>
+                            </h3>
+                            <p className="text-text-secondary text-lg leading-relaxed">
+                                Lassen Sie uns gemeinsam herausfinden, wie Ihre Immobilie strahlen kann. Ein Formular, ein persönliches Erstgespräch, ein maßgeschneidertes Konzept.
+                            </p>
+                        </AnimatedSection>
+
+                        {/* Benefits List */}
+                        <AnimatedSection as="ul" className="space-y-6 mb-12 hidden md:block lg:block" variants={staggerContainer} stagger>
+                            {[
+                                { title: '100% Zufriedenheitsgarantie', desc: 'Wir reinigen nach, bis Sie absolut zufrieden sind.' },
+                                { title: 'Kostenlose Erstbegehung', desc: 'Individuelle Beratung direkt bei Ihnen vor Ort.' },
+                                { title: 'Transparente Preise', desc: 'Versteckte Kosten gibt es bei uns nicht.' },
+                            ].map((benefit, i) => (
+                                <AnimatedItem key={i} as="li" variants={fadeInUp}>
+                                    <div className="flex items-start">
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 border border-primary/20">
+                                            <CheckCircle2 className="text-primary w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <span className="block text-text-primary font-bold text-lg mb-1">{benefit.title}</span>
+                                            <span className="block text-text-secondary text-sm">{benefit.desc}</span>
+                                        </div>
+                                    </div>
+                                </AnimatedItem>
+                            ))}
+                        </AnimatedSection>
+
+                        {/* Guarantee / Trust Footer */}
+                        <AnimatedSection variants={fadeInUp} className="pt-8 border-t border-border flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-surface shadow-sm border border-border flex items-center justify-center text-trust-gold">
+                                    <ShieldCheck className="w-5 h-5" />
+                                </div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-text-primary">Meisterbetrieb</p>
+                                    <p className="text-text-secondary text-xs">Höchste Qualität</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-surface shadow-sm border border-border flex items-center justify-center text-primary">
+                                    <Clock className="w-5 h-5" />
+                                </div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-text-primary">Kurze Reaktionszeit</p>
+                                    <p className="text-text-secondary text-xs">Angebot in 24h</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-surface shadow-sm border border-border flex items-center justify-center text-text-primary">
+                                    <MapPin className="w-5 h-5" />
+                                </div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-text-primary">Regional</p>
+                                    <p className="text-text-secondary text-xs">Gudensberg & Kassel</p>
+                                </div>
+                            </div>
+                        </AnimatedSection>
+                    </div>
+
+                    {/* Right: Contact Form Embedded */}
+                    <div className="w-full lg:w-7/12 min-w-0">
+                        <AnimatedSection variants={fadeInUp} className="w-full relative h-full flex flex-col">
+                            <div className="bg-white rounded-[2rem] shadow-mega border border-border/60 p-6 md:p-10 relative overflow-hidden flex-grow flex flex-col justify-center">
+                                {/* Decorative line for form card */}
+                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary opacity-90" />
+
+                                {/* The actual form */}
+                                {contactForm}
+                            </div>
+                        </AnimatedSection>
+                    </div>
                 </div>
-            </AnimatedSection>
+            </div>
         </section>
     );
 }

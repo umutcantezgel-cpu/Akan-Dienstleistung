@@ -16,7 +16,6 @@ test.describe('Contact Form E2E', () => {
         await submitButton.click();
 
         // The form should not submit and instead show red validation borders / messages
-        // React Hook Form handles this natively. Service field should have a validation error:
         await expect(page.getByTestId('privacy-error')).toBeVisible();
 
         // Check privacy box
@@ -24,14 +23,13 @@ test.describe('Contact Form E2E', () => {
         await submitButton.click();
 
         // Wait for the Zod schema validation errors to be injected into the DOM
-        await expect(page.getByText(/Vorname ist erforderlich/i)).toBeVisible();
-        await expect(page.getByText(/Nachricht muss mindestens 10 Zeichen lang sein/i)).toBeVisible();
+        await expect(page.getByText(/Bitte verraten Sie uns Ihren Namen/i)).toBeVisible();
+        await expect(page.getByText(/Ihre Nachricht ist noch etwas kurz/i)).toBeVisible();
     });
 
     test('should submit successfully with valid data', async ({ page }) => {
         // Fill out the form via explicit IDs
-        await page.locator('#firstName').fill('Max');
-        await page.locator('#lastName').fill('Mustermann');
+        await page.locator('#name').fill('Max Mustermann');
         await page.locator('#email').fill('max@example.com');
         await page.locator('#phone').fill('0123456789');
 
@@ -56,6 +54,6 @@ test.describe('Contact Form E2E', () => {
 
         // Assert success screen is shown
         await expect(page.getByTestId('success-message')).toBeVisible();
-        await expect(page.getByText(/Ihre Daten haben unsere Systeme erfolgreich erreicht/i)).toBeVisible();
+        await expect(page.getByText(/Nachricht gesendet!|Vielen Dank für Ihr Vertrauen/i).first()).toBeVisible();
     });
 });

@@ -1,19 +1,12 @@
 import { create } from 'zustand';
 
 interface AppState {
-    isMobileMenuOpen: boolean;
-    setMobileMenuOpen: (isOpen: boolean) => void;
-    toggleMobileMenu: () => void;
-
     isDarkMode: boolean;
     initializeDarkMode: () => void;
     toggleDarkMode: () => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
-    isMobileMenuOpen: false,
-    setMobileMenuOpen: (isOpen) => set({ isMobileMenuOpen: isOpen }),
-    toggleMobileMenu: () => set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
 
     isDarkMode: false,
     initializeDarkMode: () => {

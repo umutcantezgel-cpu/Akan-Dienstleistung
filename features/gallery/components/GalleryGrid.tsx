@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { useQueryState } from 'nuqs';
 import { motion, AnimatePresence, LayoutGroup } from 'motion/react';
-import Image from 'next/image';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import { Maximize2, X } from 'lucide-react';
 import { springs } from '@/shared/styles/animations';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 // ═══════════════════════════════════════════════════════════
 // OMEGA Ω-09 — Gallery Grid Quantum Masonry
@@ -104,12 +106,11 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
                                 <div className="relative rounded-[2rem] overflow-hidden shadow-soft border border-border bg-white hover:shadow-card hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
                                     <div className="aspect-[4/3] relative overflow-hidden border-b border-border/50">
                                         <motion.div layoutId={`gallery-image-${img.src}`} className="w-full h-full">
-                                            <Image
-                                                src={img.src}
+                                            <ImagePlaceholder
                                                 alt={img.title}
                                                 fill
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                className="object-cover transform group-hover:scale-[1.03] transition-transform duration-1000"
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                originalSrc={img.src}
                                             />
                                         </motion.div>
 
@@ -156,15 +157,18 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
                                     if (Math.abs(info.offset.y) > 100) setSelectedImage(null);
                                 }}
                             >
-                                <div className="aspect-[16/10] relative overflow-hidden bg-black/5">
-                                    <motion.div layoutId={`gallery-image-${selectedImage.src}`} className="w-full h-full">
-                                        <Image
-                                            src={selectedImage.src}
-                                            alt={selectedImage.title}
-                                            fill
-                                            sizes="100vw"
-                                            className="object-contain sm:object-cover"
-                                        />
+                                <div className="aspect-[16/10] relative overflow-hidden bg-black/5 touch-pan-y touch-pinch-zoom">
+                                    <motion.div layoutId={`gallery-image-${selectedImage.src}`} className="w-full h-full relative z-[1]">
+                                        <Zoom zoomMargin={20} classDialog="bg-black/90 backdrop-blur-xl">
+                                            <div className="relative w-full h-[50vh] sm:h-[60vh] max-h-[800px]">
+                                                <ImagePlaceholder
+                                                    alt={selectedImage.title}
+                                                    fill
+                                                    className="object-contain"
+                                                    originalSrc={selectedImage.src}
+                                                />
+                                            </div>
+                                        </Zoom>
                                     </motion.div>
 
                                     {/* Close button inside image area for cleaner look */}
@@ -177,7 +181,7 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
                                         className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 hover:scale-110 transition-all z-10"
                                         aria-label="Schließen"
                                     >
-                                        <X className="w-5 h-5" strokeWidth={2.5} />
+                                        <X className="w-5 h-5" strokeWidth={2} />
                                     </motion.button>
                                 </div>
 

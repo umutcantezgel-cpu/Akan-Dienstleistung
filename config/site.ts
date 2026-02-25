@@ -75,7 +75,7 @@ export const team: TeamMember[] = [
         name: 'Zeynep Hilaloglu',
         role: 'Objektleiterin',
         desc: '10 Jahre Erfahrung in der professionellen Reinigungsbranche. Zeynep überwacht die Qualität aller Reinigungsprojekte und sorgt dafür, dass jeder Auftrag unser hohes Qualitätsniveau erfüllt.',
-        imageUrl: 'https://picsum.photos/400/400?random=team1',
+        imageUrl: '',
         skills: [
             { label: 'Qualitätsmanagement', level: 95 },
             { label: 'Teamführung', level: 90 },
@@ -87,7 +87,7 @@ export const team: TeamMember[] = [
         name: 'Cemal Hilaloglu',
         role: 'Geschäftsführer',
         desc: 'Gründer von AKAN Dienstleistung. Cemal kümmert sich um die strategische Ausrichtung des Unternehmens und die Akquise neuer Kunden.',
-        imageUrl: 'https://picsum.photos/400/400?random=team2',
+        imageUrl: '',
         skills: [
             { label: 'Unternehmensführung', level: 90 },
             { label: 'Kundenakquise', level: 85 },

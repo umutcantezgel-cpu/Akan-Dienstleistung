@@ -17,9 +17,9 @@ export default function CursorTrail() {
             {/* Toggle Button */}
             <motion.button
                 onClick={toggle}
-                className={`fixed bottom-6 right-6 lg:right-10 z-50 w-12 h-12 rounded-full flex items-center justify-center border backdrop-blur-md transition-all duration-300 ${isEnabled
+                className={`fixed z-[97] w-12 h-12 rounded-full hidden lg:flex items-center justify-center border backdrop-blur-md transition-all duration-300 pointer-events-auto lg:bottom-[104px] lg:left-10 lg:right-auto ${isEnabled
                     ? 'bg-primary/90 text-white border-primary shadow-[0_0_20px_rgba(146,24,41,0.5)]'
-                    : 'bg-white/80 text-text-secondary border-border/60 hover:border-primary/50 hover:text-primary shadow-elevated'
+                    : 'bg-[#0a0a0c]/80 text-white/50 border-white/10 hover:border-primary/50 hover:text-primary shadow-elevated'
                     }`}
                 whileHover={{ scale: 1.08, rotate: isEnabled ? -10 : 10 }}
                 whileTap={{ scale: 0.92 }}

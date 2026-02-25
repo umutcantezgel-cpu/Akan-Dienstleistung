@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import { ChevronDown, ScanLine } from 'lucide-react';
 import { springs } from '@/shared/styles/animations';
 import type { TeamMember } from '@/config/site';
@@ -64,7 +64,7 @@ export default function TeamCard({ member }: TeamCardProps) {
                     animate={{ scale: isExpanded ? 1.08 : 1, filter: isExpanded ? 'contrast(1.1) brightness(1.1)' : 'contrast(1) brightness(1)' }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                 >
-                    <Image src={member.imageUrl || `https://picsum.photos/400/500?random=${member.name}`} alt={member.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
+                    <ImagePlaceholder alt={member.name} fill className="object-cover" />
                 </motion.div>
 
                 {/* Holographic Split Effect (RGB Chromatic Aberration) */}
@@ -77,7 +77,7 @@ export default function TeamCard({ member }: TeamCardProps) {
                                 exit={{ opacity: 0, x: 0 }}
                                 className="absolute inset-0 mix-blend-screen pointer-events-none filter sepia-[.5] hue-rotate-180 saturate-200"
                             >
-                                <Image src={member.imageUrl || `https://picsum.photos/400/500?random=${member.name}`} alt={member.name} fill sizes="4rem" className="object-cover filter blur-[1px]" />
+                                <ImagePlaceholder alt={member.name} fill className="object-cover filter blur-[1px]" />
                             </motion.div>
                             <motion.div
                                 initial={{ opacity: 0, x: 0 }}
@@ -85,7 +85,7 @@ export default function TeamCard({ member }: TeamCardProps) {
                                 exit={{ opacity: 0, x: 0 }}
                                 className="absolute inset-0 mix-blend-screen pointer-events-none filter sepia-[.5] hue-rotate-90 saturate-200"
                             >
-                                <Image src={member.imageUrl || `https://picsum.photos/400/500?random=${member.name}`} alt={member.name} fill sizes="4rem" className="object-cover filter blur-[1px]" />
+                                <ImagePlaceholder alt={member.name} fill className="object-cover filter blur-[1px]" />
                             </motion.div>
                         </>
                     )}

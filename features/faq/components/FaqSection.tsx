@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import { HelpCircle, Phone } from 'lucide-react';
 import AnimatedSection from '@/shared/components/AnimatedSection';
 import Accordion from '@/shared/components/Accordion';
@@ -5,8 +6,26 @@ import { faqs } from '@/config/site';
 import { fadeInLeft, fadeInRight } from '@/shared/styles/animations';
 
 export default function FaqSection() {
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    };
+
     return (
         <section className="py-section-lg bg-surface border-y border-border">
+            <Script
+                id="faq-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <div className="container-fluid">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                     <AnimatedSection variants={fadeInLeft}>

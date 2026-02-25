@@ -1,13 +1,16 @@
 'use client';
 
 import { useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { ArrowRight, Phone, ShieldCheck, CheckCircle2, Award, MapPin, Shield } from 'lucide-react';
-import ParticleCanvas from '@/shared/components/ParticleCanvas';
+const ParticleEmitter = dynamic(() => import('@/features/hero/components/ParticleEmitter'), { ssr: false });
 import TextReveal from '@/shared/components/TextReveal';
 import Button from '@/shared/components/Button';
-import Image from 'next/image';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import { springs, float } from '@/shared/styles/animations';
+import MagneticTilt from '@/shared/components/MagneticTilt';
+import MagneticButton from '@/shared/components/MagneticButton';
 
 // ═══════════════════════════════════════════════════════════
 // OMEGA Ω-04 — Hero Singularity Event Horizon
@@ -36,19 +39,14 @@ export default function HeroSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-background"
+            className="relative pt-20 pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-background [perspective:1200px]"
         >
             {/* Particle Background with parallax offset */}
             <motion.div
                 className="absolute inset-0 z-0 opacity-80"
                 style={{ y: parallaxBg }}
             >
-                <ParticleCanvas
-                    particleCount={65}
-                    colors={['#9B1C2E', '#E85D75', '#F1E5E7', '#D6A848']}
-                    speed={0.15}
-                    connectDistance={100}
-                />
+                <ParticleEmitter />
             </motion.div>
 
             {/* Ambient gradient orbs (parallax layers) */}
@@ -69,7 +67,7 @@ export default function HeroSection() {
 
             {/* Content wrapper with scroll-reactive implosion */}
             <motion.div
-                className="container-fluid grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10"
+                className="container-fluid flex flex-col lg:flex-row gap-16 lg:gap-20 items-center relative z-10 [transform-style:preserve-3d]"
                 style={{
                     scale: smoothScale,
                     y: smoothY,
@@ -77,7 +75,7 @@ export default function HeroSection() {
                 }}
             >
                 {/* Left: Text Content */}
-                <div className="relative z-10 lg:pr-8">
+                <div className="w-full lg:w-[55%] relative z-10 lg:pr-8 shrink-0">
                     <TextReveal
                         text="Makellose Räume für anspruchsvolle Unternehmen"
                         as="h1"
@@ -102,33 +100,37 @@ export default function HeroSection() {
                         transition={{ delay: 1, ...springs.gentle }}
                         className="flex flex-col sm:flex-row gap-5 mb-12"
                     >
-                        <motion.div
-                            whileHover={{ scale: 1.03, y: -3 }}
-                            whileTap={{ scale: 0.97 }}
-                            animate={{ scale: [1, 1.015, 1] }}
-                            transition={{
-                                scale: {
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    ease: 'easeInOut',
-                                },
-                            }}
-                        >
-                            <Button href="/contact" variant="primary" className="text-base font-bold px-8 py-4 shadow-elevated omega-glow">
-                                <span className="flex items-center">
-                                    Kostenlose Erstberatung sichern
-                                    <ArrowRight className="ml-3 w-5 h-5" />
-                                </span>
-                            </Button>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.03, y: -3 }} whileTap={{ scale: 0.97 }}>
-                            <Button href="tel:+4915234754386" variant="ghost" className="text-base font-bold px-8 py-4">
-                                <span className="flex items-center">
-                                    <Phone className="mr-3 w-5 h-5 opacity-80" />
-                                    0152 34754386
-                                </span>
-                            </Button>
-                        </motion.div>
+                        <MagneticButton magneticIntensity={0.25}>
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
+                                animate={{ scale: [1, 1.015, 1] }}
+                                transition={{
+                                    scale: {
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: 'easeInOut',
+                                    },
+                                }}
+                            >
+                                <Button href="/contact" variant="primary" className="text-base font-bold px-8 py-4 shadow-elevated omega-glow w-full sm:w-auto justify-center">
+                                    <span className="flex items-center">
+                                        Kostenlose Erstberatung sichern
+                                        <ArrowRight className="ml-3 w-5 h-5" />
+                                    </span>
+                                </Button>
+                            </motion.div>
+                        </MagneticButton>
+                        <MagneticButton magneticIntensity={0.15}>
+                            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                                <Button href="tel:+4915234754386" variant="ghost" className="text-base font-bold px-8 py-4 w-full sm:w-auto justify-center">
+                                    <span className="flex items-center">
+                                        <Phone className="mr-3 w-5 h-5 opacity-80" />
+                                        0152 34754386
+                                    </span>
+                                </Button>
+                            </motion.div>
+                        </MagneticButton>
                     </motion.div>
 
                     {/* Reptilian Brain Trust-Bar */}
@@ -162,35 +164,50 @@ export default function HeroSection() {
                     initial={{ opacity: 0, x: 80, rotateY: 10 }}
                     animate={{ opacity: 1, x: 0, rotateY: 0 }}
                     transition={{ delay: 0.5, ...springs.gentle }}
-                    className="relative h-[500px] lg:h-auto w-full lg:aspect-[4/5]"
+                    className="w-full lg:w-[45%] relative h-[500px] lg:h-auto lg:aspect-[4/5] shrink-0 [transform-style:preserve-3d]"
                 >
-                    {/* Rotating background shape */}
-                    <motion.div
-                        animate={{ rotate: [-3, -2, -3] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                        className="absolute inset-0 bg-primary-light/5 rounded-[2.5rem] scale-95 z-0"
-                    />
-                    <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-elevated border border-border/60">
-                        <Image src="https://picsum.photos/800/1000?random=3" alt="Professionelle Reinigung" fill sizes="(max-width: 1024px) 100vw, 50vw" priority fetchPriority="high" className="object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-overlay" />
-                    </div>
+                    <MagneticTilt maxTilt={8} depth={40} className="w-full h-full">
+                        {/* Rotating background shape */}
+                        <motion.div
+                            animate={{ rotate: [-3, -2, -3] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute inset-0 bg-primary-light/5 rounded-[2.5rem] scale-95 z-0"
+                        />
+                        <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-elevated border border-border/60" style={{ filter: 'url(#water-distortion)' }}>
+                            <svg className="absolute w-0 h-0 pointer-events-none">
+                                <filter id="water-distortion" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feTurbulence type="fractalNoise" baseFrequency="0.01 0.02" numOctaves="2" result="noise">
+                                        <animate attributeName="baseFrequency" dur="20s" values="0.01 0.02; 0.015 0.03; 0.01 0.02" repeatCount="indefinite" />
+                                    </feTurbulence>
+                                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+                                </filter>
+                            </svg>
+                            <ImagePlaceholder alt="AKAN Gebäudereinigung — professionelle Glasfassadenreinigung an einem Gewerbegebäude" fill className="object-cover" priority={true} originalSrc="/images/hero/akan-glasfassade-reinigung-gewerbegebaeude-eingang.webp" sizes="(max-width: 1024px) 100vw, 45vw" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-overlay" />
+                        </div>
+                    </MagneticTilt>
 
                     {/* Floating Trust Badge with spring physics */}
                     <motion.div
                         variants={float}
                         initial="idle"
                         animate="active"
-                        className="absolute -bottom-10 -left-10 bg-white/95 backdrop-blur-xl p-6 lg:p-8 rounded-3xl shadow-card z-20 max-w-xs hidden lg:block border border-border/60 omega-depth"
+                        className="absolute -bottom-10 -left-10 z-20 max-w-xs hidden lg:block"
+                        style={{ translateZ: 80 }} // Pull out further in 3D space
                     >
-                        <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-full bg-surface shadow-inner-glow flex items-center justify-center text-primary">
-                                <ShieldCheck className="w-7 h-7" />
+                        <MagneticTilt maxTilt={15} depth={20}>
+                            <div className="bg-white/95 backdrop-blur-xl p-6 lg:p-8 rounded-3xl shadow-card border border-border/60 omega-depth">
+                                <div className="flex items-center gap-5">
+                                    <div className="w-14 h-14 rounded-full bg-surface shadow-inner-glow flex items-center justify-center text-primary">
+                                        <ShieldCheck className="w-7 h-7" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold text-text-primary font-display">Qualitätsgarantie</p>
+                                        <p className="text-xs text-text-secondary">Zufriedenheit an erster Stelle</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <p className="text-sm font-bold text-text-primary font-display">Qualitätsgarantie</p>
-                                <p className="text-xs text-text-secondary">Zufriedenheit an erster Stelle</p>
-                            </div>
-                        </div>
+                        </MagneticTilt>
                     </motion.div>
                 </motion.div>
             </motion.div>

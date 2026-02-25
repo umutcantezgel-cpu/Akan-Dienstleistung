@@ -1,10 +1,8 @@
 import { History } from 'lucide-react';
 import AnimatedSection from '@/shared/components/AnimatedSection';
-import Timeline from '@/features/timeline/components/Timeline';
-import { timeline } from '@/config/site';
 import { fadeInUp } from '@/shared/styles/animations';
 
-export default function HistorySection() {
+export default function HistorySection({ timelineComponent }: { timelineComponent?: React.ReactNode }) {
     return (
         <section className="py-section-lg bg-background">
             <div className="container-fluid">
@@ -21,7 +19,7 @@ export default function HistorySection() {
                     </p>
                 </AnimatedSection>
 
-                <Timeline events={timeline} />
+                {timelineComponent}
             </div>
         </section>
     );
