@@ -4,7 +4,7 @@ Dieses Dokument beschreibt die Schritte zur Inbetriebnahme des AKAN Dienstleistu
 
 ## 🚀 1-Click Setup
 
-Das Projekt nutzt den Next.js App Router und npm. 
+Das Projekt nutzt den Next.js App Router und npm.
 Führe folgende Befehle aus, um das Projekt zu starten:
 
 ```bash
@@ -14,6 +14,7 @@ npm install
 # 2. Starte den lokalen Entwicklungsserver
 npm run dev
 ```
+
 Die Anwendung ist nun unter `http://localhost:3000` erreichbar.
 
 ## 📦 Production Build
