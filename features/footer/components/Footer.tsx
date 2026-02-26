@@ -1,12 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { MapPin, Phone, Mail, Facebook, Camera, ArrowUpRight, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import AkanLogo from '@/shared/components/AkanLogo';
-import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
-import ConsentBoundary from '@/features/consent/components/ConsentBoundary';
+import { useState } from "react";
+import Link from "next/link";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Camera,
+  ArrowUpRight,
+  ChevronDown,
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import AkanLogo from "@/shared/components/AkanLogo";
+import ImagePlaceholder from "@/shared/components/ImagePlaceholder";
+import ConsentBoundary from "@/features/consent/components/ConsentBoundary";
 
 // ═══════════════════════════════════════════════════════════
 // OMEGA Ω-18 — Footer Typographic Architecture
@@ -36,15 +44,18 @@ export default function Footer() {
               >
                 <AkanLogo className="w-full h-full" />
               </motion.div>
-              <span className="text-xl font-bold text-text-primary font-display tracking-tight">AKAN Dienstleistung</span>
+              <span className="text-xl font-bold text-text-primary font-display tracking-tight">
+                AKAN Dienstleistung
+              </span>
             </div>
             <p className="text-base leading-loose text-text-secondary">
-              Ihr zuverlässiger Partner für professionelle Gebäudereinigung in Gudensberg und Umgebung. Qualität, die man sieht.
+              Ihr zuverlässiger Partner für professionelle Gebäudereinigung in
+              Gudensberg und Umgebung. Qualität, die man sieht.
             </p>
             <div className="flex space-x-4 pt-2">
               {[
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Camera, label: 'Instagram' },
+                { icon: Facebook, label: "Facebook" },
+                { icon: Camera, label: "Instagram" },
               ].map((social) => (
                 <motion.a
                   key={social.label}
@@ -67,32 +78,46 @@ export default function Footer() {
               onClick={() => setIsNavOpen(!isNavOpen)}
               aria-expanded={isNavOpen}
             >
-              <h4 className="text-sm uppercase tracking-widest text-text-primary font-bold md:mb-8 font-display py-4 md:py-0">Navigation</h4>
-              <motion.div animate={{ rotate: isNavOpen ? 180 : 0 }} className="md:hidden text-primary">
+              <h4 className="text-sm uppercase tracking-widest text-text-primary font-bold md:mb-8 font-display py-4 md:py-0">
+                Navigation
+              </h4>
+              <motion.div
+                animate={{ rotate: isNavOpen ? 180 : 0 }}
+                className="md:hidden text-primary"
+              >
                 <ChevronDown className="w-5 h-5" />
               </motion.div>
             </button>
             <AnimatePresence initial={false}>
               <motion.div
                 initial={false}
-                animate={isNavOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                animate={
+                  isNavOpen
+                    ? { height: "auto", opacity: 1 }
+                    : { height: 0, opacity: 0 }
+                }
                 className="overflow-hidden md:!h-auto md:!opacity-100 md:!block"
               >
                 <ul className="space-y-4 md:space-y-5 text-base font-medium text-text-secondary pb-4 md:pb-0 pt-2 md:pt-0">
                   {[
-                    { href: '/', label: 'Startseite' },
-                    { href: '/ueber-uns', label: 'Über uns' },
-                    { href: '/services', label: 'Leistungen' },
-                    { href: '/referenzen', label: 'Referenzen' },
-                    { href: '/contact', label: 'Kontakt' },
+                    { href: "/", label: "Startseite" },
+                    { href: "/ueber-uns", label: "Über uns" },
+                    { href: "/services", label: "Leistungen" },
+                    { href: "/referenzen", label: "Referenzen" },
+                    { href: "/contact", label: "Kontakt" },
                   ].map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
                         className="group inline-flex items-center hover:text-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
                       >
-                        <span className="group-hover:translate-x-1 transition-transform duration-300">{link.label}</span>
-                        <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-60 -translate-y-1 group-hover:translate-y-0 transition-all duration-300" aria-hidden="true" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {link.label}
+                        </span>
+                        <ArrowUpRight
+                          className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-60 -translate-y-1 group-hover:translate-y-0 transition-all duration-300"
+                          aria-hidden="true"
+                        />
                       </Link>
                     </li>
                   ))}
@@ -108,30 +133,53 @@ export default function Footer() {
               onClick={() => setIsContactOpen(!isContactOpen)}
               aria-expanded={isContactOpen}
             >
-              <h4 className="text-sm uppercase tracking-widest text-text-primary font-bold md:mb-8 font-display py-4 md:py-0">Kontakt</h4>
-              <motion.div animate={{ rotate: isContactOpen ? 180 : 0 }} className="md:hidden text-primary">
+              <h4 className="text-sm uppercase tracking-widest text-text-primary font-bold md:mb-8 font-display py-4 md:py-0">
+                Kontakt
+              </h4>
+              <motion.div
+                animate={{ rotate: isContactOpen ? 180 : 0 }}
+                className="md:hidden text-primary"
+              >
                 <ChevronDown className="w-5 h-5" />
               </motion.div>
             </button>
             <AnimatePresence initial={false}>
               <motion.div
                 initial={false}
-                animate={isContactOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                animate={
+                  isContactOpen
+                    ? { height: "auto", opacity: 1 }
+                    : { height: 0, opacity: 0 }
+                }
                 className="overflow-hidden md:!h-auto md:!opacity-100 md:!block"
               >
                 <address className="not-italic">
                   <ul className="space-y-4 md:space-y-5 text-sm md:text-base text-text-secondary pb-4 md:pb-0 pt-2 md:pt-0">
                     <li className="flex items-start group">
                       <MapPin className="w-5 h-5 text-primary mr-3 shrink-0 group-hover:scale-110 transition-transform" />
-                      <span>Musterstraße 12<br />34281 Gudensberg</span>
+                      <span>
+                        Musterstraße 12
+                        <br />
+                        34281 Gudensberg
+                      </span>
                     </li>
                     <li className="flex items-center group">
                       <Phone className="w-5 h-5 text-primary mr-3 shrink-0 group-hover:scale-110 transition-transform" />
-                      <a href="tel:+4915234754386" className="hover:text-primary transition-colors font-bold text-text-primary focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm">0152 34754386</a>
+                      <a
+                        href="tel:+4915234754386"
+                        className="hover:text-primary transition-colors font-bold text-text-primary focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+                      >
+                        0152 34754386
+                      </a>
                     </li>
                     <li className="flex items-center group">
                       <Mail className="w-5 h-5 text-primary mr-3 shrink-0 group-hover:scale-110 transition-transform" />
-                      <a href="mailto:info@akan-dienstleistung.de" className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm">info@akan-dienstleistung.de</a>
+                      <a
+                        href="mailto:info@akan-dienstleistung.de"
+                        className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+                      >
+                        info@akan-dienstleistung.de
+                      </a>
                     </li>
                   </ul>
                 </address>
@@ -145,6 +193,8 @@ export default function Footer() {
               type="functional"
               title="Google Maps"
               description="Um die interaktive Karte anzuzeigen, benötigen wir Ihre Zustimmung (Funktionale Cookies), da hierbei Ihre IP-Adresse an Google in den USA übertragen wird."
+              fallbackImage="/images/map-placeholder.png"
+              className="min-h-[224px]"
             >
               <div className="rounded-2xl overflow-hidden h-56 bg-surface border border-border relative shadow-card">
                 <iframe
@@ -167,8 +217,18 @@ export default function Footer() {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           <div>© 2024 AKAN Dienstleistung. Alle Rechte vorbehalten.</div>
           <div className="flex space-x-8">
-            <Link href="/impressum" className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm">Impressum</Link>
-            <Link href="/datenschutz" className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm">Datenschutz</Link>
+            <Link
+              href="/impressum"
+              className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+            >
+              Impressum
+            </Link>
+            <Link
+              href="/datenschutz"
+              className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+            >
+              Datenschutz
+            </Link>
           </div>
         </div>
       </div>

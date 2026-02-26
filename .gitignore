@@ -5,3 +5,5 @@ coverage/
 *.log
 .env*
 !.env.example
+lighthouse-privacy-report.json
+tsconfig.tsbuildinfo

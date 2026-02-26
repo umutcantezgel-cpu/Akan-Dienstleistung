@@ -2,42 +2,42 @@
 
 @theme {
   /* ──── BASE COLORS (Raw Values) ──── */
-  --color-wine-50: #FFF5F7;
-  --color-wine-100: #FFE6EB;
-  --color-wine-200: #F1D4DB;
-  --color-wine-300: #E09BAA;
-  --color-wine-400: #D06B80;
-  --color-wine-500: #B53245;
+  --color-wine-50: #fff5f7;
+  --color-wine-100: #ffe6eb;
+  --color-wine-200: #f1d4db;
+  --color-wine-300: #e09baa;
+  --color-wine-400: #d06b80;
+  --color-wine-500: #b53245;
   --color-wine-600: #921829;
-  --color-wine-700: #7A1523;
-  --color-wine-800: #5C101A;
-  --color-wine-900: #3D0B12;
+  --color-wine-700: #7a1523;
+  --color-wine-800: #5c101a;
+  --color-wine-900: #3d0b12;
 
   /* ── AKAN Coral (LT-8.1) ── */
-  --color-coral-300: #FFB3C1;
-  --color-coral-400: #FF8FA3;
-  --color-coral-500: #E85D75;
-  --color-coral-600: #D64563;
+  --color-coral-300: #ffb3c1;
+  --color-coral-400: #ff8fa3;
+  --color-coral-500: #e85d75;
+  --color-coral-600: #d64563;
 
   /* ── AKAN Rosé (LT-8.1) ── */
-  --color-rose-50: #FFF0F3;
-  --color-rose-100: #FFE0E6;
-  --color-rose-200: #FFC2D1;
+  --color-rose-50: #fff0f3;
+  --color-rose-100: #ffe0e6;
+  --color-rose-200: #ffc2d1;
 
-  --color-gold-400: #E6BC5C;
-  --color-gold-500: #D6A848;
-  --color-gold-600: #B88A2D;
+  --color-gold-400: #e6bc5c;
+  --color-gold-500: #d6a848;
+  --color-gold-600: #b88a2d;
 
-  --color-gray-50: #FAFAFA;
-  --color-gray-100: #F4F4F5;
-  --color-gray-200: #E4E4E7;
-  --color-gray-300: #D4D4D8;
-  --color-gray-400: #A1A1AA;
-  --color-gray-500: #71717A;
-  --color-gray-600: #52525B;
-  --color-gray-700: #3F3F46;
-  --color-gray-800: #27272A;
-  --color-gray-900: #18181B;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+  --color-gray-400: #a1a1aa;
+  --color-gray-500: #71717a;
+  --color-gray-600: #52525b;
+  --color-gray-700: #3f3f46;
+  --color-gray-800: #27272a;
+  --color-gray-900: #18181b;
 
   /* ── Glass Tokens ── */
   --color-glass-white: rgba(255, 255, 255, 0.7);
@@ -52,11 +52,11 @@
   --color-accent-hover: var(--color-gold-600);
 
   --color-background: var(--color-gray-50);
-  --color-surface: #FFFFFF;
+  --color-surface: #ffffff;
 
   --color-text-primary: var(--color-gray-900);
   --color-text-secondary: var(--color-gray-500);
-  --color-text-inverse: #FFFFFF;
+  --color-text-inverse: #ffffff;
 
   --color-border: var(--color-gray-200);
 
@@ -70,10 +70,10 @@
   --blur-singularity: var(--blur-factor, 20px);
 
   /* ── Status Colors ── */
-  --color-success: #22C55E;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
-  --color-info: #3B82F6;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 
   /* ──── SPACING TOKENS (Strict 4px/8px Grid) ──── */
   --spacing-1: 0.25rem;
@@ -110,8 +110,10 @@
   --breakpoint-2xl: 1280px;
 
   /* ──── TYPOGRAPHY SCALES (Fluid) ──── */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-outfit), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display:
+    var(--font-outfit), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   --text-xs: clamp(0.75rem, 1vw + 0.5rem, 0.8125rem);
   --text-sm: clamp(0.875rem, 1vw + 0.6rem, 0.9375rem);
@@ -135,10 +137,16 @@
 
   /* ──── ELEVATION & DEPTH (Weinrot-tinted) ──── */
   --shadow-xs: 0 1px 2px 0 rgba(146, 24, 41, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(146, 24, 41, 0.1), 0 1px 2px -1px rgba(146, 24, 41, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(146, 24, 41, 0.1), 0 2px 4px -2px rgba(146, 24, 41, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(146, 24, 41, 0.1), 0 4px 6px -4px rgba(146, 24, 41, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(146, 24, 41, 0.1), 0 8px 10px -6px rgba(146, 24, 41, 0.1);
+  --shadow-sm:
+    0 1px 3px 0 rgba(146, 24, 41, 0.1), 0 1px 2px -1px rgba(146, 24, 41, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(146, 24, 41, 0.1), 0 2px 4px -2px rgba(146, 24, 41, 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgba(146, 24, 41, 0.1),
+    0 4px 6px -4px rgba(146, 24, 41, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(146, 24, 41, 0.1),
+    0 8px 10px -6px rgba(146, 24, 41, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(146, 24, 41, 0.25);
 
   --shadow-glow: 0 0 24px -4px rgba(146, 24, 41, 0.3);
@@ -172,10 +180,10 @@
   --z-toast: 300;
 
   /* ──── NOCTIS DARK MODE PREP (LT-8.4) ──── */
-  --color-dark-base: #0A0A0F;
-  --color-dark-primary: #FF6B81;
-  --color-dark-surface: #1A1A2E;
-  --color-dark-border: #2A2A3E;
+  --color-dark-base: #0a0a0f;
+  --color-dark-primary: #ff6b81;
+  --color-dark-surface: #1a1a2e;
+  --color-dark-border: #2a2a3e;
 }
 
 /* ── Photography Filter System (LT-8.5) ────── */
@@ -185,7 +193,7 @@
 }
 
 .photo-standard:hover {
-  filter: brightness(1.05) saturate(1.0);
+  filter: brightness(1.05) saturate(1);
 }
 
 .photo-warm {
@@ -257,7 +265,6 @@
 }
 
 @layer base {
-
   h1,
   h2,
   h3,
@@ -291,7 +298,6 @@
 
   /* POLLUX: CTA Buttons full-width on mobile with 56px height */
   @media (max-width: 640px) {
-
     .cta-primary,
     [data-cta="primary"] {
       width: 100%;
@@ -323,7 +329,7 @@ body {
 }
 
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   background: var(--color-background);
@@ -331,7 +337,7 @@ body::before {
 }
 
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   opacity: 0.015;
@@ -342,7 +348,7 @@ body::after {
 
 /* ── Noise Overlay (Component Level) ───────── */
 .noise-overlay::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   opacity: 0.02;
@@ -353,14 +359,14 @@ body::after {
 
 /* ── Gradient Text ─────────────────────────── */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #9B1C2E 0%, #E85D75 100%);
+  background: linear-gradient(135deg, #9b1c2e 0%, #e85d75 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -368,7 +374,6 @@ body::after {
 
 /* ── Animated Gradient Background ──────────── */
 @keyframes gradient-shift {
-
   0%,
   100% {
     background-position: 0% 50%;
@@ -380,14 +385,13 @@ body::after {
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #FFF5F7, #FFFFFF, #FFE6EB, #FFF5F7);
+  background: linear-gradient(-45deg, #fff5f7, #ffffff, #ffe6eb, #fff5f7);
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
 }
 
 /* ── Ω Atmospheric Breathing ──────────────── */
 @keyframes atmosphere-breathe {
-
   0%,
   100% {
     opacity: 0.012;
@@ -401,7 +405,6 @@ body::after {
 }
 
 @keyframes glow-pulse {
-
   0%,
   100% {
     box-shadow: 0 0 0 0 rgba(146, 24, 41, 0);
@@ -445,14 +448,17 @@ body::after {
 }
 
 @keyframes depth-pulse {
-
   0%,
   100% {
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 30px 60px -15px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 10px 30px -5px rgba(0, 0, 0, 0.04),
+      0 30px 60px -15px rgba(0, 0, 0, 0.06);
   }
 
   50% {
-    box-shadow: 0 14px 36px -5px rgba(0, 0, 0, 0.06), 0 36px 72px -15px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 14px 36px -5px rgba(0, 0, 0, 0.06),
+      0 36px 72px -15px rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -525,7 +531,7 @@ body::after {
 
 /* ── Scroll Progress Bar ───────────────────── */
 .scroll-progress {
-  background: linear-gradient(90deg, #9B1C2E, #E85D75);
+  background: linear-gradient(90deg, #9b1c2e, #e85d75);
   transform-origin: left;
 }
 
@@ -533,7 +539,7 @@ body::after {
 
 /* ── Selection ─────────────────────────────── */
 ::selection {
-  background-color: #9B1C2E;
+  background-color: #9b1c2e;
   color: white;
 }
 
@@ -561,7 +567,9 @@ body::after {
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(155, 28, 46, 0.15);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(155, 28, 46, 0.15);
   padding: 0;
   overflow: hidden;
   color: white;
@@ -595,5 +603,86 @@ body::after {
 @keyframes svg-radius-dash {
   to {
     stroke-dashoffset: -1000;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 🖨️ PREMIUM PRINT OPTIMIZATION (PHASE 7.5)                   */
+/* Ensure legal texts render flawlessly as physical/PDF docs.  */
+/* ═══════════════════════════════════════════════════════════ */
+@media print {
+  /* Hide all interactive, navigational, or decorative elements */
+  header,
+  footer,
+  nav,
+  .no-print,
+  iframe,
+  canvas,
+  .cookie-banner,
+  .trust-bar,
+  #navigation-overlay {
+    display: none !important;
+  }
+
+  /* Reset layout constraints and backgrounds for crisp paper output */
+  body,
+  article,
+  main {
+    background: white !important;
+    color: black !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Optimize typography for readability on paper */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Automatisches URL-Klarschriften-Styling */
+  .prose a[href^="http"]:not(.no-print-url)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-family: monospace;
+    word-break: break-all;
+    color: #444 !important;
+  }
+
+  /* Accordions unroll completely for print */
+  .prose div[aria-expanded] {
+    height: auto !important;
+    overflow: visible !important;
+    border: none !important;
+  }
+
+  /* Brand Watermark via Body Pseudo-Element */
+  body::before {
+    content: "AKAN Dienstleistung";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.03);
+    z-index: -1;
+    pointer-events: none;
+    white-space: nowrap;
   }
 }
