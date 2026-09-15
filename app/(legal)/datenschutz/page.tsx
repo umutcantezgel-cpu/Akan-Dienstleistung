@@ -7,10 +7,13 @@ import { Info, Server, Scale, Cookie, Mail, Share2, Users } from "lucide-react";
 export const revalidate = false; // SSG: fully static
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung",
+  title: "Datenschutzerklärung | AKAN Dienstleistung",
   description:
     "Datenschutzerklärung der AKAN Dienstleistung – Informationen zum Umgang mit Ihren personenbezogenen Daten gemäß DSGVO.",
   robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://akan-dienstleistung.de/datenschutz",
+  },
 };
 
 export default function Datenschutz() {

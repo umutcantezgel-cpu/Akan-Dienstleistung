@@ -11,9 +11,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Impressum",
-  description: "Impressum der AKAN Dienstleistung – Angaben gemäß § 5 TMG.",
+  title: "Impressum | AKAN Dienstleistung",
+  description: "Impressum der AKAN Dienstleistung – Angaben gemäß § 5 TMG und § 18 MStV.",
   robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://akan-dienstleistung.de/impressum",
+  },
 };
 
 export default function Impressum() {

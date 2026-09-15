@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import ImagePlaceholder from "@/shared/components/ImagePlaceholder";
 import Link from "next/link";
 
@@ -19,16 +20,26 @@ import {
 import DynamicMap from "@/features/locations/components/DynamicMap";
 import ReadMoreExpander from "@/shared/components/ReadMoreExpander";
 
-export const metadata = {
-  title: "Über Uns | Ihre Reinigungsfirma in Gudensberg & Nordhessen",
+export const metadata: Metadata = {
+  title: "Über Uns | Ihre Reinigungsfirma in Gudensberg & Nordhessen | AKAN Dienstleistung",
   description:
-    "Lernen Sie das Team hinter AKAN Dienstleistung kennen. 10 Jahre Erfahrung, Familienbetrieb, Meisterqualität in Unterhalts- und Gebäudereinigung.",
-  keywords: [
-    "Reinigungsfirma Gudensberg",
-    "AKAN Dienstleistung Team",
-    "Gebäudereinigung Erfahrung",
-    "Familienunternehmen Kassel",
-  ],
+    "Lernen Sie das Team hinter AKAN Dienstleistung kennen: Über 10 Jahre Erfahrung, familiengeführt, qualitätszertifiziert in Unterhalts- und Gebäudereinigung.",
+  alternates: {
+    canonical: "https://akan-dienstleistung.de/ueber-uns",
+  },
+  openGraph: {
+    title: "Über Uns | AKAN Dienstleistung",
+    description: "Über 10 Jahre Erfahrung, Familienbetrieb, Meisterqualität in Unterhalts- und Gebäudereinigung in Nordhessen.",
+    url: "https://akan-dienstleistung.de/ueber-uns",
+    siteName: "AKAN Dienstleistung",
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Über Uns | AKAN Dienstleistung",
+    description: "Lernen Sie das Team hinter AKAN Dienstleistung kennen – Ihr Reinigungspartner in Nordhessen.",
+  },
 };
 
 export default function About() {

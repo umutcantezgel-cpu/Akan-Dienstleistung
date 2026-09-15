@@ -7,8 +7,23 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Kontakt & Unverbindliches Angebot | AKAN Dienstleistung Gudensberg',
-  description: 'Sie suchen eine verlässliche Reinigungsfirma in Gudensberg, Kassel oder Baunatal? Kontaktieren Sie uns für ein kostenloses, transparentes Angebot. 10 Jahre Erfahrung, 24/7 Notfall-Service.',
-  keywords: ['Reinigungsfirma Kontakt', 'Gebäudereinigung Angebot', 'Gudensberg', 'Kassel', 'Reinigungsservice Preisanfrage', 'AKAN Dienstleistung'],
+  description: 'Sie suchen eine verlässliche Reinigungsfirma in Gudensberg, Kassel oder Baunatal? Kontaktieren Sie uns für ein kostenloses Angebot. Feste Teams, 24/7 Service.',
+  alternates: {
+    canonical: 'https://akan-dienstleistung.de/contact',
+  },
+  openGraph: {
+    title: 'Kontakt & Unverbindliches Angebot | AKAN Dienstleistung',
+    description: 'Fordern Sie jetzt Ihr individuelles Reinigungsangebot an. Persönliche Vor-Ort-Begehung und Festpreisgarantie in ganz Nordhessen.',
+    url: 'https://akan-dienstleistung.de/contact',
+    siteName: 'AKAN Dienstleistung',
+    locale: 'de_DE',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kontakt & Unverbindliches Angebot | AKAN Dienstleistung',
+    description: 'Kostenloses und transparentes Festpreisangebot für Gebäudereinigung in Nordhessen anfordern.',
+  },
 };
 
 const hqLocation = {

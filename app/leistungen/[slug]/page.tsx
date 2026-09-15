@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps) {
         title: service.metaTitle,
         description: service.metaDescription,
         alternates: {
-            canonical: `/leistungen/${slug}`,
+            canonical: `https://akan-dienstleistung.de/leistungen/${slug}`,
         },
         openGraph: {
             title: service.metaTitle,
@@ -45,6 +45,11 @@ export async function generateMetadata({ params }: PageProps) {
             siteName: 'AKAN Dienstleistung',
             locale: 'de_DE',
             type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: service.metaTitle,
+            description: service.metaDescription,
         },
     };
 }

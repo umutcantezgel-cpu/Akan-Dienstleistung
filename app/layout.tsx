@@ -62,6 +62,12 @@ export const metadata: Metadata = {
     locale: "de_DE",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gebäudereinigung Nordhessen – AKAN Dienstleistung",
+    description:
+      "Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Kostenlose Erstberatung!",
+  },
 };
 
 const jsonLd = {
@@ -77,7 +83,7 @@ const jsonLd = {
   email: "info@akan-dienstleistung.de",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Odenbergstr 26",
+    streetAddress: "Odenbergstraße 26",
     addressLocality: "Gudensberg",
     postalCode: "34281",
     addressCountry: "DE",
@@ -154,7 +160,14 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Hausmeisterservice",
+          name: "Industriereinigung",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Sonderreinigung",
         },
       },
     ],
