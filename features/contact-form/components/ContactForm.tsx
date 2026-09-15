@@ -21,6 +21,7 @@ export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [privacyChecked, setPrivacyChecked] = useState(false);
+    const [apiError, setApiError] = useState<string | null>(null);
 
     const {
         register,
@@ -30,7 +31,7 @@ export default function ContactForm() {
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
         defaultValues: {
-            name: '', email: '', phone: '', service: '', message: ''
+            name: '', email: '', phone: '', service: '', message: '', honeypot: ''
         },
         mode: 'onTouched'
     });
@@ -40,6 +41,7 @@ export default function ContactForm() {
 
     const onSubmit = async (data: ContactFormData) => {
         if (!privacyChecked) return;
+        setApiError(null);
         setIsSubmitting(true);
 
         try {
@@ -52,6 +54,7 @@ export default function ContactForm() {
 
             if (!res.ok) {
                 console.error("Zod Validation Errors / API Error:", resData);
+                setApiError(resData.message || 'Beim Senden der Anfrage ist ein Fehler aufgetreten. Bitte rufen Sie uns direkt an: 0152 34754386.');
                 setIsSubmitting(false);
                 return;
             }
@@ -60,6 +63,7 @@ export default function ContactForm() {
             setIsSuccess(true);
         } catch (e) {
             console.error('Network or Request Error:', e);
+            setApiError('Verbindungsfehler beim Übertragen. Bitte prüfen Sie Ihre Verbindung oder rufen Sie uns an: 0152 34754386.');
             setIsSubmitting(false);
         }
     };
@@ -145,6 +149,16 @@ export default function ContactForm() {
                             </div>
                             <ComponentErrorBoundary componentName="Contact Form Fields">
                                 <form onSubmit={rxSubmit(onSubmit)} className="space-y-10" noValidate>
+                                    {/* Bot Honeypot */}
+                                    <input
+                                        type="text"
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                        className="hidden opacity-0 pointer-events-none absolute -left-[9999px]"
+                                        aria-hidden="true"
+                                        {...register('honeypot')}
+                                    />
+
                                     {/* Input Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
                                         <ContactInput {...inputProps('name')} label="Wie dürfen wir Sie ansprechen?" required autoComplete="name" />
@@ -269,6 +283,21 @@ export default function ContactForm() {
 
                                     {/* Submit Section */}
                                     <div className="flex flex-col gap-4">
+                                        <AnimatePresence>
+                                            {apiError && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: -10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: -10 }}
+                                                    role="alert"
+                                                    className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center gap-2.5"
+                                                >
+                                                    <AlertCircle className="w-5 h-5 shrink-0 text-red-500" />
+                                                    <span>{apiError}</span>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+
                                         <motion.button
                                             data-testid="submit-button"
                                             type="submit"
