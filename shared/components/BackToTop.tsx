@@ -74,12 +74,12 @@ export default function BackToTop() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
-                    className="fixed z-30 bottom-24 right-4 lg:bottom-20 lg:left-4 flex items-center justify-center pointer-events-auto"
+                    className="fixed z-30 bottom-[calc(env(safe-area-inset-bottom,16px)+84px)] right-4 lg:bottom-20 lg:left-6 flex items-center justify-center pointer-events-auto"
                 >
                     <button
                         onClick={scrollToTop}
                         aria-label="Zum Anfang der Seite scrollen"
-                        className="w-11 h-11 bg-surface border border-border text-text-primary hover:text-primary hover:border-primary/50 rounded-full flex items-center justify-center shadow-soft hover:shadow-card transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary backdrop-blur-md"
+                        className="w-10 h-10 lg:w-11 lg:h-11 bg-surface border border-border text-text-primary hover:text-primary hover:border-primary/50 rounded-full flex items-center justify-center shadow-soft hover:shadow-card transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary backdrop-blur-md"
                     >
                         <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
