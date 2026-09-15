@@ -7,6 +7,8 @@ import CinematicCanvas from '@/features/singularity/motion/CinematicCanvas';
 import SplitText from '@/features/singularity/motion/SplitText';
 import MagneticButton from '@/features/singularity/interactions/MagneticButton';
 import Button from '@/shared/components/Button';
+import BeforeAfterSlider from '@/features/before-after/components/BeforeAfterSlider';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import { Sparkles, ArrowDownRight, CheckCircle2, AlertTriangle, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
@@ -154,8 +156,47 @@ export default function GlasreinigungSingularity({ service }: GlasreinigungSingu
                             ))}
                         </div>
                     </motion.div>
-
                 </div>
+
+                {/* Vorher-Nachher Transformation & Action Photo */}
+                {service.beforeAfter && (
+                    <div className="mt-32 border-t border-slate-200/60 pt-20">
+                        <div className="max-w-3xl mx-auto text-center mb-12">
+                            <span className="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full inline-block mb-3">
+                                Reales Reinigungsergebnis
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-display font-semibold text-slate-900 tracking-tight mb-4">
+                                {service.beforeAfter.title}
+                            </h2>
+                            <p className="text-lg text-slate-600 font-normal">
+                                {service.beforeAfter.description}
+                            </p>
+                        </div>
+                        <div className="grid lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
+                            <div className="lg:col-span-7 rounded-[2rem] overflow-hidden shadow-xl border border-white/80 bg-white/40 backdrop-blur-sm">
+                                <BeforeAfterSlider
+                                    beforeImage={service.beforeAfter.beforeImage}
+                                    afterImage={service.beforeAfter.afterImage}
+                                    beforeLabel={service.beforeAfter.beforeLabel}
+                                    afterLabel={service.beforeAfter.afterLabel}
+                                />
+                            </div>
+                            <div className="lg:col-span-5 rounded-[2rem] overflow-hidden shadow-xl border border-white/80 relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[320px]">
+                                <ImagePlaceholder
+                                    alt="AKAN Glasreiniger mit professioneller Teleskopstange im Außeneinsatz"
+                                    fill
+                                    className="object-cover"
+                                    originalSrc={service.imageSrc}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-6 z-10">
+                                    <p className="text-white text-sm font-medium">
+                                        Schadensfreie Reinigung bis in 15m Höhe dank Carbon-Teleskopstangen
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
             </div>
         </article>

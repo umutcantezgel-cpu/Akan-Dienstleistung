@@ -1,3 +1,4 @@
+node_modules
 node_modules/
 .next/
 coverage/
@@ -9,3 +10,5 @@ lighthouse-privacy-report.json
 tsconfig.tsbuildinfo
 playwright-report/
 test-results/
+Akan/
+

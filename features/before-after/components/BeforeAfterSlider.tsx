@@ -174,7 +174,7 @@ export default function BeforeAfterSlider({
             <ImagePlaceholder
               alt={beforeLabel}
               fill
-              className="object-cover filter grayscale brightness-75 sepia-[.3]"
+              className="object-cover"
               originalSrc={beforeImage}
             />
           </motion.div>

@@ -7,6 +7,7 @@ import CinematicCanvas from '@/features/singularity/motion/CinematicCanvas';
 import SplitText from '@/features/singularity/motion/SplitText';
 import MagneticButton from '@/features/singularity/interactions/MagneticButton';
 import Button from '@/shared/components/Button';
+import BeforeAfterSlider from '@/features/before-after/components/BeforeAfterSlider';
 import { ChevronRight, ChevronDown, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { useState } from 'react';
 
@@ -162,8 +163,32 @@ export default function BauendreinigungSingularity({ service }: BauendreinigungS
                             ))}
                         </div>
                     </motion.div>
-
                 </div>
+
+                {/* Vorher-Nachher Qualitätsbeweis */}
+                {service.beforeAfter && (
+                    <div className="mt-32 border-t border-theme-text/10 pt-20">
+                        <div className="max-w-3xl mx-auto text-center mb-12">
+                            <span className="text-xs font-mono text-theme-primary uppercase tracking-[0.2em] block mb-3">
+                                [ REALE TRANSFORMATION ]
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-display font-black text-theme-text uppercase tracking-tight mb-4">
+                                {service.beforeAfter.title}
+                            </h2>
+                            <p className="text-lg text-theme-text/80 font-medium">
+                                {service.beforeAfter.description}
+                            </p>
+                        </div>
+                        <div className="max-w-4xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl border border-theme-text/20">
+                            <BeforeAfterSlider
+                                beforeImage={service.beforeAfter.beforeImage}
+                                afterImage={service.beforeAfter.afterImage}
+                                beforeLabel={service.beforeAfter.beforeLabel}
+                                afterLabel={service.beforeAfter.afterLabel}
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
 
             <style jsx>{`

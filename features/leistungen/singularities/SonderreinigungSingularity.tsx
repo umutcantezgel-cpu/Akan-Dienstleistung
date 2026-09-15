@@ -7,6 +7,8 @@ import CinematicCanvas from '@/features/singularity/motion/CinematicCanvas';
 import SplitText from '@/features/singularity/motion/SplitText';
 import MagneticButton from '@/features/singularity/interactions/MagneticButton';
 import Button from '@/shared/components/Button';
+import BeforeAfterSlider from '@/features/before-after/components/BeforeAfterSlider';
+import ImagePlaceholder from '@/shared/components/ImagePlaceholder';
 import { Crosshair, Droplets, AlertOctagon, Check, Minus } from 'lucide-react';
 import { useState } from 'react';
 
@@ -180,6 +182,46 @@ export default function SonderreinigungSingularity({ service }: SonderreinigungS
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Vorher-Nachher Qualitätsbeweis & Höhenreinigung */}
+                {service.beforeAfter && (
+                    <div className="mt-32 border-t border-red-500/20 pt-20">
+                        <div className="max-w-3xl mx-auto text-center mb-12">
+                            <span className="text-xs font-mono text-red-500 uppercase tracking-[0.25em] bg-red-950/40 border border-red-500/30 px-4 py-1.5 rounded-full inline-block mb-3">
+                                Toxikologische & Industrielle Wiederherstellung
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-mono font-bold text-white tracking-tight mb-4 uppercase">
+                                {service.beforeAfter.title}
+                            </h2>
+                            <p className="text-lg text-slate-400 font-mono">
+                                {service.beforeAfter.description}
+                            </p>
+                        </div>
+                        <div className="grid lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
+                            <div className="lg:col-span-7 rounded-[2rem] overflow-hidden shadow-2xl border border-red-500/30 bg-black">
+                                <BeforeAfterSlider
+                                    beforeImage={service.beforeAfter.beforeImage}
+                                    afterImage={service.beforeAfter.afterImage}
+                                    beforeLabel={service.beforeAfter.beforeLabel}
+                                    afterLabel={service.beforeAfter.afterLabel}
+                                />
+                            </div>
+                            <div className="lg:col-span-5 rounded-[2rem] overflow-hidden shadow-2xl border border-red-500/30 relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[320px] bg-zinc-950">
+                                <ImagePlaceholder
+                                    alt="AKAN Höhenreinigung mit Linde Industriestapler und Sicherheits-Arbeitskorb"
+                                    fill
+                                    className="object-cover"
+                                    originalSrc={service.imageSrc}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6 z-10">
+                                    <p className="text-white text-sm font-mono text-red-100">
+                                        Schwerer Zugang: Hallendecken- & Infrastrukturreinigung mit Hubtechnik
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
             </div>
 

@@ -98,8 +98,9 @@ export default function About() {
             <div className="order-1 lg:order-2 relative">
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-3xl transform rotate-3"></div>
               <ImagePlaceholder
-                alt="Professionell gereinigtes Büro"
+                alt="AKAN Gebäudereinigung – Geschulter Spezialist mit moderner Kärcher Scheuersaugmaschine in Gudensberg und Nordhessen"
                 priority={true}
+                originalSrc="/images/galerie/industriereinigung/akan-kaercher-scheuersaugmaschine-im-einsatz.jpg"
                 className="relative rounded-[2.5rem] shadow-elevated w-full h-auto object-cover aspect-[4/3] transform transition hover:scale-[1.02] duration-700 border border-border/60"
               />
               <div
@@ -147,8 +148,9 @@ export default function About() {
             <div className="group relative bg-white rounded-[2rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-soft hover:shadow-card">
               <div className="aspect-[16/9] overflow-hidden relative border-b border-border/50">
                 <ImagePlaceholder
-                  alt="Cemal Hilaloglu – Inhaber & Gründer"
+                  alt="Cemal Hilaloglu – Inhaber & Gründer von AKAN Dienstleistung"
                   fill
+                  originalSrc="/images/galerie/fensterreinigung/akan-glasreinigung-mitarbeiter-branded-hoodie.webp"
                   className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -189,8 +191,9 @@ export default function About() {
             <div className="group relative bg-white rounded-[2rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-soft hover:shadow-card">
               <div className="aspect-[16/9] overflow-hidden relative border-b border-border/50">
                 <ImagePlaceholder
-                  alt="Zeynep Hilaloglu – Objektleiterin"
+                  alt="Zeynep Hilaloglu – Objektleiterin bei AKAN Dienstleistung mit über 10 Jahren Branchenerfahrung"
                   fill
+                  originalSrc="/images/galerie/gewerbereinigung/akan-objektbetreuung-gewerbe-sauberkeit.jpg"
                   className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -334,8 +337,9 @@ export default function About() {
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-elevated group aspect-[16/9] border border-border/60">
                 <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
                 <ImagePlaceholder
-                  alt="Das AKAN Reinigungsteam in Nordhessen"
+                  alt="Das geschulte AKAN Reinigungsteam im Außeneinsatz mit professioneller Ausrüstung in Nordhessen"
                   fill
+                  originalSrc="/images/hero/akan-fensterreinigung-team-teleskopstange-aktion.webp"
                   className="object-cover transform group-hover:scale-[1.03] transition-transform duration-1000"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-text-primary/95 via-text-primary/50 to-transparent p-10 z-20">

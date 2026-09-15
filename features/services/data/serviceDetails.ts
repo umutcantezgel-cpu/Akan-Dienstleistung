@@ -9,6 +9,15 @@ export type ServiceDetail = {
     benefits: { title: string; description: string }[];
     features: string[];
     imagePlaceholderAlt: string;
+    imageSrc: string;
+    beforeAfter?: {
+        beforeImage: string;
+        afterImage: string;
+        beforeLabel: string;
+        afterLabel: string;
+        title: string;
+        description: string;
+    };
     /** Which unique template to render for this service */
     templateStyle: 'industrial' | 'refraction' | 'rhythm' | 'surgical' | 'default';
     metaTitle: string;
@@ -50,7 +59,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
             'Boden- und Oberflächenpflege',
             'Kostenlose Erstberatung vor Ort'
         ],
-        imagePlaceholderAlt: 'Glänzendes, makellos gereinigtes Büro',
+        imagePlaceholderAlt: 'AKAN Spezialist bei der Großflächen- und Sporthallenreinigung mit Profi-Sauger',
+        imageSrc: '/images/galerie/gewerbereinigung/akan-sporthallenreinigung-grossflaeche-sauger.png',
+        beforeAfter: {
+            beforeImage: '/images/vorher-nachher/akan-vorher-nachher-sanitaer-fliesen-vorher.jpg',
+            afterImage: '/images/vorher-nachher/akan-vorher-nachher-sanitaer-fliesen-nachher.png',
+            beforeLabel: 'Vorher: Verkalkt',
+            afterLabel: 'Nachher: Rein & Desinfiziert',
+            title: 'Sanitär-Tiefenreinigung & Fugenentkalkung',
+            description: 'Intensive Grundreinigung von Nassbereichen und Fugen für lückenlose Hygiene in Arbeitsstätten.'
+        },
         templateStyle: 'rhythm',
         metaTitle: 'Unterhaltsreinigung & Büroreinigung | AKAN Dienstleistung',
         metaDescription: 'Professionelle Unterhaltsreinigung für Büros, Praxen und Kanzleien. Regelmäßige Intervalle, feste Ansprechpartner, geprüfte Qualität. Jetzt anfragen!',
@@ -89,7 +107,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
             'Reinigung schwer zugänglicher Flächen',
             'Osmose-Reinigungsverfahren verfügbar'
         ],
-        imagePlaceholderAlt: 'Strahlend saubere Fensterfront mit klarem Ausblick',
+        imagePlaceholderAlt: 'AKAN Glasreiniger mit Teleskopstange bei der Fassadenreinigung',
+        imageSrc: '/images/hero/akan-fensterreinigung-team-teleskopstange-aktion.webp',
+        beforeAfter: {
+            beforeImage: '/images/vorher-nachher/akan-glasreinigung-wintergarten-verschmutzt-vorher.webp',
+            afterImage: '/images/vorher-nachher/akan-glasreinigung-pavillon-sauber-nachher.webp',
+            beforeLabel: 'Vorher: Verwittert & blind',
+            afterLabel: 'Nachher: Streifenfreier Glanz',
+            title: 'Wintergarten- & Glaspavillon-Reinigung',
+            description: 'Entfernung von Algen, Umweltstaub und Kalkablagerungen für maximale Lichtdurchlässigkeit.'
+        },
         templateStyle: 'refraction',
         metaTitle: 'Fensterreinigung | AKAN – Streifenfreier Glanz garantiert',
         metaDescription: 'Professionelle Fensterreinigung: Streifenfrei, rahmenschonend, mit Profi-Equipment. Auch schwer zugängliche Flächen. Kostenloses Angebot!',
@@ -128,7 +155,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
             'Spezialreinigung neuer Bodenbeläge',
             'Flexible Terminierung'
         ],
-        imagePlaceholderAlt: 'Fertig gestelltes Bauprojekt nach der finalen Reinigung',
+        imagePlaceholderAlt: 'Hochglänzend tiefengereinigter Boden nach Bauabschluss',
+        imageSrc: '/images/vorher-nachher/akan-bodenreinigung-industriehalle-nachher-glaenzend.webp',
+        beforeAfter: {
+            beforeImage: '/images/vorher-nachher/akan-bodenreinigung-industriehalle-vorher-verschmutzt.webp',
+            afterImage: '/images/vorher-nachher/akan-bodenreinigung-industriehalle-nachher-glaenzend.webp',
+            beforeLabel: 'Vorher: Baustellenstaub',
+            afterLabel: 'Nachher: Übergabefertig',
+            title: 'Bodenflächen Tiefenreinigung & Bauendreinigung',
+            description: 'Vollständige Beseitigung von Zementschleiern, Gipsrückständen und Feinstaub zur reibungslosen Bauabnahme.'
+        },
         templateStyle: 'industrial',
         metaTitle: 'Bauendreinigung | AKAN – Termingerecht & Abnahmebereit',
         metaDescription: 'Professionelle Bauendreinigung: Baugrob- & Baufeinreinigung, Zementschleier-Entfernung. Termingerecht für Ihre Bauabnahme. Jetzt planen!',
@@ -167,7 +203,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
             'Spezialverfahren nach Anforderung',
             'Sicherheitsgerechte Ausführung'
         ],
-        imagePlaceholderAlt: 'Hochglänzende Produktionshalle nach Expertenreinigung',
+        imagePlaceholderAlt: 'AKAN Mitarbeiter steuert Kärcher Scheuersaugmaschine in Produktionshalle',
+        imageSrc: '/images/galerie/industriereinigung/akan-kaercher-scheuersaugmaschine-im-einsatz.jpg',
+        beforeAfter: {
+            beforeImage: '/images/vorher-nachher/akan-vorher-nachher-pvc-streifenvorhang-vorher.jpg',
+            afterImage: '/images/vorher-nachher/akan-vorher-nachher-pvc-streifenvorhang-nachher.jpg',
+            beforeLabel: 'Vorher: Industrie-Ablagerung',
+            afterLabel: 'Nachher: Glasklar gereinigt',
+            title: 'PVC-Streifenvorhang & Hallenabtrennung Messraum',
+            description: 'Licht- und Sichtwiederherstellung bei PVC-Schutzvorhängen in industriellen Fertigungsumgebungen.'
+        },
         templateStyle: 'default',
         metaTitle: 'Industriereinigung | AKAN – Arbeitssicherheit & Werterhalt',
         metaDescription: 'Professionelle Industriereinigung: Maschinen, Hallen, Böden. Zertifiziert, sicherheitsgerecht, außerhalb Ihrer Produktionszeiten. Jetzt anfragen!',
@@ -206,7 +251,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
             'Tatort- und Messie-Reinigung',
             'Graffiti-Entfernung'
         ],
-        imagePlaceholderAlt: 'Hochtechnologisch ausgestattete Spezialreinigung',
+        imagePlaceholderAlt: 'AKAN Spezialteam mit Linde Stapler-Arbeitsbühne bei der Höhenreinigung',
+        imageSrc: '/images/galerie/industriereinigung/akan-linde-stapler-arbeitsbuehne-hoehenreinigung.jpg',
+        beforeAfter: {
+            beforeImage: '/images/vorher-nachher/akan-vorher-nachher-sektionaltor-halle-vorher.jpg',
+            afterImage: '/images/vorher-nachher/akan-vorher-nachher-sektionaltor-halle-nachher.jpg',
+            beforeLabel: 'Vorher: Industrie-Ruß',
+            afterLabel: 'Nachher: Rückstandslos rein',
+            title: 'Sektionaltor- & Hallenzugang Intensivreinigung',
+            description: 'Tiefenentfettung und Rußentfernung an Hallentoren, Führungsschienen und Lamellen.'
+        },
         templateStyle: 'surgical',
         metaTitle: 'Sonderreinigung | AKAN – Extreme Sauberkeit',
         metaDescription: 'Professionelle Sonderreinigung für extreme Anforderungen. Desinfektion, Grundreinigung, Spezialverfahren. Kompromisslos sauber. Jetzt kontaktieren!',

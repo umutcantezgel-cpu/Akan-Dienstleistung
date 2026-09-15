@@ -15,6 +15,7 @@ import type { LucideIcon } from "lucide-react";
 import ImagePlaceholder from "@/shared/components/ImagePlaceholder";
 import Button from "@/shared/components/Button";
 import ServiceCard from "@/shared/components/ServiceCard";
+import BeforeAfterSlider from "@/features/before-after/components/BeforeAfterSlider";
 import { serviceDetails, type ServiceDetail } from "../data/serviceDetails";
 import {
   springs,
@@ -140,6 +141,7 @@ export default function ServiceDetailBlueprint({
                 fill
                 priority={true}
                 className="object-cover"
+                originalSrc={service.imageSrc}
               />
             </motion.div>
           </div>
@@ -182,6 +184,33 @@ export default function ServiceDetailBlueprint({
           </div>
         </div>
       </section>
+
+      {/* 3b. Vorher-Nachher Transformation */}
+      {service.beforeAfter && (
+        <section className="py-section bg-surface/60 border-y border-border">
+          <div className="container-fluid max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-3.5 py-1 rounded-full">
+                Sichtbarer Qualitätsbeweis
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-text-primary font-display tracking-tight mt-3 mb-4">
+                {service.beforeAfter.title}
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto text-base">
+                {service.beforeAfter.description}
+              </p>
+            </div>
+            <div className="max-w-3xl mx-auto rounded-[2rem] overflow-hidden shadow-elevated border border-border/60">
+              <BeforeAfterSlider
+                beforeImage={service.beforeAfter.beforeImage}
+                afterImage={service.beforeAfter.afterImage}
+                beforeLabel={service.beforeAfter.beforeLabel}
+                afterLabel={service.beforeAfter.afterLabel}
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 4. Leistungsdetails & CTA */}
       <section className="py-section">
