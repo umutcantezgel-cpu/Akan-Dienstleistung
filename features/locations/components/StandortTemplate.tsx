@@ -30,31 +30,27 @@ interface StandortTemplateProps {
 export default function StandortTemplate({ location }: StandortTemplateProps) {
     const [openBenefitIdx, setOpenBenefitIdx] = useState<number | null>(0);
 
-    // Theme-driven Design Matrix für 100% Barrierefreiheit & Kontrast
-    // "dark" (Default) erzwingt nun ECHTE dunkle Hintergründe, anstatt das helle "bg-background" zu nutzen.
-    const isLight = location.theme === 'light';
+    // Theme-driven Design Matrix für 100% Barrierefreiheit & perfekten Kontrast
+    const isLight = location.theme !== 'dark'; // Unified luminous corporate palette
     const mainTxt = isLight ? 'text-slate-900' : 'text-white';
     const mutedTxt = isLight ? 'text-slate-600' : 'text-zinc-300';
-    const bgContainer = isLight ? 'bg-slate-50' : 'bg-zinc-900';
+    const bgContainer = isLight ? 'bg-slate-50/80' : 'bg-zinc-900';
     const bgAlt = isLight ? 'bg-white' : 'bg-zinc-950';
-    const borderCol = isLight ? 'border-slate-200' : 'border-zinc-800';
-    const accentTxt = isLight ? 'text-primary' : 'text-red-400';
-
-    // Für Sektionen mit Hintergrundbildern immer einen extra Text-Shadow für Lesbarkeit einplanen:
-    const dropShadowText = isLight ? 'drop-shadow-sm' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,1)]';
+    const borderCol = isLight ? 'border-slate-200/80' : 'border-zinc-800';
+    const accentTxt = 'text-primary';
 
     return (
-        <article className={`${bgAlt} ${mainTxt} overflow-hidden min-h-screen selection:bg-primary/30`}>
+        <article className="bg-background text-slate-900 overflow-hidden min-h-screen selection:bg-primary/20 selection:text-primary">
             {/* 1. HERO SECTION */}
-            <section className={`relative pt-40 pb-24 lg:pt-56 lg:pb-40 ${bgContainer} overflow-hidden`}>
+            <section className="relative pt-36 pb-20 lg:pt-52 lg:pb-36 bg-slate-50/70 overflow-hidden border-b border-border/60">
                 <div className="absolute inset-0 z-0">
-                    <div className={`absolute inset-0 ${isLight ? 'bg-white/40 backdrop-blur-sm' : 'bg-[linear-gradient(to_bottom,transparent,rgba(10,10,12,0.9)_80%)]'} z-10`} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/70 z-10" />
                     <Image
                         src="/images/hero/akan-fensterreinigung-team-teleskopstange-aktion.webp"
                         alt={`Gebäudereinigung in ${location.name}`}
                         fill
                         priority
-                        className={`object-cover ${isLight ? 'opacity-30' : 'opacity-20 mix-blend-luminosity'} scale-105`}
+                        className="object-cover opacity-35 scale-105"
                     />
                 </div>
 
@@ -72,19 +68,19 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
                             </span>
                         </motion.div>
 
-                        <motion.h1 variants={fadeInUp} className={`text-h1 font-bold ${mainTxt} ${dropShadowText} mb-6 font-display leading-[1.1] tracking-tight`}>
+                        <motion.h1 variants={fadeInUp} className="text-h1 font-bold text-slate-900 mb-6 font-display leading-[1.1] tracking-tight">
                             {location.localContent.heroHeadline}
                         </motion.h1>
 
-                        <motion.p variants={fadeInUp} className={`text-xl md:text-2xl ${mutedTxt} ${isLight ? 'font-medium' : 'font-light'} ${dropShadowText} max-w-2xl leading-relaxed mb-10`}>
+                        <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-600 font-normal max-w-2xl leading-relaxed mb-10">
                             {location.localContent.heroSubline}
                         </motion.p>
 
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6">
-                            <Button href="/contact" size="lg" className="bg-primary hover:bg-primary-hover text-white shadow-[0_0_30px_rgba(155,28,46,0.3)] border-none">
+                            <Button href="/contact" size="lg" className="bg-primary hover:bg-primary-hover text-white shadow-lg shadow-primary/25 border-none">
                                 Kostenloses Angebot
                             </Button>
-                            <Button href="#leistungen" variant="secondary" size="lg" className={`border ${isLight ? 'bg-white/50 border-slate-300 text-slate-800 hover:bg-white hover:text-slate-900' : 'bg-zinc-900/50 border-zinc-700 text-zinc-100 hover:bg-zinc-800 hover:text-white'} backdrop-blur-md`}>
+                            <Button href="#leistungen" variant="secondary" size="lg" className="border border-slate-300 bg-white/80 text-slate-800 hover:bg-white hover:text-slate-900 backdrop-blur-md shadow-sm">
                                 Unsere Leistungen
                             </Button>
                         </motion.div>
@@ -93,24 +89,24 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
             </section>
 
             {/* 2. LOCAL INTRO & ECONOMY FACT */}
-            <section className={`py-24 ${bgAlt} relative z-20`}>
+            <section className="py-20 lg:py-28 bg-white relative z-20 border-b border-border/60">
                 <div className="container-fluid">
                     <AnimatedSection variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <AnimatedItem variants={fadeInUp} className="space-y-6">
-                            <h2 className={`text-3xl lg:text-4xl font-bold font-display ${mainTxt}`}>
-                                Ein Teil von <span className={accentTxt}>{location.name}</span>
+                            <h2 className="text-3xl lg:text-4xl font-bold font-display text-slate-900">
+                                Ein Teil von <span className="text-primary">{location.name}</span>
                             </h2>
-                            <p className={`text-lg ${mutedTxt} leading-relaxed`}>
+                            <p className="text-lg text-slate-600 leading-relaxed">
                                 {location.localContent.introText}
                             </p>
-                            <div className={`pt-6 border-t ${borderCol}`}>
+                            <div className="pt-6 border-t border-slate-200">
                                 <div className="flex items-start gap-4">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                                         <Building2 className="w-6 h-6 text-primary" />
                                     </div>
                                     <div>
-                                        <h4 className={`font-bold ${mainTxt} mb-2`}>Wirtschaft & Standort</h4>
-                                        <p className={`${mutedTxt} leading-relaxed text-sm`}>
+                                        <h4 className="font-bold text-slate-900 mb-1 text-base">Wirtschaft & Standort</h4>
+                                        <p className="text-slate-600 leading-relaxed text-sm">
                                             {location.localContent.economyFact}
                                         </p>
                                     </div>
@@ -119,8 +115,8 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
                         </AnimatedItem>
 
                         <AnimatedItem variants={fadeInUp} className="relative">
-                            <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border/50 relative group">
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+                            <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                                 <Image
                                     src="/images/galerie/gewerbereinigung/akan-gewerbereinigung-glasfassade-gebaeude-aussen.webp"
                                     alt="Bürogebäude"
@@ -128,11 +124,11 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute bottom-6 left-6 right-6 z-20">
-                                    <div className="bg-surface/80 backdrop-blur-md border border-border/50 p-4 rounded-2xl flex items-center gap-4">
-                                        <ShieldCheck className="w-8 h-8 text-primary" />
+                                    <div className="bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/60 p-4 rounded-2xl flex items-center gap-4 shadow-xl">
+                                        <ShieldCheck className="w-8 h-8 text-emerald-400 shrink-0" />
                                         <div>
                                             <p className="font-bold text-white text-sm">Garantierte Qualität</p>
-                                            <p className={`text-xs text-zinc-300`}>{location.localContent.localReference}</p>
+                                            <p className="text-xs text-slate-300">{location.localContent.localReference}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -144,38 +140,37 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
 
             {/* 2.5 LOCAL MORPHOLOGY ENGINE (B2B WORLD CHAMPION CONTEXT) */}
             {location.localContent.localAuthority && location.localContent.painPoints && location.localContent.benefits && (
-                <section className={`py-24 ${bgContainer} border-t ${borderCol} relative z-20`}>
+                <section className="py-20 lg:py-28 bg-slate-50/70 border-b border-border/60 relative z-20">
                     <div className="container-fluid">
                         <AnimatedSection variants={fadeInUp} className="mb-16 max-w-4xl mx-auto text-center">
-                            <h2 className={`${accentTxt} font-bold tracking-[0.25em] uppercase text-sm mb-4`}>Lokale B2B-Expertise</h2>
-                            <h3 className={`text-3xl lg:text-4xl font-bold font-display ${mainTxt} mb-6`}>
-                                Reinigungssicherheit für <span className={accentTxt}>{location.name}</span>
+                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-sm mb-3">Lokale B2B-Expertise</h2>
+                            <h3 className="text-3xl lg:text-4xl font-bold font-display text-slate-900 mb-4">
+                                Reinigungssicherheit für <span className="text-primary">{location.name}</span>
                             </h3>
-                            <p className={`text-lg ${mutedTxt}`}>
+                            <p className="text-lg text-slate-600 leading-relaxed">
                                 {location.localContent.localAuthority}
                             </p>
                             {location.localContent.economicFocus && (
-                                <div className={`mt-6 inline-flex items-center gap-2 px-4 py-2 ${bgAlt} border ${borderCol} rounded-full text-sm ${mutedTxt}`}>
-                                    <Factory className={`w-4 h-4 ${accentTxt}`} />
+                                <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-full text-sm text-slate-700">
+                                    <Factory className="w-4 h-4 text-primary shrink-0" />
                                     <span>Branchenfokus: {location.localContent.economicFocus}</span>
                                 </div>
                             )}
                         </AnimatedSection>
 
-                        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 relative z-20">
+                        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-20">
                             {/* Left Side: Pain Points (The "Why") */}
                             <AnimatedItem variants={fadeInUp}>
-                                <div className={`${bgAlt} border ${borderCol} p-8 md:p-12 relative overflow-hidden group`}>
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-3xl group-hover:bg-red-500/10 transition-colors duration-500" />
-                                    <h3 className={`text-xl font-bold flex items-center gap-3 mb-8 ${mainTxt} uppercase tracking-wider font-display`}>
-                                        <ShieldAlert className={`w-6 h-6 ${accentTxt}`} />
+                                <div className="bg-white border border-slate-200/90 rounded-2xl p-8 md:p-10 shadow-sm relative overflow-hidden group h-full">
+                                    <h3 className="text-xl font-bold flex items-center gap-3 mb-6 text-slate-900 uppercase tracking-wider font-display">
+                                        <ShieldAlert className="w-6 h-6 text-primary shrink-0" />
                                         Spezifische Risiken in {location.name}
                                     </h3>
-                                    <ul className="space-y-6">
+                                    <ul className="space-y-5">
                                         {location.localContent.painPoints.map((pain, idx) => (
                                             <li key={idx} className="flex items-start gap-4">
-                                                <div className="w-1.5 h-1.5 rounded-none bg-red-500 shrink-0 mt-2.5" />
-                                                <span className={`${mutedTxt} leading-relaxed`}>{pain}</span>
+                                                <div className="w-2 h-2 rounded-full bg-primary shrink-0 mt-2" />
+                                                <span className="text-slate-700 leading-relaxed">{pain}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -185,28 +180,28 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
                             {/* Right Side: Benefits (The "How" Accordion) */}
                             <AnimatedItem variants={fadeInUp}>
                                 <div className="space-y-3">
-                                    <h3 className={`text-xl font-bold mb-8 ${mainTxt} uppercase tracking-wider font-display hidden lg:block`}>Unsere Lösungsarchitektur</h3>
+                                    <h3 className="text-xl font-bold mb-6 text-slate-900 uppercase tracking-wider font-display hidden lg:block">Unsere Lösungsarchitektur</h3>
                                     {location.localContent.benefits.map((benefit, idx) => (
                                         <div
                                             key={idx}
-                                            className={`border transition-all duration-300 overflow-hidden ${openBenefitIdx === idx ? `bg-primary/5 border-primary/30` : `${bgAlt} ${borderCol} hover:border-primary/50`}`}
+                                            className={`border rounded-2xl transition-all duration-300 overflow-hidden ${openBenefitIdx === idx ? 'bg-primary/5 border-primary/30 shadow-sm' : 'bg-white border-slate-200 hover:border-primary/40'}`}
                                         >
                                             <button
                                                 onClick={() => setOpenBenefitIdx(openBenefitIdx === idx ? null : idx)}
-                                                className="w-full flex items-center justify-between p-6 text-left"
+                                                className="w-full flex items-center justify-between p-5 sm:p-6 text-left"
                                             >
-                                                <span className={`text-lg font-bold ${mainTxt} flex items-center gap-4`}>
-                                                    <CheckSquare className={`w-5 h-5 transition-colors duration-300 ${openBenefitIdx === idx ? accentTxt : (isLight ? 'text-primary/40' : 'text-red-400/40')}`} />
+                                                <span className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3 sm:gap-4">
+                                                    <CheckSquare className={`w-5 h-5 shrink-0 transition-colors duration-300 ${openBenefitIdx === idx ? 'text-primary' : 'text-slate-400'}`} />
                                                     {benefit.title}
                                                 </span>
-                                                <div className={`w-8 h-8 rounded-none border flex items-center justify-center transition-all duration-300 ${openBenefitIdx === idx ? `border-primary bg-primary text-white rotate-45` : `${borderCol} ${mutedTxt} bg-transparent`}`}>
+                                                <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border flex items-center justify-center transition-all duration-300 shrink-0 ${openBenefitIdx === idx ? 'border-primary bg-primary text-white rotate-45' : 'border-slate-300 text-slate-500 bg-slate-50'}`}>
                                                     <Plus className="w-4 h-4" />
                                                 </div>
                                             </button>
                                             <div
-                                                className={`px-6 overflow-hidden transition-all duration-500 ease-[0.85,0,0.15,1] ${openBenefitIdx === idx ? 'max-h-60 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                                                className={`px-5 sm:px-6 overflow-hidden transition-all duration-500 ease-[0.85,0,0.15,1] ${openBenefitIdx === idx ? 'max-h-60 pb-5 sm:pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
                                             >
-                                                <p className={`${mutedTxt} leading-relaxed pl-9`}>
+                                                <p className="text-slate-600 text-sm sm:text-base leading-relaxed pl-8 sm:pl-9">
                                                     {benefit.description}
                                                 </p>
                                             </div>
@@ -220,14 +215,14 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
             )}
 
             {/* 3. SERVICES GRID */}
-            <section id="leistungen" className={`py-24 ${bgContainer} border-y ${borderCol} relative z-20`}>
+            <section id="leistungen" className="py-20 lg:py-28 bg-white border-b border-border/60 relative z-20">
                 <div className="container-fluid">
-                    <AnimatedSection variants={fadeInUp} className="mb-16 text-center max-w-3xl mx-auto">
-                        <h2 className={`${accentTxt} font-bold tracking-[0.25em] uppercase text-sm mb-4`}>Unser Angebot</h2>
-                        <h3 className={`text-3xl lg:text-4xl font-bold font-display ${mainTxt} mb-6`}>
+                    <AnimatedSection variants={fadeInUp} className="mb-14 text-center max-w-3xl mx-auto">
+                        <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-sm mb-3">Unser Angebot</h2>
+                        <h3 className="text-3xl lg:text-4xl font-bold font-display text-slate-900 mb-4">
                             Professionelle Reinigung in {location.name}
                         </h3>
-                        <p className={`text-lg ${mutedTxt}`}>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                             Vom Großraumbüro bis zur Industriehalle – wir bieten maßgeschneiderte Lösungen für jeden Bedarf in Ihrer Nähe.
                         </p>
                     </AnimatedSection>
@@ -253,23 +248,26 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
             </section>
 
             {/* 4. TRUST SIGNALS & TESTIMONIALS */}
-            <section className={`py-24 ${bgAlt} relative z-20 overflow-hidden`}>
+            <section className="py-20 lg:py-28 bg-slate-50/80 border-b border-border/60 relative z-20 overflow-hidden">
                 <div className="container-fluid">
-                    <AnimatedSection variants={fadeInUp} className="mb-16 text-center max-w-3xl mx-auto">
-                        <h2 className={`${accentTxt} font-bold tracking-[0.25em] uppercase text-sm mb-4`}>Kundenstimmen aus der Region</h2>
-                        <h3 className={`text-3xl lg:text-4xl font-bold font-display ${mainTxt}`}>
+                    <AnimatedSection variants={fadeInUp} className="mb-14 text-center max-w-3xl mx-auto">
+                        <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-sm mb-3">Kundenstimmen aus der Region</h2>
+                        <h3 className="text-3xl lg:text-4xl font-bold font-display text-slate-900 mb-4">
                             Das sagen Unternehmen aus {location.name} & Umgebung
                         </h3>
+                        <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                            Erfahrungsberichte und Qualitätsnachweise von gewerblichen und privaten Auftraggebern vor Ort.
+                        </p>
                     </AnimatedSection>
 
-                    {/* The specialized 3D Tilt Testimonials component filtered by city */}
+                    {/* The specialized Testimonials component filtered by city */}
                     <LocalTestimonials city={location.name} />
 
-                    <AnimatedSection variants={fadeInUp} className={`mt-16 flex flex-wrap justify-center gap-8 ${mutedTxt}`}>
-                        {['Reinigungsmeisterbetrieb', '10+ Jahre Erfahrung', 'Feste Ansprechpartner'].map((trust, i) => (
+                    <AnimatedSection variants={fadeInUp} className="mt-14 flex flex-wrap justify-center gap-6 sm:gap-10 text-slate-700">
+                        {['Reinigungsmeisterbetrieb', '10+ Jahre Erfahrung', 'Feste Ansprechpartner', 'Lückenlose Vertretungsgarantie'].map((trust, i) => (
                             <div key={i} className="flex items-center gap-2">
-                                <CheckCircle2 className={`w-5 h-5 ${accentTxt}`} />
-                                <span className="font-medium">{trust}</span>
+                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                                <span className="font-medium text-slate-800 text-sm sm:text-base">{trust}</span>
                             </div>
                         ))}
                     </AnimatedSection>
@@ -282,16 +280,16 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
             </AnimatedSection>
 
             {/* CTA SECTION */}
-            <section className={`py-24 ${bgContainer} relative z-20 text-center`}>
+            <section className="py-20 lg:py-28 bg-white relative z-20 text-center">
                 <div className="container-fluid relative z-10">
                     <AnimatedSection variants={fadeInUp} className="max-w-3xl mx-auto">
-                        <h2 className={`text-4xl lg:text-5xl font-bold font-display ${mainTxt} mb-6`}>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-slate-900 mb-6">
                             Bereit für makellose Sauberkeit in {location.name}?
                         </h2>
-                        <p className={`text-xl ${mutedTxt} mb-10 leading-relaxed`}>
+                        <p className="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed">
                             Lassen Sie uns bei einem kostenlosen Vor-Ort-Termin herausfinden, wie wir Ihr Gebäude optimal pflegen können.
                         </p>
-                        <Button href="/contact" size="lg" className={`${isLight ? 'bg-primary hover:bg-primary-hover text-white' : 'bg-white text-background hover:bg-zinc-200'}`}>
+                        <Button href="/contact" size="lg" className="bg-primary hover:bg-primary-hover text-white shadow-xl shadow-primary/20 border-none">
                             Kostenlosen Termin vereinbaren
                         </Button>
                     </AnimatedSection>

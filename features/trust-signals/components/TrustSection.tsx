@@ -44,21 +44,21 @@ export default function TrustSection({
                 </AnimatedSection>
 
                 {/* ── Split Layout: Stats & Testimonials ───────────────── */}
-                <div className="flex flex-col xl:flex-row gap-16 lg:gap-24 items-center">
+                <div className="flex flex-col xl:flex-row gap-12 sm:gap-16 lg:gap-20 xl:gap-24 items-center">
 
                     {/* Left: Stats Grid */}
                     <div className="w-full xl:w-5/12 shrink-0">
-                        <AnimatedSection variants={fadeInUp} className="mb-10 text-center xl:text-left">
-                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-4">Ihre Sicherheit</h2>
-                            <h3 className="text-h2 font-bold text-text-primary leading-tight font-display mb-6">
+                        <AnimatedSection variants={fadeInUp} className="mb-8 sm:mb-10 text-center xl:text-left">
+                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-3">Ihre Sicherheit</h2>
+                            <h3 className="text-h2 font-bold text-text-primary leading-tight font-display mb-4 sm:mb-6">
                                 Fakten, die <span className="text-gradient-primary">Vertrauen</span> schaffen
                             </h3>
-                            <p className="text-text-secondary text-lg leading-relaxed max-w-xl mx-auto xl:mx-0">
+                            <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl mx-auto xl:mx-0">
                                 Wir lassen Taten sprechen. Unsere Zahlen belegen unser Engagement für Sauberkeit, Zuverlässigkeit und höchste Kundenzufriedenheit.
                             </p>
                         </AnimatedSection>
 
-                        <AnimatedSection className="grid grid-cols-2 gap-8" stagger>
+                        <AnimatedSection className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8" stagger>
                             {statsComponents?.map((StatItem, idx) => (
                                 <AnimatedItem key={idx} variants={fadeInUp}>
                                     {StatItem}
@@ -69,8 +69,8 @@ export default function TrustSection({
 
                     {/* Right: Testimonial Carousel */}
                     <div className="w-full xl:w-7/12 min-w-0">
-                        <AnimatedSection variants={fadeInUp} className="mb-10 text-center xl:text-left">
-                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-4">Kundenstimmen</h2>
+                        <AnimatedSection variants={fadeInUp} className="mb-6 sm:mb-8 text-center xl:text-left">
+                            <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-3">Kundenstimmen</h2>
                             <h3 className="text-h3 font-bold text-text-primary leading-tight mb-2">
                                 Was unsere Kunden sagen
                             </h3>
@@ -80,8 +80,8 @@ export default function TrustSection({
                             {/* Premium Glow Blob */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-3/4 bg-primary/10 dark:bg-primary/5 blur-[100px] rounded-full pointer-events-none z-0" aria-hidden="true" />
 
-                            {/* Wrapper to handle potential overflow issues gracefully on smaller screens */}
-                            <div className="-mx-4 sm:mx-0 sm:px-0 relative z-10">
+                            {/* Container for Carousel */}
+                            <div className="w-full relative z-10">
                                 {testimonialsComponent}
                             </div>
                         </AnimatedSection>

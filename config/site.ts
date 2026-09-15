@@ -3,6 +3,7 @@ export interface Testimonial {
     author: string;
     role: string;
     rating: number;
+    badge?: string | undefined;
 }
 
 export interface TeamMember {
@@ -39,33 +40,38 @@ export interface TimelineEvent {
 
 export const testimonials: Testimonial[] = [
     {
-        text: 'Seit AKAN die Unterhaltsreinigung in unserer Praxis übernommen hat, müssen wir uns um nichts mehr kümmern. Absolute Zuverlässigkeit und Top-Qualität.',
+        text: 'Seit AKAN die Unterhalts- und Desinfektionsreinigung in unserer Praxis übernommen hat, müssen wir uns um nichts mehr kümmern. Höchste Hygiene nach RKI-Standards, absolute Zuverlässigkeit und lückenlose Dokumentation.',
         author: 'Dr. med. Schmidt',
-        role: 'Arztpraxis Gudensberg',
+        role: 'Gemeinschaftspraxis Gudensberg',
+        badge: 'Praxishygiene zertifiziert',
         rating: 5,
     },
     {
-        text: 'Die Bauendreinigung unseres neuen Bürokomplexes wurde termingerecht und makellos durchgeführt. Das Team war hochprofessionell.',
+        text: 'Die Baufeinreinigung unseres neuen Bürokomplexes wurde termingerecht und makellos übergeben. Kein Staub in den Lüftungsschächten, streifenfreie Glasfassaden – meisterhafte Ausführung vor der Mieterübergabe.',
         author: 'Michael Weber',
-        role: 'Immobilienentwickler Kassel',
+        role: 'Projektleiter Weber Immobilien Kassel',
+        badge: 'Gewerbliche Bauabnahme',
         rating: 5,
     },
     {
-        text: 'Unsere Schaufenster waren noch nie so sauber. Die Osmosetechnik macht wirklich einen Unterschied. Sehr empfehlenswert!',
+        text: 'Unsere Schaufenster und Portalverglasungen waren noch nie so makellos sauber. Die Osmosetechnik ohne Chemierückstände sorgt für wochenlangen Glanz ohne Streifenbildung. Sehr empfehlenswert!',
         author: 'Sarah Müller',
-        role: 'Einzelhandel Fritzlar',
+        role: 'Inhaberin Modehaus Müller Fritzlar',
+        badge: 'Glas- & Fassadenpflege',
         rating: 5,
     },
     {
-        text: 'Besonders beeindruckt hat mich die Gründlichkeit der Industriereinigung. Alle Sicherheitsstandards wurden eingehalten.',
+        text: 'Besonders beeindruckt hat mich die Gründlichkeit bei der Hallen- und Industriebodenreinigung. Sämtliche Sicherheits- und Arbeitsschutzstandards wurden exakt eingehalten, ohne unsere Schichtzeiten zu beeinträchtigen.',
         author: 'Thomas Koch',
-        role: 'Produktionsleiter Baunatal',
+        role: 'Produktions- & Logistikleiter Baunatal',
+        badge: 'Industrie & Maschinenreinigung',
         rating: 5,
     },
     {
-        text: 'AKAN ist seit zwei Jahren unser Partner für die Gebäudereinigung. Zuverlässig, flexibel und hervorragende Ergebnisse.',
+        text: 'AKAN betreut 4 unserer Gewerbeobjekte im Rahmenvertrag. Null Reklamationen, feste Ansprechpartner und eine lückenlose Vertretungsgarantie selbst bei Urlaub oder Krankheit. Meisterhafte Zuverlässigkeit.',
         author: 'Anna Berger',
-        role: 'Büroleiterin Melsungen',
+        role: 'Facility Management Berger & Partner Melsungen',
+        badge: 'Gewerbe-Rahmenvertrag',
         rating: 5,
     },
 ];

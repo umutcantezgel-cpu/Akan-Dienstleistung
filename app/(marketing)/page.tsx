@@ -109,10 +109,10 @@ export default function HomePage() {
       <FeatureErrorBoundary featureName="Trust & Stats">
         <TrustSection
           statsComponents={[
-            <StatsRing key="s1" value={98} label="Kundenbindung" color="#9B1C2E" />,
-            <StatsRing key="s2" value={200} maxValue={200} suffix="+" label="Betreute Objekte" color="#E85D75" />,
-            <StatsRing key="s3" value={100} label="Terminzuverlässigkeit" color="#FFD700" />,
-            <StatsRing key="s4" value={10} maxValue={10} suffix="+" label="Jahre Erfahrung" color="#22C55E" />
+            <StatsRing key="s1" value={98} label="Kundenbindung" sublabel="Null-Reklamations-Prinzip" color="#9B1C2E" />,
+            <StatsRing key="s2" value={200} maxValue={200} suffix="+" label="Betreute Objekte" sublabel="Gewerbeflächen & Praxen" color="#E85D75" />,
+            <StatsRing key="s3" value={100} label="Terminzuverlässigkeit" sublabel="Lückenlose Vertretungsgarantie" color="#FFD700" />,
+            <StatsRing key="s4" value={10} maxValue={10} suffix="+" label="Jahre Erfahrung" sublabel="Meisterhandwerk in Nordhessen" color="#22C55E" />
           ]}
           testimonialsComponent={<TestimonialCarousel testimonials={testimonials} />}
         />

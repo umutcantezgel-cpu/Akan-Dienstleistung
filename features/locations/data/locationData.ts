@@ -68,6 +68,7 @@ export const locationData: Record<string, LocationDetail> = {
     },
     'kassel': {
         slug: 'kassel',
+        theme: 'light',
         name: 'Kassel',
         region: 'Nordhessen',
         einwohner: '200.000',
@@ -108,7 +109,7 @@ export const locationData: Record<string, LocationDetail> = {
     },
     'fritzlar': {
         slug: 'fritzlar',
-        theme: 'dark', // Diskretion/Militär => Dunkles Theme
+        theme: 'light',
         name: 'Fritzlar',
         region: 'Schwalm-Eder-Kreis',
         einwohner: '14.800',
@@ -128,7 +129,7 @@ export const locationData: Record<string, LocationDetail> = {
     },
     'baunatal': {
         slug: 'baunatal',
-        theme: 'dark', // Industrie-Fokus (VW) => Brutalist B2B
+        theme: 'light',
         name: 'Baunatal',
         region: 'Kassel, Nordhessen',
         einwohner: '28.000',
@@ -231,7 +232,7 @@ export const locationData: Record<string, LocationDetail> = {
     },
     'borken-hessen': {
         slug: 'borken-hessen',
-        theme: 'dark', // Historisch industriell/Bergbau
+        theme: 'light',
         name: 'Borken (Hessen)',
         region: 'Schwalm-Eder-Kreis',
         einwohner: '12.500',

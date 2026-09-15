@@ -2,7 +2,6 @@
 
 import { testimonials } from '@/config/site';
 import TestimonialCard from '@/shared/components/TestimonialCard';
-import MagneticTilt from '@/shared/components/MagneticTilt';
 import { motion } from 'motion/react';
 import { fadeInUp, staggerContainer } from '@/shared/styles/animations';
 
@@ -16,15 +15,12 @@ interface LocalTestimonialsProps {
 // ═══════════════════════════════════════════════════════════
 
 export default function LocalTestimonials({ city }: LocalTestimonialsProps) {
-    // URL-basierte Filterung: Zeige Bewertungen passend zur aktuellen Stadt
-    const filteredTestimonials = city
+    // URL-basierte Filterung: Zeige lokale Bewertungen für die aktuelle Stadt zuerst
+    const local = city
         ? testimonials.filter(t => t.role.toLowerCase().includes(city.toLowerCase()))
         : [];
-
-    // Fallback: Zeige allgemeine Bewertungen wenn keine stadtspezifischen (oder nicht genug) vorhanden
-    const displayTestimonials = filteredTestimonials.length >= 3
-        ? filteredTestimonials.slice(0, 3)
-        : testimonials.slice(0, 3); // Fallback zu den generischen top bewerteten
+    const others = testimonials.filter(t => !local.includes(t));
+    const displayTestimonials = [...local, ...others].slice(0, 3);
 
     return (
         <motion.div
@@ -36,16 +32,14 @@ export default function LocalTestimonials({ city }: LocalTestimonialsProps) {
         >
             {displayTestimonials.map((testimonial, idx) => (
                 <motion.div key={idx} variants={fadeInUp} className="h-full">
-                    {/* 3D-Kipp-Animation (Tilt-Effect) */}
-                    <MagneticTilt maxTilt={8} depth={20} className="h-full w-full">
-                        <TestimonialCard
-                            author={testimonial.author}
-                            role={testimonial.role}
-                            text={testimonial.text}
-                            rating={testimonial.rating}
-                            delay={idx * 0.1}
-                        />
-                    </MagneticTilt>
+                    <TestimonialCard
+                        author={testimonial.author}
+                        role={testimonial.role}
+                        text={testimonial.text}
+                        rating={testimonial.rating}
+                        badge={testimonial.badge}
+                        delay={idx * 0.1}
+                    />
                 </motion.div>
             ))}
         </motion.div>
