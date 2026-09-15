@@ -28,24 +28,24 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://akandienstleistung.de/#business',
+        '@id': 'https://akan-dienstleistung.de/#business',
         'name': 'AKAN Dienstleistung',
-        'image': 'https://akandienstleistung.de/images/og-image.jpg',
+        'image': 'https://akan-dienstleistung.de/images/og-image.jpg',
         'description': 'Premium Gebäudereinigung in Gudensberg, Kassel und Nordhessen. Unterhaltsreinigung, Bauendreinigung und Glasreinigung.',
-        'url': 'https://akandienstleistung.de',
+        'url': 'https://akan-dienstleistung.de',
         'telephone': '+4915234754386',
-        'email': 'info@akandienstleistung.de',
+        'email': 'info@akan-dienstleistung.de',
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': 'Kasseler Str. 27',
+          'streetAddress': 'Odenbergstraße 26',
           'addressLocality': 'Gudensberg',
           'postalCode': '34281',
           'addressCountry': 'DE'
         },
         'geo': {
           '@type': 'GeoCoordinates',
-          'latitude': '51.1764',
-          'longitude': '9.3622'
+          'latitude': '51.1718',
+          'longitude': '9.3582'
         },
         'openingHoursSpecification': [
           {
@@ -65,13 +65,13 @@ export default function HomePage() {
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': 'https://akandienstleistung.de/#breadcrumb',
+        '@id': 'https://akan-dienstleistung.de/#breadcrumb',
         'itemListElement': [
           {
             '@type': 'ListItem',
             'position': 1,
             'name': 'Startseite',
-            'item': 'https://akandienstleistung.de'
+            'item': 'https://akan-dienstleistung.de'
           }
         ]
       }

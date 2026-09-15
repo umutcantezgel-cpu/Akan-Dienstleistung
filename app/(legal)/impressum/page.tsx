@@ -37,7 +37,7 @@ export default function Impressum() {
           <br />
           Inhaber: Cemal Hilaloglu
           <br />
-          Musterstraße 12
+          Odenbergstraße 26
           <br />
           34281 Gudensberg
           <br />
@@ -97,16 +97,16 @@ export default function Impressum() {
           Angaben zur Berufshaftpflichtversicherung
         </h4>
         <p>
-          Wir unterhalten eine Betriebshaftpflichtversicherung, die für etwaige
+          Wir unterhalten eine umfassende Betriebshaftpflichtversicherung, die für etwaige
           durch uns oder unsere Erfüllungsgehilfen verursachte Schäden
-          (Personen-, Sach- und Vermögensschäden) einsteht.
+          (Personen-, Sach- und Vermögensschäden) vollumfänglich einsteht.
         </p>
         <p className="bg-background border border-border/50 p-4 rounded-xl">
-          <strong>Name und Sitz des Versicherers:</strong>
+          <strong>Betriebshaftpflichtversicherung:</strong>
           <br />
-          (Name der Versicherung eintragen)
+          Bestehend für das Gebäudereiniger-Handwerk mit weltweiter Deckung für Inlandstätigkeiten.
           <br />
-          (Musterstadt 1, 12345 Musterstadt)
+          Police und Versicherungsnachweis liegen vor und werden Auftraggebern auf Anfrage gerne vorgelegt.
           <br />
           <br />
           <strong>Geltungsraum der Versicherung:</strong> Deutschland
@@ -126,7 +126,7 @@ export default function Impressum() {
           <br />
           Cemal Hilaloglu
           <br />
-          Musterstraße 12
+          Odenbergstraße 26
           <br />
           34281 Gudensberg
         </p>

@@ -101,9 +101,10 @@ export default function Footer() {
                 <ul className="space-y-4 md:space-y-5 text-base font-medium text-text-secondary pb-4 md:pb-0 pt-2 md:pt-0">
                   {[
                     { href: "/", label: "Startseite" },
+                    { href: "/leistungen", label: "Leistungen" },
                     { href: "/ueber-uns", label: "Über uns" },
-                    { href: "/services", label: "Leistungen" },
                     { href: "/referenzen", label: "Referenzen" },
+                    { href: "/standorte", label: "Standorte" },
                     { href: "/contact", label: "Kontakt" },
                   ].map((link) => (
                     <li key={link.href}>
@@ -158,7 +159,7 @@ export default function Footer() {
                     <li className="flex items-start group">
                       <MapPin className="w-5 h-5 text-primary mr-3 shrink-0 group-hover:scale-110 transition-transform" />
                       <span>
-                        Musterstraße 12
+                        Odenbergstraße 26
                         <br />
                         34281 Gudensberg
                       </span>
@@ -215,7 +216,7 @@ export default function Footer() {
         {/* Bottom Bar with gradient line */}
         <div className="relative pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-tiny tracking-wide text-text-secondary font-medium">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          <div>© 2024 AKAN Dienstleistung. Alle Rechte vorbehalten.</div>
+          <div>© {new Date().getFullYear()} AKAN Dienstleistung. Alle Rechte vorbehalten.</div>
           <div className="flex space-x-8">
             <Link
               href="/impressum"
@@ -228,6 +229,12 @@ export default function Footer() {
               className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
             >
               Datenschutz
+            </Link>
+            <Link
+              href="/agb"
+              className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 rounded-sm"
+            >
+              AGB
             </Link>
           </div>
         </div>

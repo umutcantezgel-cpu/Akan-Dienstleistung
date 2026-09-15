@@ -88,6 +88,13 @@ export default function MobileNav() {
                                                         className="overflow-hidden"
                                                     >
                                                         <div className="flex flex-col pb-4 gap-2 border-l-2 border-primary/20 ml-2 pl-4">
+                                                            <Link
+                                                                href={link.href}
+                                                                onClick={handleClose}
+                                                                className="py-2.5 min-h-[48px] flex items-center text-primary font-bold tracking-wide transition-colors focus-visible:outline-none focus-visible:text-primary touch-target"
+                                                            >
+                                                                Alle {link.label} ansehen →
+                                                            </Link>
                                                             {link.children.map(child => (
                                                                 <Link
                                                                     key={child.href}

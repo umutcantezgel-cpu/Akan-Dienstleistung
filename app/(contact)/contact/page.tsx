@@ -42,7 +42,7 @@ export default function Contact() {
             </div>
             <h3 className="text-xl font-bold text-text-primary mb-4 font-display">Adresse</h3>
             <p className="text-medium font-light text-text-secondary leading-[1.8]">
-              Musterstraße 12<br />
+              Odenbergstraße 26<br />
               34281 Gudensberg<br />
               Deutschland
             </p>
@@ -55,8 +55,8 @@ export default function Contact() {
             <p className="text-medium font-light text-text-secondary leading-[1.8] mb-4">
               Wir sind telefonisch für Sie erreichbar.
             </p>
-            <a href="tel:+4956031234567" className="text-lg font-bold text-primary hover:text-primary-hover transition-colors font-display tracking-tight">
-              05603 123 45 67
+            <a href="tel:+4915234754386" className="text-lg font-bold text-primary hover:text-primary-hover transition-colors font-display tracking-tight">
+              0152 34754386
             </a>
           </div>
           <div className="bg-surface rounded-[2rem] p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">

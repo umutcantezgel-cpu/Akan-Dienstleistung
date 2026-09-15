@@ -1,4 +1,4 @@
-import { Building2, Sun, HardHat, Factory, MapPin } from 'lucide-react';
+import { Building2, Sun, HardHat, Factory, Sparkles, MapPin } from 'lucide-react';
 import { getAllLocationSlugs, getLocation } from '@/features/locations/data/locationData';
 
 // Generiere Standorte-Links dynamisch
@@ -21,6 +21,7 @@ export const navLinks = [
             { href: '/leistungen/fensterreinigung', label: 'Fensterreinigung', desc: 'Streifenfreier Glanz', icon: Sun },
             { href: '/leistungen/bauendreinigung', label: 'Bauendreinigung', desc: 'Nach Neubau/Sanierung', icon: HardHat },
             { href: '/leistungen/industriereinigung', label: 'Industriereinigung', desc: 'Hallen & Produktion', icon: Factory },
+            { href: '/leistungen/sonderreinigung', label: 'Sonderreinigung', desc: 'Spezial- & Notfalleinsätze', icon: Sparkles },
         ]
     },
     {

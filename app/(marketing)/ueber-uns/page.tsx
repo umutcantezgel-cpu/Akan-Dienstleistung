@@ -383,8 +383,8 @@ export default function About() {
             </div>
             <div className="relative w-full rounded-[2.5rem] overflow-hidden border border-border/60 shadow-elevated">
               <DynamicMap
-                location={{ name: "Melsungen", entfernung: "HQ" } as any}
-                zoom={9}
+                location={{ name: "Gudensberg", entfernung: "Hauptsitz" } as any}
+                zoom={10}
               />
             </div>
           </div>

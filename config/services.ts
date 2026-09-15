@@ -1,4 +1,4 @@
-import { Building2, Sun, HardHat, Factory, type LucideIcon } from 'lucide-react';
+import { Building2, Sun, HardHat, Factory, Sparkles, type LucideIcon } from 'lucide-react';
 
 export interface Service {
     id: string;
@@ -25,8 +25,8 @@ export const services: Service[] = [
         description: 'Ihre Mitarbeiter und Kunden verdienen ein perfektes Umfeld. Wir setzen feste Teams für Ihr Objekt ein. Das bedeutet für Sie: Keine ständige Einarbeitung neuer Kräfte, konstante Reinigungsqualität und absolute Zuverlässigkeit ohne Callcenter-Frust.',
         icon: '🏢',
         lucideIcon: Building2,
-        link: '/services/unterhaltsreinigung',
-        features: ['Tägliche / wöchentliche Reinigung', 'Sanitäranlagen', 'Bodenreinigung & -pflege', 'Müllenentsorgung', 'Individuelle Reinigungspläne'],
+        link: '/leistungen/unterhaltsreinigung',
+        features: ['Tägliche / wöchentliche Reinigung', 'Sanitäranlagen', 'Bodenreinigung & -pflege', 'Müllentsorgung', 'Individuelle Reinigungspläne'],
         highlights: [
             { label: 'Intervall', value: 'Täglich bis monatlich' },
             { label: 'Reaktionszeit', value: '< 24 Stunden' },
@@ -44,7 +44,7 @@ export const services: Service[] = [
         description: 'Ihre Gebäudehülle ist die Visitenkarte Ihres Unternehmens. Wir liefern streifenfreie Ergebnisse und sind bei Wind und Wetter Ihr fester, verlässlicher Ansprechpartner – ohne Wenn und Aber.',
         icon: '✨',
         lucideIcon: Sun,
-        link: '/services/fensterreinigung',
+        link: '/leistungen/fensterreinigung',
         features: ['Osmosetechnik', 'Rahmen- & Falzreinigung', 'Glasfassaden', 'Wintergärten', 'Regelmäßige Intervalle'],
         highlights: [
             { label: 'Technik', value: 'Osmose & manuell' },
@@ -63,7 +63,7 @@ export const services: Service[] = [
         description: 'Bauverzögerungen kosten Geld und Nerven. Wir garantieren Ihnen eine strikt pünktliche, fehlerfreie Beseitigung von Baustaub und Handwerkerschmutz, damit Ihre Bauabnahme vollkommen reibungslos verläuft.',
         icon: '🚧',
         lucideIcon: HardHat,
-        link: '/services/bauendreinigung',
+        link: '/leistungen/bauendreinigung',
         features: ['Grobreinigung', 'Feinreinigung', 'Visuelle Reinigung', 'Fenster & Rahmen', 'Bodenversiegelung'],
         highlights: [
             { label: 'Phasen', value: 'Grob → Fein → Visuell' },
@@ -82,13 +82,32 @@ export const services: Service[] = [
         description: 'In der Industrie zählt absolute Verlässlichkeit. Wir reinigen Maschinen und Hallen BG-konform, ohne jemals Ihre kritischen Produktionsprozesse zu stören. Ein fester, direkter Ansprechpartner garantiert reibungslose Abläufe ohne Verwaltungsoverhead.',
         icon: '🏭',
         lucideIcon: Factory,
-        link: '/services/industriereinigung',
+        link: '/leistungen/industriereinigung',
         features: ['Hallenreinigung', 'Maschinenreinigung', 'Hochdruckreinigung', 'Bodenbeschichtung', 'Sicherheitsstandards'],
         highlights: [
             { label: 'Sicherheit', value: 'BGV-konform' },
             { label: 'Einsatz', value: '24/7 möglich' },
             { label: 'Maschinen', value: 'Eigeninventar' },
             { label: 'Team', value: 'Spezialisiert' },
+        ],
+        category: 'specialized',
+    },
+    {
+        id: 'sonderreinigung',
+        title: 'Sonderreinigung',
+        subtitle: 'Chirurgische Präzision für Härtefälle',
+        shortDesc: 'Spezialverfahren bei extremen Kontaminationen, Havarien, Desinfektion und Sanierung mit zertifizierter Sicherheit.',
+        longDesc: 'Wir bieten maßgeschneiderte Spezialreinigungen für anspruchsvolle Herausforderungen in Industrie, Gewerbe und Verwaltung.',
+        description: 'Standard-Reinigungsverfahren stoßen bei Havarien, Brandschäden, tief sitzenden Verkrustungen oder sensiblen Hygienebereichen an ihre Grenzen. Wir operieren mit toxikologischer Präzision, Trockeneis-Verfahren, Ozon-Behandlungen und zertifizierten Desinfektionsmitteln.',
+        icon: '🛡️',
+        lucideIcon: Sparkles,
+        link: '/leistungen/sonderreinigung',
+        features: ['Grund- & Intensivreinigung', 'Desinfektionsreinigung nach RKI/HACCP', 'Teppich- & Polsterreinigung', 'Graffiti- & Schadstoffbeseitigung', 'Geruchsneutralisation'],
+        highlights: [
+            { label: 'Verfahren', value: 'Trockeneis & Ozon' },
+            { label: 'Hygiene', value: 'RKI / HACCP' },
+            { label: 'Verfügbarkeit', value: 'Notdienst 24/7' },
+            { label: 'Dokumentation', value: 'Audit-sicher' },
         ],
         category: 'specialized',
     },
