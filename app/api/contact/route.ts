@@ -38,7 +38,8 @@ export async function POST(req: Request) {
     try {
         // 1. IP Determination & Rate Limiting
         const forwardedFor = req.headers.get('x-forwarded-for');
-        const clientIp = forwardedFor ? forwardedFor.split(',')[0].trim() : '127.0.0.1';
+        const firstIp = forwardedFor ? forwardedFor.split(',')[0] : null;
+        const clientIp = firstIp ? firstIp.trim() : '127.0.0.1';
 
         if (isRateLimited(clientIp)) {
             return NextResponse.json(

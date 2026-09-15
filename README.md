@@ -1,122 +1,167 @@
 <div align="center">
-  
-  <br />
-  <br />
-
+  <h1>AKAN Dienstleistung — Offizielle Web-Plattform</h1>
   <p>
-    <b>Premium Gebäudereinigung & Facility Management Plattform</b>
+    <b>Professionelle Unternehmenswebsite für Gebäudereinigung & Facility Services in Nordhessen</b>
   </p>
 
   <p>
-    <img alt="Next.js" src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white" />
+    <img alt="Next.js" src="https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js&logoColor=white" />
     <img alt="React" src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react&logoColor=white" />
-    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
-    <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  </p>
-
-  <p>
-    <img alt="Vercel Ready" src="https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel" />
-    <img alt="Netlify Ready" src="https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?style=for-the-badge&logo=netlify" />
-    <img alt="License" src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" />
+    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.9-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+    <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <img alt="Vercel Ready" src="https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel" />
   </p>
 </div>
 
 ---
 
-## 🌟 Über das Projekt
+## 🌟 Projektübersicht
 
-Dies ist die offizielle, proprietäre Unternehmenswebsite und digitale Vertriebsplattform für **AKAN Dienstleistung**. Entwickelt mit einem kompromisslosen Fokus auf Performance, SEO, Barrierefreiheit (WCAG) und eine strikte "Zero-Cookie"-Datenschutzrichtlinie.
+Dieses Repository beinhaltet den vollständigen Quellcode der modernen, barrierefreien und SEO-optimierten Unternehmenspräsenz von **AKAN Dienstleistung** (Odenbergstraße 26, 34281 Gudensberg).
 
-🌐 **Live Ansicht:** [akan-dienstleistung.de](https://akan-dienstleistung.de)
+Die Plattform präsentiert das gesamte Portfolio gewerblicher und privater Reinigungsdienstleistungen im Schwalm-Eder-Kreis, Kassel und Nordhessen mit interaktiven Standortübersichten, transparenten Leistungsbeschreibungen, DSGVO-konformem Consent-Management und einem gehärteten Anfrageformular.
 
-## ✨ Kern-Features
-
-- ⚡ **Next.js 15 App Router:** Vollständige SSR/SSG Architektur für maximale SEO-Performance und minimale Ladezeiten (0.1s Time-to-Interactive).
-- 🧩 **Zero-Tolerance Privacy:** Eigenentwickeltes striktes Consent-Management. **Keine** Drittanbieter-Cookies ohne explizite User-Zustimmung.
-- 📱 **Mobile-First Glassmorphism UI:** Hochwertiges Design mit Tailwind CSS v4, Framer Motion Animationen und Fluid Typography.
-- 🗺️ **Interaktive Standortkarte:** Serverseitig gerenderte Map-Fallback-Boundary mit dynamischem Leaflet Client-Render.
-- 🛡️ **Zod + React Hook Form:** Typensichere, barrierefreie Kontaktformulare mit Serverseitiger validierung.
+🌐 **Produktions-Domain:** [https://akan-dienstleistung.de](https://akan-dienstleistung.de)
 
 ---
 
-## 📸 Impressionen
+## 🛠️ Tech-Stack & Architektur
 
-<p align="center">
-  <img src=".github/assets/screenshot-home-desktop.png" width="48%" alt="Homepage Desktop">
-  <img src=".github/assets/screenshot-ueber-uns-desktop.png" width="48%" alt="Über Uns Desktop">
-</p>
+- **Framework:** Next.js 15.5 (App Router) mit React 19 Server & Client Components
+- **Sprache:** TypeScript 5.9 (Strict Type Checking)
+- **Styling:** Tailwind CSS v4 mit modernem Farb- und Typografiesystem
+- **Animationen:** Framer Motion / Motion v12 mit reduzierter Bewegung bei Accessibility-Vorgaben
+- **Formular & Validierung:** React Hook Form + Zod (Client- & Server-Validierung)
+- **Karten & Geo:** Leaflet mit clientseitiger dynamischer Nachladung (Consent-geschützt)
+- **Testing:** Vitest + Testing Library für Unit- & Integrationstests
+- **Code-Qualität:** ESLint 9 mit Zero-Warning-Policy
 
 ---
 
-## 🚀 Lokales Setup (Getting Started)
+## 🧭 Informationsarchitektur & Seitenstruktur
 
-Das Projekt nutzt den modernen Node-Stack. Ein lokaler Fork ist nur für autorisierte Entwickler vorgesehen.
+| Route | Funktion & Status |
+|---|---|
+| `/` | Startseite mit Leistungsübersicht, Vorher-Nachher-Vergleich, Rezensionen, FAQ & CTA |
+| `/leistungen` | Zentrale Übersicht aller 5 Gewerke mit Spezifikationen und Ablauf |
+| `/leistungen/unterhaltsreinigung` | Büro-, Praxis- und Gewerbereinigung |
+| `/leistungen/fensterreinigung` | Glas-, Rahmen- und Osmosereinigung |
+| `/leistungen/bauendreinigung` | Grob-, Fein- und Bauabnahmereinigung |
+| `/leistungen/industriereinigung` | Maschinen- und Hallenreinigung |
+| `/leistungen/sonderreinigung` | Spezialverfahren, Havarien & Desinfektion |
+| `/standorte` | Übersicht aller Einsatzgebiete in Nordhessen (Entfernungen & Stadtteile) |
+| `/standorte/[stadt]` | Lokale Landingpages für 12 Städte (Gudensberg HQ, Kassel, Fritzlar, Baunatal, etc.) |
+| `/ueber-uns` | Unternehmensgeschichte, Team, Werte und interaktive Karte |
+| `/referenzen` | Galerie und Vorher-Nachher-Ergebnisse |
+| `/contact` | Typensicheres Kontaktformular mit Honeypot, Rate-Limiting & Adressdetails |
+| `/impressum` | Gesetzliche Pflichtangaben (§ 5 TMG, § 18 MStV) |
+| `/datenschutz` | Vollständige DSGVO-Datenschutzerklärung & Cookie-Präferenzen |
+| `/agb` | Allgemeine Geschäftsbedingungen für Gebäudereinigung |
+| `/api/contact` | Gehärtete Serverless API Route für Anfragen |
+| `/sitemap.xml` & `/robots.txt` | Dynamisch generierte Suchmaschinen-Indizes |
+
+---
+
+## 🚀 Lokales Setup & Entwicklung
 
 ### Voraussetzungen
 
-- **Node.js**: `v20.0.0` oder höher (wird über `engines` erzwungen)
-- **NPM**: `v10+`
+- Node.js >= 20.0.0
+- npm >= 10.0.0
 
-### Installation
+### Schritt-für-Schritt
 
-1. **Repository klonen**
-
+1. **Repository klonen:**
    ```bash
    git clone https://github.com/umutcantezgel-cpu/Akan-Dienstleistung.git
    cd Akan-Dienstleistung
    ```
 
-2. **Abhängigkeiten installieren**
-   _(Nutze `ci` für exakt reproduzierbare Builds via `package-lock.json`)_
-
+2. **Abhängigkeiten installieren:**
    ```bash
-   npm ci
+   npm install
    ```
 
-3. **Environment konfigurieren**
-   Kopiere die `.env.example`:
-
+3. **Umgebungsvariablen vorbereiten:**
    ```bash
    cp .env.example .env.local
    ```
 
-   _(Füge hier z.B. den `RESEND_API_KEY` für das Kontaktformular ein)_
-
-4. **Entwicklungsserver starten**
+4. **Entwicklungsserver starten:**
    ```bash
    npm run dev
    ```
-   Die App ist nun unter `http://localhost:3000` erreichbar.
+   Die Seite läuft lokal unter [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 🛠️ Developer Guides & Architektur
+## 🔑 Umgebungsvariablen (ENV)
 
-Für tiefergehende technische Details zum Codebase-Aufbau, lies bitte unsere Meta-Dokumente:
+In `.env.local` (lokal) oder im Vercel Dashboard unter **Project Settings → Environment Variables**:
 
-- 🏗️ **[Architektur-Manifest (docs/ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: Details zu SSR-Strategien, Component-Hierarchy und State-Management.
-- 🆘 **[Troubleshooting (docs/TROUBLESHOOTING.md)](docs/TROUBLESHOOTING.md)**: Lösung bekannter Hydration-Fehler oder Map-Rendering-Probleme.
-- 🤝 **[Contributing Guidelines (CONTRIBUTING.md)](CONTRIBUTING.md)**: Regeln für Branches, Commits und PRs.
+| Variable | Pflicht | Standardwert | Beschreibung |
+|---|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Nein | `https://akan-dienstleistung.de` | Basis-URL für Canonicals und Metadaten |
+| `RESEND_API_KEY` | Optional | `""` | API-Key von [Resend](https://resend.com) für automatisierten E-Mail-Versand |
+| `CONTACT_EMAIL_RECIPIENT` | Optional | `info@akan-dienstleistung.de` | Zieladresse für eingehende Kundenanfragen |
+| `CONTACT_EMAIL_FROM` | Optional | `AKAN <noreply@akan-dienstleistung.de>` | Absenderadresse (in Resend verifiziert) |
+| `CONTACT_WEBHOOK_URL` | Optional | `""` | Optionaler Webhook für Zapier, Slack oder CRM |
+| `ANALYZE` | Nein | `"false"` | Bei `"true"` wird der Bundle-Analyzer beim Build aktiviert |
+
+> **Hinweis zur Robustheit:** Fehlt der `RESEND_API_KEY`, arbeitet die API Route im lokalen Entwicklungs-/Fallback-Modus, loggt die Anfrage strukturiert und gibt dem Benutzer eine Erfolgsmeldung zurück – die Seite bricht niemals ab.
 
 ---
 
-## ☁️ Deployment
+## 🧪 Qualitätssicherung & Tests
 
-Das Projekt ist vollständig CI/CD-kompatibel und production-hardened für Vercel und Netlify.
-
-- **Vercel:** Auto-Deploys aktiv für den `main` Branch. Zero Configuration required.
-- **Netlify:** Nutzt die dedizierte `netlify.toml` für SSR/ISR via `@netlify/plugin-nextjs`.
-
-**Production Build lokal testen:**
+Vor jedem Release oder Push:
 
 ```bash
-npm run build && npm run start
+# 1. ESLint prüfen (muss 0 Fehler & 0 Warnungen liefern)
+npm run lint
+
+# 2. Vitest Unit- und Komponententests ausführen
+npm test
+
+# 3. Vollständigen Produktions-Build prüfen (32 statische Seiten)
+npm run build
 ```
 
 ---
 
-## 📄 Lizenz & Copyright
+## ☁️ Vercel Deployment-Anleitung
 
-**Copyright © 2024 AKAN Dienstleistung. Alle Rechte vorbehalten.**
+Die Website ist für **Vercel** optimiert:
 
-Der Quellcode in diesem Repository ist proprietär und vertraulich. Vervielfältigung, Modifikation oder Distribution jeglicher Art sind ohne ausdrückliche schriftliche Genehmigung von AKAN Dienstleistung strengstens untersagt. Siehe [LICENSE](LICENSE) für Details.
+1. **GitHub Repository verknüpfen:**
+   - In [Vercel](https://vercel.com) ein neues Projekt anlegen.
+   - `umutcantezgel-cpu/Akan-Dienstleistung` auswählen.
+2. **Build-Einstellungen:**
+   - **Framework Preset:** Next.js
+   - **Build Command:** `npm run build` (Standard)
+   - **Output Directory:** `.next` (Standard)
+   - **Install Command:** `npm install` (Standard)
+3. **Environment Variables einrichten:**
+   - `NEXT_PUBLIC_SITE_URL` = `https://akan-dienstleistung.de`
+   - `RESEND_API_KEY` = *(Dein Resend API-Key)*
+   - `CONTACT_EMAIL_RECIPIENT` = `info@akan-dienstleistung.de`
+4. **Deploy klicken:**
+   - Vercel baut alle 32 Seiten als hochperformante statische Seiten (SSG/ISR) und hostet die Edge Middleware sowie die API Route global.
+
+---
+
+## 🛡️ Sicherheit & Compliance
+
+- **Sicherheits-Header:** HSTS (2 Jahre, Preload), X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy, CSP.
+- **Datenschutz (DSGVO):** Zero-Cookie-Baseline. Erst nach ausdrücklicher Zustimmung werden optionale funktionale Inhalte wie Google Maps geladen. Jederzeit über den permanenten Privacy-Trigger links unten widerrufbar.
+- **Formular-Hardening:** Client- & Server-Zod-Validierung, Honeypot-Spamfilter und IP-basiertes Rate-Limiting gegen Flooding.
+
+---
+
+## 📄 Lizenz & Impressum
+
+AKAN Dienstleistung  
+Inhaber: Cemal Hilaloglu  
+Odenbergstraße 26, 34281 Gudensberg  
+Telefon: 0152 34754386  
+E-Mail: [info@akan-dienstleistung.de](mailto:info@akan-dienstleistung.de)
