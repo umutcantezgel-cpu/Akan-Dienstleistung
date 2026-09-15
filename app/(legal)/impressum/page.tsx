@@ -229,6 +229,28 @@ export default function Impressum() {
           Dienstleistung)
         </p>
       </LegalAccordion>
+
+      <h2 id="webdesign-entwicklung">Webdesign &amp; Technische Umsetzung</h2>
+      <LegalAccordion
+        title="Konzeption, Webdesign &amp; Entwicklung"
+        icon={<PenTool />}
+        defaultOpen={true}
+      >
+        <p>
+          Verantwortlich für Konzeption, Webdesign und technische Umsetzung dieser Webpräsenz:
+        </p>
+        <p className="bg-background border border-border/50 p-4 rounded-xl mt-3">
+          <strong>Webdesign &amp; Entwicklung:</strong>{" "}
+          <a
+            href="https://codayweb.de"
+            target="_blank"
+            rel="noopener"
+            className="text-primary hover:underline font-semibold"
+          >
+            codayweb.de
+          </a>
+        </p>
+      </LegalAccordion>
     </LegalPageTemplate>
   );
 }

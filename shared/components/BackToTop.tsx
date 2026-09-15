@@ -71,60 +71,17 @@ export default function BackToTop() {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0, transition: { duration: 0.2 } }}
-                    whileHover="hover"
-                    className="fixed z-[98] flex items-center justify-center pointer-events-none bottom-[108px] right-4 lg:bottom-10 lg:left-10 lg:right-auto"
+                    exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
+                    className="fixed z-30 bottom-24 right-4 lg:bottom-20 lg:left-4 flex items-center justify-center pointer-events-auto"
                 >
-                    {/* Ring Expansion Materialization Effect */}
-                    <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: [1, 2], opacity: [0.8, 0] }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="absolute inset-0 rounded-full bg-primary"
-                    />
-
-                    {/* Engine Thrust Glow (Triggered on Launch) */}
-                    <AnimatePresence>
-                        {isLaunching && (
-                            <motion.div
-                                initial={{ opacity: 0, scaleY: 0, y: 0 }}
-                                animate={{ opacity: 1, scaleY: 2, y: 20 }}
-                                exit={{ opacity: 0 }}
-                                className="absolute bottom-0 w-8 h-24 bg-gradient-to-b from-[#00ffff] via-primary to-transparent rounded-full blur-[8px] origin-top"
-                            />
-                        )}
-                    </AnimatePresence>
-
                     <button
                         onClick={scrollToTop}
-                        aria-label="Zum Anfang scrollen"
-                        className="relative w-12 h-12 bg-[#0a0a0c]/80 backdrop-blur-xl text-white rounded-full flex items-center justify-center shadow-elevated border border-white/10 hover:bg-primary transition-colors overflow-hidden pointer-events-auto group"
+                        aria-label="Zum Anfang der Seite scrollen"
+                        className="w-11 h-11 bg-surface border border-border text-text-primary hover:text-primary hover:border-primary/50 rounded-full flex items-center justify-center shadow-soft hover:shadow-card transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary backdrop-blur-md"
                     >
-                        {/* Hover Radar Sweep */}
-                        <motion.div
-                            variants={{
-                                hover: {
-                                    scale: [1, 1.2, 1],
-                                    rotate: [0, 90, 0],
-                                    opacity: [0.3, 0.6, 0.3],
-                                },
-                            }}
-                            className="absolute inset-0 bg-white/20 rounded-full pointer-events-none"
-                            transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                        />
-
-                        <motion.div
-                            animate={isLaunching ? {
-                                y: [0, 2, -4, 2, 0],
-                                scale: [1, 0.9, 1.1, 1], // Vibration distortion
-                            } : {}}
-                            transition={isLaunching ? { duration: 0.2, repeat: Infinity } : {}}
-                            className="relative z-10 group-hover:-translate-y-1 transition-transform"
-                        >
-                            <ArrowUp className="w-5 h-5 text-white/80 group-hover:text-white" />
-                        </motion.div>
+                        <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
                 </motion.div>
             )}

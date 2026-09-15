@@ -216,7 +216,21 @@ export default function Footer() {
         {/* Bottom Bar with gradient line */}
         <div className="relative pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-tiny tracking-wide text-text-secondary font-medium">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          <div>© {new Date().getFullYear()} AKAN Dienstleistung. Alle Rechte vorbehalten.</div>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <span>© {new Date().getFullYear()} AKAN Dienstleistung. Alle Rechte vorbehalten.</span>
+            <span className="hidden sm:inline text-border">•</span>
+            <span>
+              Webdesign &amp; Entwicklung:{" "}
+              <a
+                href="https://codayweb.de"
+                target="_blank"
+                rel="noopener"
+                className="text-text-primary hover:text-primary transition-colors underline-offset-4 hover:underline font-semibold"
+              >
+                codayweb.de
+              </a>
+            </span>
+          </div>
           <div className="flex space-x-8">
             <Link
               href="/impressum"
