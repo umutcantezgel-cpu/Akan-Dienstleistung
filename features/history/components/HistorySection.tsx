@@ -4,7 +4,7 @@ import { fadeInUp } from '@/shared/styles/animations';
 
 export default function HistorySection({ timelineComponent }: { timelineComponent?: React.ReactNode }) {
     return (
-        <section className="py-section-lg bg-background">
+        <section className="py-section-lg bg-background overflow-hidden">
             <div className="container-fluid">
                 <AnimatedSection className="text-center max-w-2xl mx-auto mb-20" variants={fadeInUp}>
                     <div className="flex items-center justify-center gap-4 mb-5">

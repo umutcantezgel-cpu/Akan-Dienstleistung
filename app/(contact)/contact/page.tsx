@@ -51,7 +51,7 @@ export default function Contact() {
       {/* Info Cards */}
       <div className="container-fluid -mt-20 lg:-mt-28 relative z-20 mb-[var(--section-py-lg)]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-surface rounded-[2rem] p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
+          <div className="bg-surface rounded-[2rem] p-6 sm:p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
             <div className="w-16 h-16 rounded-[1rem] bg-white shadow-inner-glow flex items-center justify-center mb-8 border border-border group-hover:scale-110 transition-transform duration-500">
               <MapPin className="w-8 h-8 text-primary" />
             </div>
@@ -62,7 +62,7 @@ export default function Contact() {
               Deutschland
             </p>
           </div>
-          <div className="bg-surface rounded-[2rem] p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
+          <div className="bg-surface rounded-[2rem] p-6 sm:p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
             <div className="w-16 h-16 rounded-[1rem] bg-white shadow-inner-glow flex items-center justify-center mb-8 border border-border group-hover:scale-110 transition-transform duration-500">
               <Phone className="w-8 h-8 text-primary" />
             </div>
@@ -74,7 +74,7 @@ export default function Contact() {
               0152 34754386
             </a>
           </div>
-          <div className="bg-surface rounded-[2rem] p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
+          <div className="bg-surface rounded-[2rem] p-6 sm:p-10 shadow-soft border border-border flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-card transition-all duration-500 group">
             <div className="w-16 h-16 rounded-[1rem] bg-white shadow-inner-glow flex items-center justify-center mb-8 border border-border group-hover:scale-110 transition-transform duration-500">
               <Mail className="w-8 h-8 text-primary" />
             </div>
@@ -100,7 +100,7 @@ export default function Contact() {
 
           {/* Sidebar Section */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-surface rounded-[2.5rem] p-10 border border-border shadow-soft">
+            <div className="bg-surface rounded-[2.5rem] p-6 sm:p-10 border border-border shadow-soft">
               <h3 className="text-2xl font-bold text-text-primary mb-8 flex items-center gap-4 font-display tracking-tight">
                 <div className="w-12 h-12 rounded-xl bg-white shadow-inner-glow flex items-center justify-center text-primary border border-border">
                   <Clock className="w-6 h-6" />
@@ -130,7 +130,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-primary/5 rounded-[2.5rem] p-10 border border-primary/10 shadow-soft">
+            <div className="bg-primary/5 rounded-[2.5rem] p-6 sm:p-10 border border-primary/10 shadow-soft">
               <h3 className="text-xl font-bold text-text-primary mb-8 font-display tracking-tight">Warum AKAN?</h3>
               <ul className="space-y-5">
                 {['Kostenlose Besichtigung vor Ort', 'Unverbindliches Angebot', 'Transparente Preisgestaltung', 'Persönlicher Ansprechpartner'].map((item, i) => (

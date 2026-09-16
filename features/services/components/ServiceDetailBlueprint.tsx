@@ -45,7 +45,7 @@ export default function ServiceDetailBlueprint({
     .slice(0, 3);
 
   return (
-    <article className="pb-section-lg">
+    <article className="pb-section-lg overflow-hidden">
       {/* 1. Hero Section (Hook) */}
       <header className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-surface">
         <div className="container-fluid relative z-10">
@@ -215,7 +215,7 @@ export default function ServiceDetailBlueprint({
       {/* 4. Leistungsdetails & CTA */}
       <section className="py-section">
         <div className="container-fluid max-w-5xl mx-auto">
-          <div className="bg-primary text-white rounded-[2.5rem] p-10 lg:p-16 relative overflow-hidden shadow-card text-center">
+          <div className="bg-primary text-white rounded-[2.5rem] p-6 sm:p-10 lg:p-16 relative overflow-hidden shadow-card text-center">
             <div className="relative z-10">
               <h2 className="text-3xl lg:text-4xl font-black uppercase tracking-tight mb-8">
                 Was gehört dazu?

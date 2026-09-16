@@ -151,7 +151,7 @@ export default function BeforeAfterGallery() {
             </div>
 
             {/* Carousel with Navigation */}
-            <div className="relative group w-full">
+            <div className="relative group w-full overflow-hidden">
                 {/* Scroll Container */}
                 <div
                     ref={scrollContainerRef}
@@ -165,7 +165,7 @@ export default function BeforeAfterGallery() {
                     {filteredData.map((item) => (
                         <div
                             key={item.id}
-                            className="snap-center shrink-0 w-full md:w-[calc(60%-1rem)] lg:w-[calc(50%-1rem)] min-w-[300px] flex flex-col justify-between bg-surface rounded-[2.25rem] p-4 border border-border/70 shadow-card hover:shadow-elevated transition-shadow"
+                            className="snap-center shrink-0 w-full md:w-[calc(60%-1rem)] lg:w-[calc(50%-1rem)] min-w-0 flex flex-col justify-between bg-surface rounded-[2.25rem] p-4 border border-border/70 shadow-card hover:shadow-elevated transition-shadow"
                         >
                             <div className="w-full">
                                 <BeforeAfterSlider
@@ -194,7 +194,7 @@ export default function BeforeAfterGallery() {
 
                 {/* Navigation Buttons */}
                 {filteredData.length > 1 && (
-                    <div className="absolute top-1/2 -translate-y-12 left-0 right-0 flex justify-between pointer-events-none px-2 z-30">
+                    <div className="absolute top-1/2 -translate-y-12 left-2 right-2 flex justify-between pointer-events-none z-30">
                         <motion.button
                             initial={{ opacity: 0 }}
                             animate={{ opacity: canScrollLeft ? 1 : 0 }}
@@ -202,7 +202,7 @@ export default function BeforeAfterGallery() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => scroll('left')}
                             disabled={!canScrollLeft}
-                            className="w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-border shadow-lg flex items-center justify-center text-text-primary hover:text-primary transition-colors pointer-events-auto disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary -ml-3"
+                            className="w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-border shadow-lg flex items-center justify-center text-text-primary hover:text-primary transition-colors pointer-events-auto disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             aria-label="Vorheriges Ergebnis"
                         >
                             <ChevronLeft className="w-5 h-5" />
@@ -215,7 +215,7 @@ export default function BeforeAfterGallery() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => scroll('right')}
                             disabled={!canScrollRight}
-                            className="w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-border shadow-lg flex items-center justify-center text-text-primary hover:text-primary transition-colors pointer-events-auto disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary -mr-3"
+                            className="w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-border shadow-lg flex items-center justify-center text-text-primary hover:text-primary transition-colors pointer-events-auto disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             aria-label="Nächstes Ergebnis"
                         >
                             <ChevronRight className="w-5 h-5" />

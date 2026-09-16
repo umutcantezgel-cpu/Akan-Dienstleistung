@@ -63,7 +63,7 @@ export default function DynamicMap({ location, zoom = 11 }: DynamicMapProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-surface/80 backdrop-blur-xl p-6 rounded-3xl shadow-elevated border border-border/50 text-center pointer-events-auto z-30 min-w-[280px]"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 bg-surface/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-elevated border border-border/50 text-center pointer-events-auto z-30 w-[calc(100%-2rem)] max-w-xs sm:w-auto sm:min-w-[280px]"
       >
         <h4 className="font-bold text-text-primary text-xl font-display mb-1">
           {location.name}

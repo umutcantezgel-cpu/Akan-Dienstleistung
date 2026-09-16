@@ -22,7 +22,7 @@ export default function AboutSection() {
                         <motion.div
                             whileHover={{ scale: 1.02, y: -4 }}
                             transition={springs.snappy}
-                            className="flex items-center gap-6 p-8 bg-background rounded-3xl border border-border shadow-soft group hover:shadow-card transition-all duration-300"
+                            className="flex items-center gap-6 p-5 sm:p-8 bg-background rounded-3xl border border-border shadow-soft group hover:shadow-card transition-all duration-300"
                         >
                             <ImagePlaceholder width={80} height={80} alt="Team" className="rounded-full object-cover border-4 border-surface shadow-sm" />
                             <div>
@@ -36,7 +36,7 @@ export default function AboutSection() {
                         <motion.div
                             whileHover={{ y: -4 }}
                             transition={springs.snappy}
-                            className="bg-background rounded-[2.5rem] shadow-card p-10 lg:p-12 border border-border"
+                            className="bg-background rounded-[2.5rem] shadow-card p-6 sm:p-10 lg:p-12 border border-border"
                         >
                             <h4 className="text-xl font-bold text-text-primary mb-10 pb-6 border-b border-border/60 tracking-tight">Ihre Vorteile auf einen Blick</h4>
                             <AnimatedSection as="div" className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6" stagger>

@@ -58,27 +58,26 @@ export default function ScrollProgress() {
     });
 
     return (
-        <>
+        <div className="fixed top-0 left-0 right-0 z-overlay pointer-events-none overflow-hidden h-4" aria-hidden="true">
             {/* The Main Progress Bar */}
             <motion.div
-                className="fixed top-0 left-0 right-0 z-overlay origin-left shadow-[0_0_10px_rgba(155,28,46,0.5)]"
+                className="absolute top-0 left-0 right-0 origin-left shadow-[0_0_10px_rgba(155,28,46,0.5)]"
                 style={{
                     scaleX,
                     height: thickness,
                     background
                 }}
-                aria-hidden="true"
             />
 
             {/* The Biometric Glow Dot following the tip */}
             <motion.div
-                className="fixed top-0 left-0 z-overlay w-3 h-3 rounded-full bg-white shadow-[0_0_12px_2px_#ffffff] -translate-y-1/2 pointer-events-none"
+                className="absolute top-0 left-0 w-3 h-3 rounded-full bg-white shadow-[0_0_12px_2px_#ffffff] -translate-y-1/2 pointer-events-none"
                 style={{
-                    x: useTransform(scaleX, [0, 1], ['0vw', '100vw']),
+                    x: useTransform(scaleX, [0, 1], ['0px', 'calc(100vw - 12px)']),
                     y: useTransform(thickness, t => (t as number) / 2),
                     opacity: useTransform(scrollYProgress, [0, 0.05], [0, 1]) // hide dot when at absolute top
                 }}
             />
-        </>
+        </div>
     );
 }

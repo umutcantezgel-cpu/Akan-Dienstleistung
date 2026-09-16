@@ -92,7 +92,7 @@ export default function ContactForm() {
                     />
                 )}
             </AnimatePresence>
-            <div className={`bg-white rounded-[2.5rem] p-8 md:p-14 border relative overflow-hidden transition-all duration-700 ${focusedField ? 'border-primary/40 shadow-glow' : 'border-border/60 shadow-elevated'}`}>
+            <div className={`bg-white rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 border relative overflow-hidden transition-all duration-700 ${focusedField ? 'border-primary/40 shadow-glow' : 'border-border/60 shadow-elevated'}`}>
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-primary-light hidden md:block" />
 
                 {/* HERMES Progress Tracker */}
@@ -102,7 +102,7 @@ export default function ContactForm() {
                             initial={{ opacity: 0, scale: 0.8, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.8 }}
-                            className="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-3 bg-surface p-2 pr-4 rounded-full border border-border/50 shadow-sm z-20"
+                            className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-10 md:right-10 flex items-center gap-2 sm:gap-3 bg-surface p-1.5 sm:p-2 pr-3 sm:pr-4 rounded-full border border-border/50 shadow-sm z-20"
                         >
                             <div className="relative w-8 h-8">
                                 <svg className="w-full h-full transform -rotate-90">

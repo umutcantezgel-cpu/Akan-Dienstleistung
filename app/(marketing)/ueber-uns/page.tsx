@@ -104,7 +104,7 @@ export default function About() {
                 className="relative rounded-[2.5rem] shadow-elevated w-full h-auto object-cover aspect-[4/3] transform transition hover:scale-[1.02] duration-700 border border-border/60"
               />
               <div
-                className="absolute -bottom-8 -left-8 bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-card border border-border max-w-xs animate-bounce"
+                className="absolute bottom-4 left-4 sm:-bottom-8 sm:-left-8 bg-white/95 backdrop-blur-md p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-card border border-border max-w-[calc(100%-2rem)] sm:max-w-xs animate-bounce"
                 style={{ animationDuration: "4s" }}
               >
                 <div className="flex items-center gap-5">
@@ -128,7 +128,7 @@ export default function About() {
 
       <section
         id="team"
-        className="py-section-lg bg-surface border-y border-border relative"
+        className="py-section-lg bg-surface border-y border-border relative overflow-hidden"
       >
         <div className="container-fluid">
           <div className="text-center max-w-3xl mx-auto mb-20">
@@ -235,7 +235,7 @@ export default function About() {
         </div>
       </section>
 
-      <section id="values" className="py-section-lg bg-background">
+      <section id="values" className="py-section-lg bg-background overflow-hidden">
         <div className="container-fluid">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-5">
@@ -246,7 +246,7 @@ export default function About() {
             </h3>
           </div>
           <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-surface p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
               <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-primary border border-border group-hover:scale-110 transition-transform duration-500">
                 <ShieldCheck className="w-8 h-8" />
               </div>
@@ -259,7 +259,7 @@ export default function About() {
                 für jeden Auftrag.
               </p>
             </div>
-            <div className="bg-surface p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
               <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-trust-gold border border-border group-hover:scale-110 transition-transform duration-500">
                 <Handshake className="w-8 h-8" />
               </div>
@@ -272,7 +272,7 @@ export default function About() {
                 Anforderungen.
               </p>
             </div>
-            <div className="bg-surface p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
               <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-accent border border-border group-hover:scale-110 transition-transform duration-500">
                 <Shield className="w-8 h-8" />
               </div>

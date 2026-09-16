@@ -86,7 +86,7 @@ export default function HeroSection() {
         }}
       >
         {/* Left: Text Content */}
-        <div className="w-full lg:w-[55%] relative z-10 lg:pr-8 shrink-0">
+        <div className="w-full lg:w-[52%] relative z-10 lg:pr-6 min-w-0">
           <TextReveal
             text="Makellose Räume für anspruchsvolle Unternehmen"
             as="h1"
@@ -185,10 +185,10 @@ export default function HeroSection() {
 
         {/* Right: Hero Image with parallax */}
         <motion.div
-          initial={{ opacity: 0, x: 80, rotateY: 10 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.5, ...springs.gentle }}
-          className="w-full lg:w-[45%] relative h-[500px] lg:h-auto lg:aspect-[4/5] shrink-0 [transform-style:preserve-3d]"
+          className="w-full lg:w-[44%] relative h-[420px] sm:h-[500px] lg:h-auto lg:aspect-[4/5] min-w-0 [transform-style:preserve-3d]"
         >
           <MagneticTilt maxTilt={8} depth={40} className="w-full h-full">
             {/* Rotating background shape */}

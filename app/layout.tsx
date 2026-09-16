@@ -195,7 +195,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${outfit.variable} ${inter.variable} scroll-smooth`}
+      className={`${outfit.variable} ${inter.variable} scroll-smooth max-w-full overflow-x-clip`}
     >
       <head>
         <script
@@ -218,7 +218,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="font-sans bg-theme-bg text-theme-text transition-colors duration-[800ms] antialiased leading-[1.6] selection:bg-theme-primary selection:text-white flex flex-col min-h-screen relative"
+        className="font-sans bg-theme-bg text-theme-text transition-colors duration-[800ms] antialiased leading-[1.6] selection:bg-theme-primary selection:text-white flex flex-col min-h-screen relative max-w-full overflow-x-clip"
         suppressHydrationWarning
       >
         <ThemeInjector />
@@ -238,7 +238,7 @@ export default function RootLayout({
           <Navbar />
           <main
             id="main-content"
-            className="flex-grow pt-24 relative z-10"
+            className="flex-grow pt-24 relative z-10 w-full max-w-full min-w-0 overflow-x-clip"
             tabIndex={-1}
           >
             {children}

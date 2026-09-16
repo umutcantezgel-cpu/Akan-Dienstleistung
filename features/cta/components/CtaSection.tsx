@@ -85,12 +85,9 @@ export default function CtaSection({ contactForm }: { contactForm?: React.ReactN
                     </div>
 
                     {/* Right: Contact Form Embedded */}
-                    <div className="w-full lg:w-7/12 min-w-0">
-                        <AnimatedSection variants={fadeInUp} className="w-full relative h-full flex flex-col">
-                            <div className="bg-white rounded-[2rem] shadow-mega border border-border/60 p-6 md:p-10 relative overflow-hidden flex-grow flex flex-col justify-center">
-                                {/* Decorative line for form card */}
-                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary opacity-90" />
-
+                    <div className="w-full lg:w-7/12 min-w-0 max-w-full">
+                        <AnimatedSection variants={fadeInUp} className="w-full relative h-full flex flex-col min-w-0">
+                            <div className="w-full relative overflow-hidden flex-grow flex flex-col justify-center min-w-0">
                                 {/* The actual form */}
                                 {contactForm}
                             </div>

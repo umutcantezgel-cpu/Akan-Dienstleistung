@@ -33,7 +33,7 @@ export default function ProofSection({ galleryComponent }: { galleryComponent?: 
                         </Link>
                     </AnimatedSection>
 
-                    <AnimatedSection className="w-full lg:w-7/12" variants={fadeInRight} delay={0.3}>
+                    <AnimatedSection className="w-full lg:w-7/12 min-w-0 max-w-full overflow-hidden" variants={fadeInRight} delay={0.3}>
                         {galleryComponent}
                     </AnimatedSection>
                 </div>

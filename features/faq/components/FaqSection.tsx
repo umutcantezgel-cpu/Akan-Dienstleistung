@@ -20,7 +20,7 @@ export default function FaqSection() {
     };
 
     return (
-        <section className="py-section-lg bg-surface border-y border-border">
+        <section className="py-section-lg bg-surface border-y border-border overflow-hidden">
             <Script
                 id="faq-schema"
                 type="application/ld+json"

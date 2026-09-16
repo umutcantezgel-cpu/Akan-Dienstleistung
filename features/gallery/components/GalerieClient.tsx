@@ -65,7 +65,7 @@ export default function GalerieClient() {
             </section>
 
             {/* 1. Vorher-Nachher Showcase Section */}
-            <section className="py-section bg-surface/50 border-b border-border">
+            <section className="py-section bg-surface/50 border-b border-border overflow-hidden">
                 <div className="container-fluid">
                     <div className="max-w-3xl mb-10">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
@@ -85,7 +85,7 @@ export default function GalerieClient() {
             </section>
 
             {/* 2. Gesamte Fotogalerie */}
-            <section className="py-section-lg bg-surface border-y border-border">
+            <section className="py-section-lg bg-surface border-y border-border overflow-hidden">
                 <div className="container-fluid">
                     <div className="text-center max-w-2xl mx-auto mb-12">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-border text-text-secondary text-xs font-bold uppercase tracking-wider mb-3 shadow-inner-glow">

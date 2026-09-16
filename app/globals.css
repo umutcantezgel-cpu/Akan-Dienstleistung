@@ -228,17 +228,17 @@
 /* ── Global Base Setup ─────────────────────── */
 @layer components {
   .container-fluid {
-    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full;
+    @apply max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full min-w-0;
   }
 
   /* ── FLUID GRID ARCHITECTURE (LT-2.7) ── */
   .grid-fluid-columns {
     display: grid;
-    /* Auto-fit columns down to 300px min width */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Auto-fit columns safely down to mobile widths without overflow */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--spacing-section-sm);
     /* Fallback */
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(1.25rem, 4vw, 3rem);
     /* Fluid gap */
   }
 
@@ -265,6 +265,16 @@
 }
 
 @layer base {
+  html {
+    max-width: 100%;
+    overflow-x: clip;
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
   h1,
   h2,
   h3,
@@ -314,6 +324,9 @@
 
   /* POLLUX: Safe-area insets for notch devices */
   body {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: clip;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
     padding-bottom: env(safe-area-inset-bottom);
@@ -322,6 +335,9 @@
 
 body {
   position: relative;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: clip;
   /* Very subtle global grain */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   background-attachment: fixed;
