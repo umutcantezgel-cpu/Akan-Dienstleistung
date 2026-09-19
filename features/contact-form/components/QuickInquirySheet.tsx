@@ -68,14 +68,14 @@ export default function QuickInquirySheet({ isOpen, onClose }: Props) {
                         {/* Close Button */}
                         <button
                             onClick={onClose}
-                            className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 bg-surface-secondary text-text-secondary hover:text-text-primary rounded-full transition-colors z-[100] shadow-sm"
+                            className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2.5 bg-surface hover:bg-surface-secondary text-text-secondary hover:text-text-primary rounded-full transition-colors z-50 border border-border/60 shadow-sm"
                             aria-label="Schließen"
                         >
                             <X className="w-5 h-5" />
                         </button>
 
-                        <div className="flex-1 overflow-y-auto px-2 sm:px-6 pb-10 custom-scrollbar">
-                            <div className="pt-2 sm:pt-6 origin-top">
+                        <div className="flex-1 overflow-y-auto px-3 sm:px-6 pb-8 custom-scrollbar overscroll-contain">
+                            <div className="pt-3 sm:pt-6">
                                 <ContactForm />
                             </div>
                         </div>

@@ -1,9 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { AlertCircle } from 'lucide-react';
 import { UseFormRegister, FieldError } from 'react-hook-form';
-import { springs } from '@/shared/styles/animations';
 import { ContactFormData } from '@/features/contact-form/api/schema';
 
 type ContactInputProps = {
@@ -14,13 +13,14 @@ type ContactInputProps = {
     isTextArea?: boolean;
     inputMode?: 'text' | 'tel' | 'email' | 'none' | 'decimal' | 'numeric' | 'search' | 'url';
     autoComplete?: string;
+    placeholder?: string;
 
     register: UseFormRegister<ContactFormData>;
     error?: FieldError | undefined;
-    hasValue: boolean;
-    isFocused: boolean;
-    onFocus: () => void;
-    onBlurFocus: () => void;
+    hasValue?: boolean;
+    isFocused?: boolean;
+    onFocus?: () => void;
+    onBlurFocus?: () => void;
 };
 
 export default function ContactInput({
@@ -31,62 +31,65 @@ export default function ContactInput({
     isTextArea = false,
     inputMode,
     autoComplete,
+    placeholder,
     register,
     error,
-    hasValue,
-    isFocused,
+    isFocused = false,
     onFocus,
     onBlurFocus
 }: ContactInputProps) {
-    const floatLabel = isFocused || hasValue;
     const { ref, onChange, onBlur, name } = register(id);
 
     return (
-        <div className="relative group/input flex flex-col" style={{ zIndex: isFocused ? 10 : 1 }}>
-            {/* Floating Label */}
-            <motion.label
-                htmlFor={id}
-                initial={false}
-                animate={{
-                    y: floatLabel ? (isTextArea ? -36 : -32) : (isTextArea ? 16 : 0),
-                    x: floatLabel ? 0 : 20,
-                    scale: floatLabel ? 0.8 : 1,
-                    color: error ? '#ef4444' : (floatLabel ? 'rgba(155, 28, 46, 1)' : 'rgba(100, 116, 139, 0.7)'),
-                }}
-                transition={springs.snappy}
-                className="absolute left-0 pointer-events-none origin-left font-display font-medium px-1 bg-white/0 backdrop-blur-none"
-                style={{
-                    top: isTextArea ? '0' : '50%',
-                    marginTop: !floatLabel && !isTextArea ? '-12px' : '0',
-                    opacity: 1
-                }}
-            >
-                {label} {required && '*'}
-            </motion.label>
+        <div className="flex flex-col w-full">
+            {/* Semantic Label in Flow - Never collides with input text or placeholders */}
+            <div className="flex items-center justify-between mb-2">
+                <label
+                    htmlFor={id}
+                    className="text-sm font-semibold text-text-primary font-display tracking-tight flex items-center gap-1 cursor-pointer select-none"
+                >
+                    <span>{label}</span>
+                    {required && (
+                        <span className="text-primary font-bold text-base leading-none" aria-hidden="true">
+                            *
+                        </span>
+                    )}
+                </label>
+                {!required && (
+                    <span className="text-[11px] font-medium text-text-secondary/70 uppercase tracking-wider bg-surface-secondary px-2 py-0.5 rounded-full border border-border/40">
+                        Optional
+                    </span>
+                )}
+            </div>
 
-            {/* Input / Textarea */}
-            <div className={`relative overflow-hidden rounded-xl bg-white border transition-all duration-300 ${error ? 'border-red-500' : (isFocused ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200 hover:border-gray-300')}`}>
+            {/* Input / Textarea Container */}
+            <div
+                className={`relative rounded-xl bg-white border transition-all duration-200 shadow-sm ${
+                    error
+                        ? 'border-red-500 ring-2 ring-red-500/10'
+                        : isFocused
+                            ? 'border-primary ring-2 ring-primary/20 shadow-[0_0_0_1px_rgba(155,28,46,0.1)]'
+                            : 'border-border/80 hover:border-border'
+                }`}
+            >
                 {isTextArea ? (
-                    <motion.textarea
+                    <textarea
                         id={id}
                         required={required}
-                        rows={5}
+                        rows={4}
                         name={name}
                         ref={ref}
+                        placeholder={placeholder}
                         onChange={onChange}
                         onFocus={onFocus}
                         onBlur={(e) => {
-                            onBlurFocus();
+                            onBlurFocus?.();
                             onBlur(e);
                         }}
-                        animate={{
-                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(252, 252, 252, 1)',
-                            boxShadow: isFocused ? 'inset 0 2px 8px rgba(0,0,0,0.03)' : 'none',
-                        }}
-                        className={`w-full px-6 py-4 outline-none resize-none text-[16px] text-gray-900 font-medium bg-transparent relative z-10 placeholder:text-gray-400 ${isFocused && !hasValue ? 'animate-pulse-slow' : ''}`}
+                        className="w-full px-4 sm:px-5 py-3.5 outline-none resize-y min-h-[120px] text-[16px] text-text-primary font-normal bg-transparent placeholder:text-text-secondary/40 leading-relaxed focus:bg-white transition-colors rounded-xl"
                     />
                 ) : (
-                    <motion.input
+                    <input
                         type={type}
                         id={id}
                         required={required}
@@ -94,32 +97,31 @@ export default function ContactInput({
                         ref={ref}
                         inputMode={inputMode}
                         autoComplete={autoComplete}
+                        placeholder={placeholder}
                         onChange={onChange}
                         onFocus={onFocus}
                         onBlur={(e) => {
-                            onBlurFocus();
+                            onBlurFocus?.();
                             onBlur(e);
                         }}
-                        animate={{
-                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(252, 252, 252, 1)',
-                            boxShadow: isFocused ? 'inset 0 2px 8px rgba(0,0,0,0.03)' : 'none',
-                        }}
-                        className="w-full px-6 outline-none text-[16px] text-gray-900 font-medium bg-transparent relative z-10 min-h-[52px] h-[52px] placeholder:text-gray-400"
+                        className="w-full px-4 sm:px-5 outline-none text-[16px] text-text-primary font-normal bg-transparent h-[52px] min-h-[52px] placeholder:text-text-secondary/40 focus:bg-white transition-colors rounded-xl"
                     />
                 )}
             </div>
 
-            {/* Error Message */}
+            {/* Accessible Error Message */}
             <AnimatePresence>
                 {error && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10, height: 0 }}
+                        initial={{ opacity: 0, y: -4, height: 0 }}
                         animate={{ opacity: 1, y: 0, height: 'auto' }}
-                        exit={{ opacity: 0, y: -10, height: 0 }}
-                        className="text-red-500 text-sm mt-2 font-medium flex items-center gap-1.5 px-2"
+                        exit={{ opacity: 0, y: -4, height: 0 }}
+                        transition={{ duration: 0.15 }}
+                        role="alert"
+                        className="text-red-600 text-xs sm:text-sm mt-1.5 font-medium flex items-center gap-1.5 px-0.5"
                     >
-                        <AlertCircle className="w-3.5 h-3.5" />
-                        {error.message}
+                        <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                        <span>{error.message}</span>
                     </motion.div>
                 )}
             </AnimatePresence>
