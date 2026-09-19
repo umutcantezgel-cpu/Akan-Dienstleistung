@@ -87,30 +87,58 @@ export default function HeroSection() {
       >
         {/* Left: Text Content */}
         <div className="w-full lg:w-[52%] relative z-10 lg:pr-6 min-w-0">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, ...springs.gentle }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface border border-border shadow-xs mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary font-display">
+              AKAN Dienstleistung • Gudensberg &amp; Nordhessen
+            </span>
+          </motion.div>
+
           <TextReveal
-            text="Makellose Räume für anspruchsvolle Unternehmen"
+            text="Professionelle Gebäudereinigung in Nordhessen"
             as="h1"
             mode="words"
-            staggerDelay={0.06}
-            className="text-h1 font-bold text-text-primary mb-6 leading-[1.05] tracking-tighter font-display drop-shadow-sm"
+            staggerDelay={0.05}
+            className="text-h1 font-bold text-text-primary mb-6 leading-[1.08] tracking-tighter font-display drop-shadow-sm"
           />
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, ...springs.gentle }}
-            className="text-lg lg:text-xl font-light text-text-secondary mb-10 max-w-xl leading-[1.8]"
+            transition={{ delay: 0.5, ...springs.gentle }}
+            className="mb-10 max-w-xl"
           >
-            Von einem Team, das Reinigung als Handwerk versteht. Langjährige
-            Erfahrung und praxisbewährte Abläufe, die Ihren Reinigungsaufwand auf Null
-            reduzieren. Für zufriedene Unternehmen und Kunden in ganz Nordhessen.
-          </motion.p>
+            <p className="text-lg lg:text-xl font-light text-text-secondary leading-[1.8] mb-6">
+              Zuverlässige Reinigung für Unternehmen, Gewerbe und private Kunden. Persönlich betreut, flexibel und auf Ihre Objekte abgestimmt.
+            </p>
+
+            {/* Visual Micro-Feature Highlights */}
+            <div className="flex flex-wrap gap-2.5">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border text-xs font-bold text-text-primary shadow-xs hover:border-primary/40 transition-colors">
+                <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                Gewerblich &amp; Privat
+              </span>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border text-xs font-bold text-text-primary shadow-xs hover:border-trust-gold/50 transition-colors">
+                <CheckCircle2 className="w-4 h-4 text-trust-gold shrink-0" />
+                Persönlich vor Ort
+              </span>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border text-xs font-bold text-text-primary shadow-xs hover:border-accent/40 transition-colors">
+                <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                Flexibel getaktet
+              </span>
+            </div>
+          </motion.div>
 
           {/* CTAs with breathing pulse */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, ...springs.gentle }}
+            transition={{ delay: 0.8, ...springs.gentle }}
             className="flex flex-col sm:flex-row gap-5 mb-12"
           >
             <MagneticButton magneticIntensity={0.25}>
@@ -161,7 +189,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1 }}
             className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-8 border-t border-border/80"
           >
             <div className="flex items-center gap-2 text-sm font-medium text-text-secondary">
@@ -187,7 +215,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.5, ...springs.gentle }}
+          transition={{ delay: 0.4, ...springs.gentle }}
           className="w-full lg:w-[44%] relative h-[420px] sm:h-[500px] lg:h-auto lg:aspect-[4/5] min-w-0 [transform-style:preserve-3d]"
         >
           <MagneticTilt maxTilt={8} depth={40} className="w-full h-full">
@@ -197,10 +225,19 @@ export default function HeroSection() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="absolute inset-0 bg-primary-light/5 rounded-[2.5rem] scale-95 z-0"
             />
-            <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-elevated border border-border/60 bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500 font-bold text-xl px-4 text-center">
-                Platzhalter für Inhaberbild
-              </span>
+            <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-elevated border border-border/60">
+              <ImagePlaceholder
+                alt="AKAN Dienstleistung – Professionelle Gebäudereinigung in Nordhessen"
+                fill
+                priority={true}
+                originalSrc="/images/galerie/fensterreinigung/akan-glasreinigung-mitarbeiter-branded-hoodie.webp"
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 text-white text-xs font-medium z-10 bg-black/50 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/10 flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                <span>Ihr verlässliches Reinigungsteam vor Ort in Nordhessen</span>
+              </div>
             </div>
           </MagneticTilt>
 

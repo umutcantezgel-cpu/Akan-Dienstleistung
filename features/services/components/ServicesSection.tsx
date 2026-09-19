@@ -25,7 +25,7 @@ export default function ServicesSection() {
 
                 <AnimatedSection className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:grid md:grid-fluid-columns md:overflow-visible md:snap-none pb-8 md:pb-0 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" stagger variants={fadeInUp}>
                     {[
-                        { title: 'Unterhaltsreinigung', desc: 'Makellose Räume für Ihr Unternehmen. Dauerhaft repräsentatives Erscheinungsbild für weniger als einen Kaffee pro Tag / m².', icon: Building2, link: '/leistungen/unterhaltsreinigung' },
+                        { title: 'Unterhaltsreinigung', desc: 'Zuverlässige Sauberkeit für Büros, Praxen und Gewerbeobjekte. Regelmäßig, gründlich und persönlich betreut.', icon: Building2, link: '/leistungen/unterhaltsreinigung' },
                         { title: 'Fensterreinigung', desc: 'Streifenfreier Glanz für Fenster, Glasfassaden und Wintergärten. Klare Sicht, die bei Partnern und Kunden Vertrauen schafft.', icon: Sun, link: '/leistungen/fensterreinigung' },
                         { title: 'Bauendreinigung', desc: 'Gründliche Reinigung nach Neubau oder Sanierung. Wir machen Ihre Immobilie schnell, sicher und bezugsfertig.', icon: HardHat, link: '/leistungen/bauendreinigung' },
                         { title: 'Industriereinigung', desc: 'Spezialreinigung für Hallen und Produktionsstätten. Höchste Standards für maximale Sicherheit, Hygiene und Werterhalt.', icon: Factory, link: '/leistungen/industriereinigung' }
