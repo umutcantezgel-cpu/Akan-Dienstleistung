@@ -24,43 +24,43 @@ interface BeforeAfterItem {
 const galleryData: BeforeAfterItem[] = [
     {
         id: "industrieboden",
-        title: "Industrieboden Tiefenreinigung & Glanzversiegelung",
+        title: "Industrieboden Tiefenreinigung",
         category: "Industriereinigung",
-        description: "Beseitigung hartnäckiger Abriebspuren, Industrieöle und Feinstaub mit anschließender polymerer Schutzversiegelung.",
+        description: "Beseitigung hartnäckiger Abriebspuren, Industrieöle und Feinstaub für saubere und sichere Hallenböden.",
         beforeImage: "/images/vorher-nachher/akan-bodenreinigung-industriehalle-vorher-verschmutzt.webp",
         afterImage: "/images/vorher-nachher/akan-bodenreinigung-industriehalle-nachher-glaenzend.webp",
-        beforeLabel: "Vorher: Stark verschmutzt",
-        afterLabel: "Nachher: Hochglanzversiegelt"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     },
     {
         id: "pvc-vorhang",
-        title: "PVC-Streifenvorhang & Hallenabtrennung Messraum",
+        title: "PVC-Streifenvorhang & Hallenabtrennung",
         category: "Industriereinigung",
-        description: "Rückstandslose Entfernung von Industrie-Sedimenten für perfekte Lichtdurchlässigkeit und Arbeitssicherheit.",
+        description: "Entfernung von Industrie-Ablagerungen für klare Lichtdurchlässigkeit und Sicherheit im Betrieb.",
         beforeImage: "/images/vorher-nachher/akan-vorher-nachher-pvc-streifenvorhang-vorher.jpg",
         afterImage: "/images/vorher-nachher/akan-vorher-nachher-pvc-streifenvorhang-nachher.jpg",
-        beforeLabel: "Vorher: Erblindete Lamellen",
-        afterLabel: "Nachher: Glasklare Transparenz"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     },
     {
         id: "kran-hebezeug",
-        title: "Industriekran & Hebezeug-Motor Entfettung",
+        title: "Industriekran & Hebezeug-Reinigung",
         category: "Industriereinigung",
-        description: "Entfernung von zähem Schmierfett, Staubkrusten und Verharzungen an Hebezeug und Motorgehäusen.",
+        description: "Entfernung von Schmierfett, Staubkrusten und Verharzungen an Hebezeug und Motorgehäusen.",
         beforeImage: "/images/vorher-nachher/akan-vorher-nachher-kran-hebezeug-vorher.jpg",
         afterImage: "/images/vorher-nachher/akan-vorher-nachher-kran-hebezeug-nachher.jpg",
-        beforeLabel: "Vorher: Schmierfilm & Staub",
-        afterLabel: "Nachher: Tiefenentfettet & rein"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     },
     {
         id: "glas-wintergarten",
-        title: "Wintergarten- & Glaspavillon-Reinigung",
+        title: "Wintergarten- & Glasreinigung",
         category: "Glasreinigung",
         description: "Streifenfreie Beseitigung von Witterungsablagerungen und Moos mit entmineralisiertem Reinwasser.",
         beforeImage: "/images/vorher-nachher/akan-glasreinigung-wintergarten-verschmutzt-vorher.webp",
         afterImage: "/images/vorher-nachher/akan-glasreinigung-pavillon-sauber-nachher.webp",
-        beforeLabel: "Vorher: Verwitterte Glasfront",
-        afterLabel: "Nachher: Brillanter Durchblick"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     },
     {
         id: "sektionaltor",
@@ -69,22 +69,22 @@ const galleryData: BeforeAfterItem[] = [
         description: "Beseitigung von Ruß, Straßenschmutz und Industrieablagerungen an Torlamellen und Führungen.",
         beforeImage: "/images/vorher-nachher/akan-vorher-nachher-sektionaltor-halle-vorher.jpg",
         afterImage: "/images/vorher-nachher/akan-vorher-nachher-sektionaltor-halle-nachher.jpg",
-        beforeLabel: "Vorher: Dunkler Rußbelag",
-        afterLabel: "Nachher: Makellose Torfläche"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     },
     {
         id: "sanitaer-fliesen",
         title: "Sanitäranlagen Tiefen- & Fugenreinigung",
-        category: "Unterhaltsreinigung",
-        description: "Entkalkung und Tiefendesinfektion von Wand- und Bodenfliesen für kompromisslose gewerbliche Hygiene.",
+        category: "Sonderreinigung",
+        description: "Gründliche Entkalkung und Reinigung von Wand- und Bodenfliesen für hygienische Sauberkeit.",
         beforeImage: "/images/vorher-nachher/akan-vorher-nachher-sanitaer-fliesen-vorher.jpg",
         afterImage: "/images/vorher-nachher/akan-vorher-nachher-sanitaer-fliesen-nachher.png",
-        beforeLabel: "Vorher: Verkalkte Fugen",
-        afterLabel: "Nachher: Keimfreie Frische"
+        beforeLabel: "Vorher",
+        afterLabel: "Nachher"
     }
 ];
 
-const categories = ['Alle', 'Industriereinigung', 'Glasreinigung', 'Unterhaltsreinigung', 'Sonderreinigung'] as const;
+const categories = ['Alle', 'Industriereinigung', 'Glasreinigung', 'Sonderreinigung'] as const;
 
 export default function BeforeAfterGallery() {
     const scrollContainerRef = useRef<HTMLDivElement>(null);

@@ -12,10 +12,11 @@ import {
   Shield,
   MapPin,
   Award,
-  Building2,
-  Leaf,
-  BadgeCheck,
   ArrowRight,
+  Clock,
+  Sparkles,
+  Users,
+  CheckCircle2,
 } from "lucide-react";
 import DynamicMap from "@/features/locations/components/DynamicMap";
 import ReadMoreExpander from "@/shared/components/ReadMoreExpander";
@@ -23,13 +24,13 @@ import ReadMoreExpander from "@/shared/components/ReadMoreExpander";
 export const metadata: Metadata = {
   title: "Über Uns | Ihre Reinigungsfirma in Gudensberg & Nordhessen | AKAN Dienstleistung",
   description:
-    "Lernen Sie das Team hinter AKAN Dienstleistung kennen: Über 10 Jahre Erfahrung, familiengeführt, qualitätszertifiziert in Unterhalts- und Gebäudereinigung.",
+    "Lernen Sie das Team hinter AKAN Dienstleistung kennen: Langjährige Praxiserfahrung, inhabergeführt und persönlich im Einsatz für gewerbliche und private Objekte in Nordhessen.",
   alternates: {
     canonical: "https://akan-dienstleistung.de/ueber-uns",
   },
   openGraph: {
     title: "Über Uns | AKAN Dienstleistung",
-    description: "Über 10 Jahre Erfahrung, Familienbetrieb, Meisterqualität in Unterhalts- und Gebäudereinigung in Nordhessen.",
+    description: "Langjährige Praxiserfahrung, inhabergeführt, persönliche Betreuung in Unterhalts- und Gebäudereinigung in Nordhessen.",
     url: "https://akan-dienstleistung.de/ueber-uns",
     siteName: "AKAN Dienstleistung",
     locale: "de_DE",
@@ -53,30 +54,20 @@ export default function About() {
               <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-surface border border-border mb-8 shadow-inner-glow">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
                 <span className="text-mini font-bold text-text-secondary uppercase tracking-[0.2em]">
-                  Unsere Geschichte
+                  Über AKAN Dienstleistung
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-text-primary mb-8 leading-[1.05] font-display drop-shadow-sm">
-                Vom Traum zur{" "}
-                <span className="text-primary">digitalen Exzellenz</span>
+                Sauberkeit aus{" "}
+                <span className="text-primary">Leidenschaft</span>
               </h1>
-              <ReadMoreExpander maxHeight={120}>
+              <ReadMoreExpander maxHeight={140}>
                 <div className="text-large md:text-xl font-light text-text-secondary max-w-2xl mb-10 leading-[1.8]">
                   <p className="mb-6">
-                    Im Jahr 2024 wurde AKAN Dienstleistung mit einer klaren
-                    Vision gegründet: Den Dienstleistungssektor in Nordhessen
-                    nicht nur zu bedienen, sondern durch digitale Innovation und
-                    kompromisslose Qualität neu zu definieren.
+                    AKAN Dienstleistung wurde 2024 von Cemal Hilaloglu in Gudensberg gegründet. Unser Ziel ist eine gründliche und zuverlässige Reinigung sowie eine persönliche Betreuung unserer Kunden.
                   </p>
                   <p>
-                    Was als Vision begann, fundiert auf solidem Handwerk und
-                    Erfahrung. Unsere Objektleiterin Zeynep bringt über{" "}
-                    <strong className="font-bold text-text-primary">
-                      10 Jahre Branchenexpertise
-                    </strong>{" "}
-                    in unser Familienunternehmen ein. Diese Dekade an Erfahrung
-                    ist das Fundament, auf dem wir modernste Prozesse und echte
-                    Kundenorientierung aufbauen.
+                    Unsere Objektleiterin Zeynep Hilaloglu verfügt über langjährige praktische Erfahrung in der Gebäudereinigung. Von der Reinigung vor Ort über die Objektleitung bis hin zur Organisation kennt sie die verschiedenen Bereiche aus eigener Erfahrung. Auch heute ist sie sowohl in der Objektbetreuung als auch bei Grund- und Sonderreinigungen persönlich im Einsatz. Gemeinsam mit unserem geschulten Team stehen wir für zuverlässige und sorgfältige Arbeit.
                   </p>
                 </div>
               </ReadMoreExpander>
@@ -212,9 +203,7 @@ export default function About() {
                   </div>
                 </div>
                 <p className="text-medium font-light text-text-secondary mb-10 italic leading-[1.8]">
-                  &quot;Nach 10 Jahren in der Branche weiß ich: Exzellenz steckt
-                  im Detail. Wir sorgen dafür, dass jeder Handgriff sitzt und
-                  unsere hohen Standards immer erfüllt werden.&quot;
+                  &quot;Mit jahrelanger praktischer Erfahrung in Reinigung und Objektleitung bin ich persönlich für Sie vor Ort im Einsatz. Ich sorge dafür, dass jeder Handgriff sitzt und Ihre Objekte stets in einwandfreiem Zustand sind.&quot;
                 </p>
                 <div className="border-t border-border pt-8">
                   <span className="text-mini font-bold text-text-secondary uppercase tracking-[0.2em] block mb-4">
@@ -222,10 +211,13 @@ export default function About() {
                   </span>
                   <div className="flex flex-wrap gap-3">
                     <span className="px-4 py-2 bg-surface rounded-xl border border-border text-tiny font-bold text-text-primary shadow-sm hover:shadow-md transition-shadow">
-                      Qualitätsmanagement
+                      Objektleitung & Organisation
                     </span>
                     <span className="px-4 py-2 bg-surface rounded-xl border border-border text-tiny font-bold text-text-primary shadow-sm hover:shadow-md transition-shadow">
-                      Teamführung
+                      Praxiserfahrung & Qualität
+                    </span>
+                    <span className="px-4 py-2 bg-surface rounded-xl border border-border text-tiny font-bold text-text-primary shadow-sm hover:shadow-md transition-shadow">
+                      Persönlich vor Ort
                     </span>
                   </div>
                 </div>
@@ -245,44 +237,49 @@ export default function About() {
               Das Fundament unserer Arbeit
             </h3>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
-              <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-primary border border-border group-hover:scale-110 transition-transform duration-500">
-                <ShieldCheck className="w-8 h-8" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-surface p-6 sm:p-8 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+              <div className="w-14 h-14 bg-white shadow-inner-glow rounded-2xl flex items-center justify-center mb-8 text-primary border border-border group-hover:scale-110 transition-transform duration-500">
+                <Clock className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-bold text-text-primary mb-5 font-display tracking-tight">
-                Höchste Standards
+              <h3 className="text-xl font-bold text-text-primary mb-4 font-display tracking-tight">
+                Langjährige Erfahrung
               </h3>
-              <p className="text-medium font-light text-text-secondary leading-[1.8]">
-                Wir geben uns nicht mit dem Durchschnitt zufrieden. Unsere
-                Prozesse und Qualitätskontrollen sichern ein makelloses Ergebnis
-                für jeden Auftrag.
+              <p className="text-sm font-light text-text-secondary leading-[1.7]">
+                Fundiertes Handwerk und gewachsenes Fachwissen für erstklassige Reinigungsergebnisse bei jedem Objekt.
               </p>
             </div>
-            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
-              <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-trust-gold border border-border group-hover:scale-110 transition-transform duration-500">
-                <Handshake className="w-8 h-8" />
+            <div className="bg-surface p-6 sm:p-8 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+              <div className="w-14 h-14 bg-white shadow-inner-glow rounded-2xl flex items-center justify-center mb-8 text-trust-gold border border-border group-hover:scale-110 transition-transform duration-500">
+                <Sparkles className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-bold text-text-primary mb-5 font-display tracking-tight">
-                Persönlicher Service
+              <h3 className="text-xl font-bold text-text-primary mb-4 font-display tracking-tight">
+                Qualität
               </h3>
-              <p className="text-medium font-light text-text-secondary leading-[1.8]">
-                Trotz Digitalisierung steht der Mensch im Mittelpunkt. Wir sind
-                greifbar, hören zu und finden individuelle Lösungen für Ihre
-                Anforderungen.
+              <p className="text-sm font-light text-text-secondary leading-[1.7]">
+                Gründliche, kontrollierte Sauberkeit bis ins kleinste Detail mit professionellen Geräten und schonenden Mitteln.
               </p>
             </div>
-            <div className="bg-surface p-6 sm:p-10 lg:p-12 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
-              <div className="w-16 h-16 bg-white shadow-inner-glow rounded-[1rem] flex items-center justify-center mb-10 text-accent border border-border group-hover:scale-110 transition-transform duration-500">
-                <Shield className="w-8 h-8" />
+            <div className="bg-surface p-6 sm:p-8 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+              <div className="w-14 h-14 bg-white shadow-inner-glow rounded-2xl flex items-center justify-center mb-8 text-accent border border-border group-hover:scale-110 transition-transform duration-500">
+                <ShieldCheck className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-bold text-text-primary mb-5 font-display tracking-tight">
+              <h3 className="text-xl font-bold text-text-primary mb-4 font-display tracking-tight">
                 Zuverlässigkeit
               </h3>
-              <p className="text-medium font-light text-text-secondary leading-[1.8]">
-                Ein Wort ist ein Wort. Unsere Kunden in Nordhessen schätzen
-                unsere absolute Termintreue, Diskretion und transparente
-                Kommunikation.
+              <p className="text-sm font-light text-text-secondary leading-[1.7]">
+                Pünktlich, diskret und absolut verbindlich. Ein Wort ist ein Wort bei jedem Einsatz vor Ort.
+              </p>
+            </div>
+            <div className="bg-surface p-6 sm:p-8 rounded-[2rem] shadow-soft border border-border hover:shadow-card hover:-translate-y-2 transition-all duration-500 group">
+              <div className="w-14 h-14 bg-white shadow-inner-glow rounded-2xl flex items-center justify-center mb-8 text-primary border border-border group-hover:scale-110 transition-transform duration-500">
+                <Users className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary mb-4 font-display tracking-tight">
+                Geschultes Team
+              </h3>
+              <p className="text-sm font-light text-text-secondary leading-[1.7]">
+                Feste Ansprechpartner und motivierte Mitarbeiter mit geschultem Blick für Hygiene und Werterhalt.
               </p>
             </div>
           </div>
@@ -409,31 +406,31 @@ export default function About() {
       <section className="py-20 bg-background border-t border-border">
         <div className="container-fluid text-center">
           <p className="text-text-secondary font-bold mb-10 uppercase tracking-[0.25em] text-mini">
-            Unsere Partner & Zertifizierungen
+            Unsere Qualitäts- und Servicestandards
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-            <div className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors">
-              <ShieldCheck className="w-10 h-10" />
-              <span className="font-bold text-2xl font-display tracking-tight">
-                TÜV Nord
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            <div className="flex items-center gap-3 text-text-primary">
+              <ShieldCheck className="w-8 h-8 text-primary" />
+              <span className="font-bold text-xl font-display tracking-tight">
+                Inhabergeführt & Verlässlich
               </span>
             </div>
-            <div className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors">
-              <Building2 className="w-10 h-10" />
-              <span className="font-bold text-2xl font-display tracking-tight">
-                IHK Hessen
+            <div className="flex items-center gap-3 text-text-primary">
+              <Sparkles className="w-8 h-8 text-trust-gold" />
+              <span className="font-bold text-xl font-display tracking-tight">
+                Moderne Reinigungstechnik
               </span>
             </div>
-            <div className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors">
-              <Leaf className="w-10 h-10" />
-              <span className="font-bold text-2xl font-display tracking-tight">
-                EcoClean
+            <div className="flex items-center gap-3 text-text-primary">
+              <Users className="w-8 h-8 text-primary" />
+              <span className="font-bold text-xl font-display tracking-tight">
+                Feste Ansprechpartner
               </span>
             </div>
-            <div className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors">
-              <BadgeCheck className="w-10 h-10" />
-              <span className="font-bold text-2xl font-display tracking-tight">
-                ISO 9001
+            <div className="flex items-center gap-3 text-text-primary">
+              <CheckCircle2 className="w-8 h-8 text-accent" />
+              <span className="font-bold text-xl font-display tracking-tight">
+                Termintreue & Diskretion
               </span>
             </div>
           </div>

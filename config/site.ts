@@ -38,67 +38,31 @@ export interface TimelineEvent {
     description: string;
 }
 
-export const testimonials: Testimonial[] = [
-    {
-        text: 'Seit AKAN die Unterhalts- und Desinfektionsreinigung in unserer Praxis übernommen hat, müssen wir uns um nichts mehr kümmern. Höchste Hygiene nach RKI-Standards, absolute Zuverlässigkeit und lückenlose Dokumentation.',
-        author: 'Dr. med. Schmidt',
-        role: 'Gemeinschaftspraxis Gudensberg',
-        badge: 'Praxishygiene zertifiziert',
-        rating: 5,
-    },
-    {
-        text: 'Die Baufeinreinigung unseres neuen Bürokomplexes wurde termingerecht und makellos übergeben. Kein Staub in den Lüftungsschächten, streifenfreie Glasfassaden – meisterhafte Ausführung vor der Mieterübergabe.',
-        author: 'Michael Weber',
-        role: 'Projektleiter Weber Immobilien Kassel',
-        badge: 'Gewerbliche Bauabnahme',
-        rating: 5,
-    },
-    {
-        text: 'Unsere Schaufenster und Portalverglasungen waren noch nie so makellos sauber. Die Osmosetechnik ohne Chemierückstände sorgt für wochenlangen Glanz ohne Streifenbildung. Sehr empfehlenswert!',
-        author: 'Sarah Müller',
-        role: 'Inhaberin Modehaus Müller Fritzlar',
-        badge: 'Glas- & Fassadenpflege',
-        rating: 5,
-    },
-    {
-        text: 'Besonders beeindruckt hat mich die Gründlichkeit bei der Hallen- und Industriebodenreinigung. Sämtliche Sicherheits- und Arbeitsschutzstandards wurden exakt eingehalten, ohne unsere Schichtzeiten zu beeinträchtigen.',
-        author: 'Thomas Koch',
-        role: 'Produktions- & Logistikleiter Baunatal',
-        badge: 'Industrie & Maschinenreinigung',
-        rating: 5,
-    },
-    {
-        text: 'AKAN betreut 4 unserer Gewerbeobjekte im Rahmenvertrag. Null Reklamationen, feste Ansprechpartner und eine lückenlose Vertretungsgarantie selbst bei Urlaub oder Krankheit. Meisterhafte Zuverlässigkeit.',
-        author: 'Anna Berger',
-        role: 'Facility Management Berger & Partner Melsungen',
-        badge: 'Gewerbe-Rahmenvertrag',
-        rating: 5,
-    },
-];
+export const testimonials: Testimonial[] = [];
 
 export const team: TeamMember[] = [
     {
         name: 'Zeynep Hilaloglu',
-        role: 'Objektleiterin',
-        desc: '10 Jahre Erfahrung in der professionellen Reinigungsbranche. Zeynep überwacht die Qualität aller Reinigungsprojekte und sorgt dafür, dass jeder Auftrag unser hohes Qualitätsniveau erfüllt.',
+        role: 'Objektleitung',
+        desc: 'Langjährige praktische Erfahrung in der Gebäudereinigung – von der Reinigung vor Ort über die Objektleitung bis hin zur Organisation. Persönlich vor Ort im Einsatz bei der Objektbetreuung sowie bei Grund- und Sonderreinigungen.',
         imageUrl: '',
         skills: [
-            { label: 'Qualitätsmanagement', level: 95 },
-            { label: 'Teamführung', level: 90 },
-            { label: 'Kundenbetreuung', level: 92 },
-            { label: 'Spezialreinigung', level: 88 },
+            { label: 'Objektleitung & Organisation', level: 95 },
+            { label: 'Qualitätskontrolle', level: 95 },
+            { label: 'Grund- & Sonderreinigung', level: 92 },
+            { label: 'Kundenbetreuung vor Ort', level: 90 },
         ],
     },
     {
         name: 'Cemal Hilaloglu',
-        role: 'Geschäftsführer',
-        desc: 'Gründer von AKAN Dienstleistung. Cemal kümmert sich um die strategische Ausrichtung des Unternehmens und die Akquise neuer Kunden.',
+        role: 'Inhaber & Gründer',
+        desc: 'Gründer von AKAN Dienstleistung. Persönlicher Ansprechpartner für Kunden, Besichtigungen, maßgeschneiderte Angebote und verlässliche partnerschaftliche Zusammenarbeit.',
         imageUrl: '',
         skills: [
-            { label: 'Unternehmensführung', level: 90 },
-            { label: 'Kundenakquise', level: 85 },
-            { label: 'Projektmanagement', level: 88 },
-            { label: 'Finanzen', level: 80 },
+            { label: 'Kundenbetreuung', level: 95 },
+            { label: 'Angebotswesen & Besichtigung', level: 92 },
+            { label: 'Projektorganisation', level: 90 },
+            { label: 'Unternehmensführung', level: 88 },
         ],
     },
 ];
@@ -106,67 +70,69 @@ export const team: TeamMember[] = [
 export const faqs: FAQ[] = [
     {
         question: 'Wie viel kostet eine professionelle Reinigung?',
-        answer: 'Das hängt von Ihren Räumlichkeiten ab – deshalb besichtigen wir Ihr Objekt kostenlos vor Ort und erstellen ein transparentes Festpreisangebot. Keine versteckten Kosten, kein Kleingedrucktes. Die meisten unserer Kunden sind überrascht, wie erschwinglich professionelle Reinigung ist – oft weniger als ein Kaffee pro Tag und Mitarbeiter.',
+        answer: 'Die Kosten richten sich nach Art, Größe und Umfang der Reinigung. Gerne besichtigen wir Ihr Objekt vor Ort und erstellen Ihnen anschließend ein individuelles und transparentes Angebot.',
         category: 'Kosten',
     },
     {
         question: 'Welche Gebiete deckt AKAN ab?',
-        answer: 'Wir sind in ganz Nordhessen zuhause: Gudensberg, Fritzlar, Kassel, Baunatal, Melsungen und Umgebung. Unser Team kennt die Region – und die Region kennt uns. Über 200 Objekte in der Umgebung vertrauen bereits auf unsere Arbeit.',
-        category: 'Allgemein',
+        answer: 'Wir sind in Gudensberg, Kassel, Baunatal, Fritzlar, Melsungen und der umliegenden Region für unsere Kunden im Einsatz. Bei größeren oder besonderen Aufträgen sind nach Absprache auch weitere Einsatzorte möglich.',
+        category: 'Einsatzgebiet',
     },
     {
         question: 'Sind Ihre Mitarbeiter versichert und geschult?',
-        answer: 'Selbstverständlich. Alle Mitarbeiter sind über unsere umfassende Betriebshaftpflichtversicherung abgesichert und erhalten regelmäßige Schulungen zu Hygienevorgaben und Spezialverfahren. Sie können uns bedenkenlos Ihren Schlüssel anvertrauen – über 200 Unternehmen tun das bereits.',
+        answer: 'Ja. Unser Betrieb verfügt über eine Gewerbehaftpflichtversicherung. Unsere Mitarbeiter werden von uns sorgfältig eingearbeitet und regelmäßig zu den jeweiligen Reinigungsarbeiten, Reinigungsmitteln und Abläufen geschult.',
         category: 'Sicherheit',
     },
     {
         question: 'Welche Reinigungsmittel verwenden Sie?',
-        answer: 'Wir setzen ausschließlich professionelle, umweltfreundliche Reinigungsmittel ein, die sowohl wirksam als auch schonend für Mensch und Oberflächen sind. Für Spezialfälle (Allergiker-Büros, Lebensmittelbetriebe) haben wir zertifizierte Spezialmittel im Programm.',
+        answer: 'Wir verwenden professionelle Reinigungsmittel, die passend zur jeweiligen Oberfläche und Verschmutzung ausgewählt werden. Dabei achten wir auf eine gründliche und materialschonende Reinigung.',
         category: 'Reinigung',
     },
     {
         question: 'Wie schnell kann AKAN starten?',
-        answer: 'In der Regel innerhalb einer Woche nach der kostenlosen Erstbegehung. Bei dringenden Anfragen (z. B. Bauendreinigung) sind auch kurzfristige Einsätze möglich. Rufen Sie einfach an – wir finden eine Lösung.',
+        answer: 'Das richtet sich nach Art und Umfang des Auftrags. Wir sind flexibel und versuchen auch kurzfristige Anfragen möglich zu machen. Sprechen Sie uns einfach an – gemeinsam finden wir einen passenden Termin.',
         category: 'Ablauf',
     },
     {
-        question: 'Bieten Sie auch Reinigung außerhalb der Geschäftszeiten an?',
-        answer: 'Ja, wir passen uns Ihrem Betrieb an – nicht umgekehrt. Ob frühmorgens, abends oder am Wochenende: Wir reinigen, wenn es Sie am wenigsten stört. Das schätzen besonders unsere Arztpraxis- und Einzelhandels-Kunden.',
-        category: 'Reinigung',
+        question: 'Bieten Sie auch Reinigungen außerhalb der Geschäftszeiten an?',
+        answer: 'Ja. Reinigungszeiten stimmen wir individuell mit unseren Kunden ab. Je nach Objekt sind Einsätze beispielsweise früh morgens, abends oder am Wochenende möglich.',
+        category: 'Flexibilität',
     },
     {
         question: 'Was passiert, wenn ich einmal nicht zufrieden bin?',
-        answer: 'Dann kommen wir kostenlos zurück und reinigen nach – ohne Diskussion, ohne Aufpreis. Unsere Qualitätsgarantie ist kein Marketingversprechen, sondern gelebte Praxis. In über 10 Jahren mussten wir das genau 3 Mal tun. Diese Quote sprechen für sich.',
-        category: 'Garantie',
+        answer: 'Sollte einmal etwas nicht zu Ihrer Zufriedenheit sein, sprechen Sie uns bitte direkt an. Wir kümmern uns schnell um Ihr Anliegen und finden gemeinsam eine passende Lösung. Eine zuverlässige und langfristige Zusammenarbeit mit unseren Kunden ist uns wichtig.',
+        category: 'Qualität',
     },
 ];
 
 export const stats: Stat[] = [
-    { value: 10, suffix: '', label: 'Jahre Erfahrung', description: 'Durch unsere Objektleiterin Zeynep Hilaloglu.' },
-    { value: 10, suffix: '', label: 'Mitarbeiter', description: 'Ihr geschultes und engagiertes Qualitätsteam.' },
-    { value: 100, suffix: '%', label: 'Qualität', description: 'Kein Kompromiss bei der Qualität.' },
-    { value: 500, suffix: '+', label: 'Zufriedene Kunden', description: 'Gewerbliche und private Kunden.' },
+    { value: 10, suffix: '+', label: 'Jahre Praxiserfahrung', description: 'Fundiertes Praxiswissen durch unsere Objektleitung.' },
+    { value: 100, suffix: '%', label: 'Verlässlichkeit', description: 'Feste Absprachen und transparente Termine.' },
+    { value: 100, suffix: '%', label: 'Persönlich vor Ort', description: 'Direkte Ansprechpartner in Nordhessen.' },
+    { value: 100, suffix: '%', label: 'Sorgfalt', description: 'Materialschonende Reinigung und Qualitätskontrollen.' },
 ];
 
 export const regions: Region[] = [
     { name: 'Gudensberg', distance: 'Hauptsitz' },
-    { name: 'Fritzlar', distance: '12 km' },
     { name: 'Kassel', distance: '25 km' },
     { name: 'Baunatal', distance: '18 km' },
+    { name: 'Fritzlar', distance: '12 km' },
     { name: 'Melsungen', distance: '30 km' },
-    { name: 'Bad Wildungen', distance: '35 km' },
-    { name: 'Homberg (Efze)', distance: '22 km' },
-    { name: 'Felsberg', distance: '8 km' },
+    { name: 'Nordhessen & Region', distance: 'Umland' },
 ];
 
 export const siteConfig = {
     name: 'AKAN Dienstleistung',
     founder: 'Cemal Hilaloglu',
+    owner: 'Cemal Hilaloglu',
+    operationsManager: 'Zeynep Hilaloglu',
+    taxId: '024 827 615 98',
+    serviceArea: 'Gudensberg, Kassel, Baunatal, Fritzlar, Melsungen und Region Nordhessen',
     founded: 2024,
-    description: 'Beste Gebäudereinigung in Nordhessen',
+    description: 'Professionelle Gebäudereinigung in Gudensberg, Kassel und Nordhessen. Unterhaltsreinigung, Glasreinigung, Bauendreinigung, Industriereinigung und Sonderreinigung.',
     url: 'https://akan-dienstleistung.de',
     address: {
-        street: 'Odenbergstr 26',
+        street: 'Breslauer Str. 50',
         city: 'Gudensberg',
         zip: '34281',
         country: 'DE',
@@ -183,10 +149,4 @@ export const siteConfig = {
 // Aliasing for backward compatibility if needed elsewhere
 export const companyInfo = siteConfig;
 
-export const timeline: TimelineEvent[] = [
-    { year: '2014', title: 'Der Anfang', description: 'Zeynep Hilaloglu beginnt ihre Karriere in der professionellen Gebäudereinigung.' },
-    { year: '2018', title: 'Expertise wächst', description: 'Spezialisierung auf Industrie- und Bauendreinigung mit wachsendem Kundenstamm.' },
-    { year: '2022', title: 'Vorbereitung', description: 'Planung und Konzeption eines eigenen Reinigungsunternehmens mit Fokus auf Qualität.' },
-    { year: '2024', title: 'Gründung AKAN', description: 'Cemal Hilaloglu gründet AKAN Dienstleistung in Gudensberg. Die Vision: Reinigung auf höchstem Niveau.' },
-    { year: '2025', title: 'Wachstum', description: 'Das Team wächst auf 10 Mitarbeiter. Etablierung als zuverlässiger Partner in der Region.' },
-];
+export const timeline: TimelineEvent[] = [];

@@ -128,7 +128,7 @@ export default function BeforeAfterSlider({
 
       <div
         ref={containerRef}
-        className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-[2rem] overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border-8 border-white cursor-ew-resize select-none bg-black touch-none focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 focus-visible:ring-offset-2"
+        className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border-4 sm:border-8 border-white cursor-ew-resize select-none bg-black touch-none focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/40 focus-visible:ring-offset-2"
         role="slider"
         aria-label="Vorher-Nachher-Vergleich"
         aria-valuemin={0}
@@ -189,7 +189,7 @@ export default function BeforeAfterSlider({
 
         {/* Physics Handle */}
         <motion.div
-          className="absolute top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center z-20 shadow-[0_4px_20px_rgba(155,28,46,0.5)] border-2 border-white pointer-events-none"
+          className="absolute top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center z-20 shadow-[0_4px_20px_rgba(155,28,46,0.5)] border-2 border-white pointer-events-none"
           style={{ left: handleLeft }}
           animate={{
             scale: isDragging ? 0.9 : 1,
@@ -199,18 +199,18 @@ export default function BeforeAfterSlider({
           }}
           transition={springs.snappy}
         >
-          <GripVertical className="w-5 h-5 text-white" />
+          <GripVertical className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
         </motion.div>
 
         {/* Labels with floating animation */}
         <motion.div
-          className="absolute top-6 left-6 bg-black/60 backdrop-blur-md text-white text-mini font-bold px-4 py-2 rounded-full z-20 uppercase tracking-[0.1em] border border-white/10"
+          className="absolute top-3 left-3 sm:top-5 sm:left-5 bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full z-20 uppercase tracking-wider border border-white/10"
           animate={{ opacity: isDragging ? 0 : 1, y: isDragging ? -10 : 0 }}
         >
           {beforeLabel}
         </motion.div>
         <motion.div
-          className="absolute top-6 right-6 bg-primary text-white text-mini font-bold px-4 py-2 rounded-full z-20 uppercase tracking-[0.1em] shadow-lg"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 bg-primary text-white text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full z-20 uppercase tracking-wider shadow-lg"
           animate={{ opacity: isDragging ? 0 : 1, y: isDragging ? -10 : 0 }}
         >
           {afterLabel}

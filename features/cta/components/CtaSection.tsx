@@ -24,19 +24,19 @@ export default function CtaSection({ contactForm }: { contactForm?: React.ReactN
                         <AnimatedSection variants={fadeInUp} className="mb-10 text-center lg:text-left">
                             <h2 className="text-primary font-bold tracking-[0.25em] uppercase text-mini mb-4">Angebot anfordern</h2>
                             <h3 className="text-h2 font-bold text-text-primary leading-tight font-display mb-6">
-                                Bereit für makellose <span className="text-gradient-primary">Sauberkeit?</span>
+                                Lassen Sie uns <span className="text-gradient-primary">starten</span>
                             </h3>
                             <p className="text-text-secondary text-lg leading-relaxed">
-                                Lassen Sie uns gemeinsam herausfinden, wie Ihre Immobilie strahlen kann. Ein Formular, ein persönliches Erstgespräch, ein maßgeschneidertes Konzept.
+                                Sie benötigen eine zuverlässige Gebäudereinigung? Kontaktieren Sie uns gerne für ein unverbindliches Erstgespräch. Auf Wunsch besichtigen wir Ihr Objekt kostenlos vor Ort und erstellen Ihnen ein individuelles Angebot.
                             </p>
                         </AnimatedSection>
 
                         {/* Benefits List */}
                         <AnimatedSection as="ul" className="space-y-6 mb-12 hidden md:block lg:block" variants={staggerContainer} stagger>
                             {[
-                                { title: '100% Zufriedenheitsgarantie', desc: 'Wir reinigen nach, bis Sie absolut zufrieden sind.' },
-                                { title: 'Kostenlose Erstbegehung', desc: 'Individuelle Beratung direkt bei Ihnen vor Ort.' },
-                                { title: 'Transparente Preise', desc: 'Versteckte Kosten gibt es bei uns nicht.' },
+                                { title: 'Kostenlose Erstbegehung', desc: 'Wir schauen uns Ihr Objekt und den gewünschten Reinigungsumfang persönlich an.' },
+                                { title: 'Individuelles Angebot', desc: 'Abgestimmt auf Ihr Objekt und Ihre individuellen Anforderungen.' },
+                                { title: 'Persönlicher Ansprechpartner', desc: 'Bei Fragen sind wir direkt und unkompliziert für Sie erreichbar.' },
                             ].map((benefit, i) => (
                                 <AnimatedItem key={i} as="li" variants={fadeInUp}>
                                     <div className="flex items-start">
@@ -59,8 +59,8 @@ export default function CtaSection({ contactForm }: { contactForm?: React.ReactN
                                     <ShieldCheck className="w-5 h-5" />
                                 </div>
                                 <div className="text-sm">
-                                    <p className="font-bold text-text-primary">Meisterbetrieb</p>
-                                    <p className="text-text-secondary text-xs">Höchste Qualität</p>
+                                    <p className="font-bold text-text-primary">Inhabergeführt</p>
+                                    <p className="text-text-secondary text-xs">Höchste Sorgfalt</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export default function CtaSection({ contactForm }: { contactForm?: React.ReactN
                                 </div>
                                 <div className="text-sm">
                                     <p className="font-bold text-text-primary">Kurze Reaktionszeit</p>
-                                    <p className="text-text-secondary text-xs">Angebot in 24h</p>
+                                    <p className="text-text-secondary text-xs">Schnelle Rückmeldung</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
@@ -78,7 +78,7 @@ export default function CtaSection({ contactForm }: { contactForm?: React.ReactN
                                 </div>
                                 <div className="text-sm">
                                     <p className="font-bold text-text-primary">Regional</p>
-                                    <p className="text-text-secondary text-xs">Gudensberg & Kassel</p>
+                                    <p className="text-text-secondary text-xs">Gudensberg &amp; Region</p>
                                 </div>
                             </div>
                         </AnimatedSection>

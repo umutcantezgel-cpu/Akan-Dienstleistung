@@ -20,7 +20,7 @@ export function generateLocalBusinessSchema(location: LocationDetail) {
         email: 'info@akan-dienstleistung.de',
         address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Odenbergstr 26',
+            streetAddress: 'Breslauer Str. 50',
             addressLocality: 'Gudensberg',
             postalCode: '34281',
             addressCountry: 'DE',
@@ -45,11 +45,6 @@ export function generateLocalBusinessSchema(location: LocationDetail) {
             dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
             opens: '08:00',
             closes: '18:00',
-        },
-        aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '4.9',
-            reviewCount: '128',
         },
         priceRange: '€€',
         hasOfferCatalog: {

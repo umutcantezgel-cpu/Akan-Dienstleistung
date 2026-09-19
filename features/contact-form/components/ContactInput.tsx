@@ -65,7 +65,7 @@ export default function ContactInput({
             </motion.label>
 
             {/* Input / Textarea */}
-            <div className={`relative overflow-hidden rounded-xl bg-background border transition-all duration-300 ${error ? 'border-red-500' : (isFocused ? 'border-primary ring-1 ring-primary' : 'border-border md:hover:border-primary/30')}`}>
+            <div className={`relative overflow-hidden rounded-xl bg-white border transition-all duration-300 ${error ? 'border-red-500' : (isFocused ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200 hover:border-gray-300')}`}>
                 {isTextArea ? (
                     <motion.textarea
                         id={id}
@@ -80,10 +80,10 @@ export default function ContactInput({
                             onBlur(e);
                         }}
                         animate={{
-                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)',
-                            boxShadow: isFocused ? 'inset 0 2px 10px rgba(0,0,0,0.02)' : 'none',
+                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(252, 252, 252, 1)',
+                            boxShadow: isFocused ? 'inset 0 2px 8px rgba(0,0,0,0.03)' : 'none',
                         }}
-                        className={`w-full px-6 py-4 outline-none resize-none text-[16px] text-text-primary font-medium bg-transparent relative z-10 ${isFocused && !hasValue ? 'animate-pulse-slow' : ''}`}
+                        className={`w-full px-6 py-4 outline-none resize-none text-[16px] text-gray-900 font-medium bg-transparent relative z-10 placeholder:text-gray-400 ${isFocused && !hasValue ? 'animate-pulse-slow' : ''}`}
                     />
                 ) : (
                     <motion.input
@@ -101,10 +101,10 @@ export default function ContactInput({
                             onBlur(e);
                         }}
                         animate={{
-                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)',
-                            boxShadow: isFocused ? 'inset 0 2px 10px rgba(0,0,0,0.02)' : 'none',
+                            backgroundColor: isFocused ? 'rgba(255, 255, 255, 1)' : 'rgba(252, 252, 252, 1)',
+                            boxShadow: isFocused ? 'inset 0 2px 8px rgba(0,0,0,0.03)' : 'none',
                         }}
-                        className="w-full px-6 outline-none text-[16px] text-text-primary font-medium bg-transparent relative z-10 min-h-[52px] h-[52px]"
+                        className="w-full px-6 outline-none text-[16px] text-gray-900 font-medium bg-transparent relative z-10 min-h-[52px] h-[52px] placeholder:text-gray-400"
                     />
                 )}
             </div>

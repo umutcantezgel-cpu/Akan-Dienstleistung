@@ -40,7 +40,7 @@ export default function Impressum() {
           <br />
           Inhaber: Cemal Hilaloglu
           <br />
-          Odenbergstraße 26
+          Breslauer Str. 50
           <br />
           34281 Gudensberg
           <br />
@@ -129,7 +129,7 @@ export default function Impressum() {
           <br />
           Cemal Hilaloglu
           <br />
-          Odenbergstraße 26
+          Breslauer Str. 50
           <br />
           34281 Gudensberg
         </p>

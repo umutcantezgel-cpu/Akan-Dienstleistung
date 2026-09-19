@@ -159,7 +159,7 @@ export default function Footer() {
                     <li className="flex items-start group">
                       <MapPin className="w-5 h-5 text-primary mr-3 shrink-0 group-hover:scale-110 transition-transform" />
                       <span>
-                        Odenbergstraße 26
+                        Breslauer Str. 50
                         <br />
                         34281 Gudensberg
                       </span>
@@ -200,7 +200,7 @@ export default function Footer() {
               <div className="rounded-2xl overflow-hidden h-56 bg-surface border border-border relative shadow-card">
                 <iframe
                   title="AKAN Dienstleistung Standort"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.3218567220037!2d9.358265576014445!3d51.17181513904661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb6e87f877d9c1%3A0xc39cb7dc773e2a9b!2sOdenbergstra%C3%9Fe%2026%2C%2034281%20Gudensberg!5e0!3m2!1sde!2sde!4v1714567890123!5m2!1sde!2sde"
+                  src="https://maps.google.com/maps?q=Breslauer%20Str.%2050,%2034281%20Gudensberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

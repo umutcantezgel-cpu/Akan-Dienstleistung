@@ -17,7 +17,7 @@
 
 ## 🌟 Projektübersicht
 
-Dieses Repository beinhaltet den vollständigen Quellcode der modernen, barrierefreien und SEO-optimierten Unternehmenspräsenz von **AKAN Dienstleistung** (Odenbergstraße 26, 34281 Gudensberg).
+Dieses Repository beinhaltet den vollständigen Quellcode der modernen, barrierefreien und SEO-optimierten Unternehmenspräsenz von **AKAN Dienstleistung** (Breslauer Str. 50, 34281 Gudensberg).
 
 Die Plattform präsentiert das gesamte Portfolio gewerblicher und privater Reinigungsdienstleistungen im Schwalm-Eder-Kreis, Kassel und Nordhessen mit interaktiven Standortübersichten, transparenten Leistungsbeschreibungen, DSGVO-konformem Consent-Management und einem gehärteten Anfrageformular.
 
@@ -162,6 +162,6 @@ Die Website ist für **Vercel** optimiert:
 
 AKAN Dienstleistung  
 Inhaber: Cemal Hilaloglu  
-Odenbergstraße 26, 34281 Gudensberg  
+Breslauer Str. 50, 34281 Gudensberg  
 Telefon: 0152 34754386  
 E-Mail: [info@akan-dienstleistung.de](mailto:info@akan-dienstleistung.de)

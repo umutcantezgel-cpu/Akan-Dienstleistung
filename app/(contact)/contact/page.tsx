@@ -57,7 +57,7 @@ export default function Contact() {
             </div>
             <h3 className="text-xl font-bold text-text-primary mb-4 font-display">Adresse</h3>
             <p className="text-medium font-light text-text-secondary leading-[1.8]">
-              Odenbergstraße 26<br />
+              Breslauer Str. 50<br />
               34281 Gudensberg<br />
               Deutschland
             </p>

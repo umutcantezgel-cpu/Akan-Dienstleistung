@@ -87,7 +87,7 @@ export default function StandorteOverviewPage() {
               <span className="text-primary">aktiv in ganz Nordhessen</span>
             </h1>
             <p className="text-lg md:text-xl text-text-secondary font-light max-w-3xl mx-auto leading-relaxed mb-10">
-              Von unserem Hauptsitz in Gudensberg (Odenbergstraße 26) aus steuern wir unsere Reinigungsteams im gesamten Schwalm-Eder-Kreis, Landkreis Kassel und Umgebung. Profitieren Sie von kurzen Anfahrtswegen, persönlicher Nähe und flexiblen Einsatzzeiten.
+              Von unserem Hauptsitz in Gudensberg (Breslauer Str. 50) aus steuern wir unsere Reinigungsteams im gesamten Schwalm-Eder-Kreis, Landkreis Kassel und Umgebung. Profitieren Sie von kurzen Anfahrtswegen, persönlicher Nähe und flexiblen Einsatzzeiten.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

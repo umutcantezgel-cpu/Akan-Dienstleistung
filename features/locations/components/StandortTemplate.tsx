@@ -264,7 +264,7 @@ export default function StandortTemplate({ location }: StandortTemplateProps) {
                     <LocalTestimonials city={location.name} />
 
                     <AnimatedSection variants={fadeInUp} className="mt-14 flex flex-wrap justify-center gap-6 sm:gap-10 text-slate-700">
-                        {['Reinigungsmeisterbetrieb', '10+ Jahre Erfahrung', 'Feste Ansprechpartner', 'Lückenlose Vertretungsgarantie'].map((trust, i) => (
+                        {['Inhabergeführt & Verlässlich', 'Langjährige Praxiserfahrung', 'Feste Ansprechpartner', 'Verlässliche Einsatzplanung'].map((trust, i) => (
                             <div key={i} className="flex items-center gap-2">
                                 <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                                 <span className="font-medium text-slate-800 text-sm sm:text-base">{trust}</span>

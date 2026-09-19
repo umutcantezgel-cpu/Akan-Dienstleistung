@@ -182,7 +182,7 @@ export default function Datenschutz() {
           <br />
           Cemal Hilaloglu
           <br />
-          Odenbergstraße 26
+          Breslauer Str. 50
           <br />
           34281 Gudensberg
           <br />

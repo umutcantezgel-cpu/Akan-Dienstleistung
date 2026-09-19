@@ -182,26 +182,27 @@ export default function ContactForm() {
                                         >
                                             Wofür interessieren Sie sich?
                                         </motion.label>
-                                        <div className={`relative rounded-xl overflow-hidden border bg-background transition-all duration-300 ${errors.service ? 'border-red-500' : (focusedField === 'service' ? 'border-primary ring-1 ring-primary' : 'border-border md:hover:border-primary/30')}`}>
+                                        <div className={`relative rounded-xl overflow-hidden border bg-white transition-all duration-300 ${errors.service ? 'border-red-500' : (focusedField === 'service' ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200 hover:border-gray-300')}`}>
                                             <select
                                                 id="service"
-                                                className="w-full px-6 outline-none text-[16px] text-text-primary font-medium bg-transparent appearance-none h-[52px] relative z-10"
+                                                className="w-full px-6 outline-none text-[16px] text-gray-900 font-medium bg-transparent appearance-none h-[52px] relative z-10 cursor-pointer"
                                                 {...register('service')}
                                                 onFocus={() => setFocusedField('service')}
                                                 onBlur={(e) => {
                                                     setFocusedField(null);
                                                     register('service').onBlur(e);
                                                 }}
-                                                style={{ backgroundColor: focusedField === 'service' ? 'rgba(255, 255, 255, 1)' : 'rgba(250, 250, 250, 1)' }}
+                                                style={{ backgroundColor: focusedField === 'service' ? 'rgba(255, 255, 255, 1)' : 'rgba(252, 252, 252, 1)' }}
                                             >
-                                                <option value="" disabled className="text-text-secondary">Bitte wählen...</option>
-                                                <option value="unterhaltsreinigung">Unterhaltsreinigung</option>
-                                                <option value="glasreinigung">Glas- & Fassadenreinigung</option>
-                                                <option value="bauendreinigung">Bauendreinigung</option>
-                                                <option value="industriereinigung">Industriereinigung</option>
-                                                <option value="sonstiges">Sonstiges</option>
+                                                <option value="" disabled className="text-gray-400">Bitte wählen...</option>
+                                                <option value="unterhaltsreinigung" className="text-gray-900">Unterhaltsreinigung</option>
+                                                <option value="glasreinigung" className="text-gray-900">Glas- & Fassadenreinigung</option>
+                                                <option value="bauendreinigung" className="text-gray-900">Bauendreinigung</option>
+                                                <option value="industriereinigung" className="text-gray-900">Industriereinigung</option>
+                                                <option value="sonderreinigung" className="text-gray-900">Sonderreinigung</option>
+                                                <option value="sonstiges" className="text-gray-900">Sonstiges</option>
                                             </select>
-                                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-text-secondary z-20">
+                                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-gray-500 z-20">
                                                 <ChevronDown className="h-5 w-5" />
                                             </div>
                                         </div>

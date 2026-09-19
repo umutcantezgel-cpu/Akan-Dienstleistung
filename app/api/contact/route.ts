@@ -128,7 +128,7 @@ export async function POST(req: Request) {
       </div>
     </div>
     <div style="background-color: #f8fafc; padding: 16px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9;">
-      AKAN Dienstleistung | Odenbergstraße 26, 34281 Gudensberg | 0152 34754386
+      AKAN Dienstleistung | Breslauer Str. 50, 34281 Gudensberg | 0152 34754386
     </div>
   </div>
 </body>

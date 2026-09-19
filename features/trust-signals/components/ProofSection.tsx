@@ -16,7 +16,7 @@ export default function ProofSection({ galleryComponent }: { galleryComponent?: 
                             verlängert die Lebensdauer von Bodenbelägen und schafft eine Atmosphäre, in der man sich wohlfühlt.
                         </p>
                         <AnimatedSection as="ul" className="space-y-4 mb-10" stagger delay={0.2}>
-                            {['Entfernung hartnäckiger Verschmutzungen', 'Werterhalt Ihrer Immobilie', 'Hygienische Tiefenreinigung'].map((item, i) => (
+                            {['Entfernung hartnäckiger Verschmutzungen', 'Werterhalt Ihrer Räume & Böden', 'Hygienische und kontrollierte Sauberkeit'].map((item, i) => (
                                 <AnimatedItem key={i} as="li" variants={fadeInUp}>
                                     <div className="flex items-start">
                                         <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-0.5">

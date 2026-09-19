@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     template: "%s | AKAN Dienstleistung",
   },
   description:
-    "Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Unterhaltsreinigung ✓ Fensterreinigung ✓ Bauendreinigung ✓ Kostenlose Erstberatung!",
+    "Professionelle Gebäudereinigung in Gudensberg, Kassel und Nordhessen. Unterhaltsreinigung ✓ Fensterreinigung ✓ Bauendreinigung ✓ Industriereinigung ✓ Sonderreinigung. Kostenlose Erstberatung vor Ort!",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Gebäudereinigung Nordhessen – AKAN Dienstleistung",
     description:
-      "Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Kostenlose Erstberatung anfordern!",
+      "Professionelle Gebäudereinigung in Gudensberg, Kassel und Nordhessen. Zuverlässig, gründlich und persönlich vor Ort.",
     url: "https://akan-dienstleistung.de",
     siteName: "AKAN Dienstleistung",
     locale: "de_DE",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gebäudereinigung Nordhessen – AKAN Dienstleistung",
     description:
-      "Professionelle Gebäudereinigung in Nordhessen. 10+ Jahre Erfahrung, 200+ zufriedene Kunden. Kostenlose Erstberatung!",
+      "Professionelle Gebäudereinigung in Gudensberg, Kassel und Nordhessen. Kostenlose Erstberatung vor Ort!",
   },
 };
 
@@ -83,7 +83,7 @@ const jsonLd = {
   email: "info@akan-dienstleistung.de",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Odenbergstraße 26",
+    streetAddress: "Breslauer Str. 50",
     addressLocality: "Gudensberg",
     postalCode: "34281",
     addressCountry: "DE",
@@ -117,12 +117,6 @@ const jsonLd = {
     geoRadius: "50000",
   },
   priceRange: "€€",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "128",
-    bestRating: "5",
-  },
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+4915234754386",

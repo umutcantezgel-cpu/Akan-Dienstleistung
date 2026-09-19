@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQueryState } from "nuqs";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 import ImagePlaceholder from "@/shared/components/ImagePlaceholder";
@@ -33,6 +33,18 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
     defaultValue: "Alle",
   });
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
+  // Lock body scroll when modal is active
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
 
   const filtered =
     activeCategory === "Alle"
@@ -178,22 +190,16 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
               initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
               animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              transition={{ duration: 0.4 }}
-              className="fixed inset-0 z-dropdown bg-black/60 flex items-center justify-center p-4 sm:p-6"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[9999] bg-black/75 flex items-center justify-center p-4 sm:p-6"
               onClick={() => setSelectedImage(null)}
             >
               <motion.div
                 layoutId={`gallery-item-${selectedImage.src}`}
-                className="relative max-w-5xl w-full bg-surface rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10"
+                className="relative max-w-5xl w-full bg-surface rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] border border-white/10"
                 onClick={(e) => e.stopPropagation()}
-                drag="y"
-                dragConstraints={{ top: 0, bottom: 0 }}
-                dragElastic={1}
-                onDragEnd={(_, info) => {
-                  if (Math.abs(info.offset.y) > 100) setSelectedImage(null);
-                }}
               >
-                <div className="aspect-[16/10] relative overflow-hidden bg-black/5 touch-pan-y touch-pinch-zoom">
+                <div className="aspect-[16/10] relative overflow-hidden bg-black/10">
                   <motion.div
                     layoutId={`gallery-image-${selectedImage.src}`}
                     className="w-full h-full relative z-[1]"
@@ -208,14 +214,14 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
                     </div>
                   </motion.div>
 
-                  {/* Close button inside image area for cleaner look */}
+                  {/* Close button inside image area */}
                   <motion.button
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.15 }}
                     onClick={() => setSelectedImage(null)}
-                    className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 hover:scale-110 transition-all z-10"
+                    className="absolute top-5 right-5 w-11 h-11 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/70 hover:scale-105 transition-all z-20 cursor-pointer"
                     aria-label="Schließen"
                   >
                     <X className="w-5 h-5" strokeWidth={2} />
@@ -224,20 +230,22 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
 
                 <motion.div
                   layoutId={`gallery-text-${selectedImage.src}`}
-                  className="p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-surface"
+                  className="p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface"
                 >
                   <div>
-                    <span className="text-mini font-bold text-primary uppercase tracking-[0.2em] mb-2 block">
+                    <span className="text-mini font-bold text-primary uppercase tracking-[0.2em] mb-1.5 block">
                       {selectedImage.category}
                     </span>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-text-primary font-display tracking-tight leading-tight">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-text-primary font-display tracking-tight leading-tight">
                       {selectedImage.title}
                     </h3>
                   </div>
-                  {/* Additional info or CTA could go here */}
-                  <div className="hidden sm:block text-sm text-text-secondary font-medium">
-                    Swipe up/down to close
-                  </div>
+                  <button
+                    onClick={() => setSelectedImage(null)}
+                    className="self-start sm:self-center px-4 py-2 rounded-xl text-xs font-bold text-text-secondary bg-background hover:bg-border/40 transition-colors border border-border"
+                  >
+                    Schließen
+                  </button>
                 </motion.div>
               </motion.div>
             </motion.div>

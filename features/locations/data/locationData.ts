@@ -42,7 +42,7 @@ export const locationData: Record<string, LocationDetail> = {
             economyFact: 'Als Herzstück des Chattengaus ist Gudensberg Heimat zahlreicher Handwerksbetriebe und Dienstleister, die auf konstante Sauberkeit ihrer Geschäftsräume vertrauen.',
             localReference: 'Von der Obernburg bis zum Odenberg',
             economicFocus: 'Logistik, Handwerk, Lebensmittelproduktion & Einzelhandel im Chattengau',
-            localAuthority: 'Gudensberg ist unser operatives Herzstück. Von unserer Firmenzentrale aus steuern wir unsere gesamte Flotte im 25km-Radius. Diese geografische Nähe garantiert Ihnen absurd schnelle Reaktionszeiten und persönliche Betreuung auf Augenhöhe.',
+            localAuthority: 'Gudensberg ist unser operatives Herzstück. Von unserem Standort in Gudensberg aus sind wir in der gesamten Region Nordhessen im Einsatz. Diese geografische Nähe garantiert Ihnen schnelle Reaktionszeiten und eine persönliche Betreuung auf Augenhöhe.',
             painPoints: [
                 'Schlechtes Facility Management und wechselnde Ansprechpartner bei anonymen Großkonzernen.',
                 'Logistische Verzögerungen bei Notfall-Reinigungen (z.B. Wasserschaden) durch Firmen mit zu weiten Anfahrtswegen.',
@@ -82,30 +82,30 @@ export const locationData: Record<string, LocationDetail> = {
             introText: 'Kassel, die documenta-Stadt und UNESCO-Welterbestadt, verdient Reinigungsqualität auf Weltniveau. Vom prestigeträchtigen Bergpark Wilhelmshöhe über den pulsierenden Königsplatz bis in die kreativen Viertel der Nordstadt – AKAN Dienstleistung bringt Ihre Geschäfts- und Wohnräume zum Strahlen.',
             economyFact: 'Als Standort von Volkswagen, SMA Solar und der Universität Kassel vereint die Stadt Industrie, Wissenschaft und Kultur – und damit höchste Ansprüche an Gebäudereinigung.',
             localReference: 'Vom Herkules bis zum Königsplatz',
-            economicFocus: 'Industrieproduktion (VW, Rheinmetall), Erneuerbare Energien (SMA), Kultur & Messewesen (documenta)',
-            localAuthority: 'Wir verstehen die logistischen und repräsentativen Herausforderungen des Kasseler Großraums. Ob Schwerindustrie in Baunatal/Waldau oder Premium-Immobilien in Bad Wilhelmshöhe: Wir skalieren unsere Taskforces exakt nach Ihren Erfordernissen.',
+            economicFocus: 'Industrieproduktion, Gewerbe, Dienstleistung, Kultur & Messewesen',
+            localAuthority: 'Wir verstehen die logistischen und repräsentativen Anforderungen im Kasseler Großraum. Ob Gewerbebetriebe in Waldau oder Büros und Praxen in Wilhelmshöhe: Wir bieten Ihnen zuverlässige und flexible Gebäudereinigung mit festen Ansprechpartnern.',
             painPoints: [
-                'Fehlende Skalierbarkeit lokaler Anbieter bei plötzlichen Produktionsspitzen oder großen Messe-Events (z.B. documenta-Vorbereitung).',
-                'Hohe Feinstaub- und Industrie-Emissionen in Lagen wie Bettenhausen oder Waldau, die Fassaden und Luftfilter stark belasten.',
-                'Reputationsrisiken für Premium-Standorte (Vorderer Westen, Wilhelmshöhe) durch unzuverlässige Standard-Reinigungsfirmen.'
+                'Unzuverlässige Reinigungsfirmen und wechselndes Personal im laufenden Geschäftsbetrieb.',
+                'Staub- und Umweltbelastungen an Fassaden, Fenstern und gewerblichen Flächen.',
+                'Mangelnde Flexibilität bei kurzfristigem Reinigungsbedarf oder Sonderreinigungen.'
             ],
             benefits: [
                 {
-                    title: 'Industrie-Erprobte Kapazitäten',
-                    description: 'Mit unserem 25km-Proximity-Hub in Gudensberg können wir innerhalb kürzester Zeit massive Reinigungskapazitäten für Kasseler Großunternehmen mobilisieren.'
+                    title: 'Schnelle Anfahrt aus Gudensberg',
+                    description: 'Durch unsere günstige Anbindung in Gudensberg erreichen wir Objekte in Kassel und Umgebung zügig und flexibel.'
                 },
                 {
-                    title: 'Mikroklima-Adaption',
-                    description: 'Wir passen unsere Reinigungschemie und Zyklen an die spezifischen Umweltfaktoren Ihres Kasseler Standorts an (z.B. erhöhte Feinstaubbindung in Industriegebieten).'
+                    title: 'Bedarfsgerechte Reinigung',
+                    description: 'Wir stimmen Intervalle, Reinigungszeiten und Methoden exakt auf Ihre Räumlichkeiten und Arbeitszeiten ab.'
                 },
                 {
-                    title: 'Diskussionslose Premium-Standards',
-                    description: 'Für Arztpraxen, Kanzleien und Behörden im Vorderen Westen etablieren wir unsichtbare, absolut verlässliche Reinigungsroutinen inklusive digitalem Reporting.'
+                    title: 'Verlässliche Qualitätsstandards',
+                    description: 'Für Büros, Kanzleien und Praxen in Kassel sichern wir gleichbleibend hohe Sauberkeit mit festen Reinigungskräften.'
                 }
             ]
         },
-        metaTitle: 'Gebäudereinigung Kassel | AKAN – Premium B2B Reinigung',
-        metaDescription: 'Professionelle Reinigung in Kassel: Industrie-, Büro- & Bauendreinigung. Maximale Skalierbarkeit für Melsungen, Baunatal & Kassel. Jetzt B2B-Angebot anfordern!',
+        metaTitle: 'Gebäudereinigung Kassel | AKAN Dienstleistung',
+        metaDescription: 'Professionelle Gebäudereinigung in Kassel & Umgebung: Unterhalts-, Glas-, Industrie- & Bauendreinigung. Zuverlässig & gründlich. Jetzt Angebot anfordern!',
     },
     'fritzlar': {
         slug: 'fritzlar',
@@ -139,39 +139,39 @@ export const locationData: Record<string, LocationDetail> = {
         entfernung: '12 km',
         localContent: {
             heroHeadline: 'Industrie- & Gebäudereinigung für Baunatal',
-            heroSubline: 'Höchste Sauberkeitsstandards für Nordhessens Wirtschaftsmotor – verlässlich und zertifiziert.',
-            introText: 'Als Standort des größten Volkswagen-Werks weltweit ist Baunatal das industrielle Herz Nordhessens. Wir bei AKAN Dienstleistung verstehen die exakten Anforderungen, die diese Wirtschaftsstruktur mit sich bringt. Von stark beanspruchten Produktionshallen in Altenbauna bis zu modernen Bürokomplexen im Stadtzentrum – wir liefern die präzise Reinigungsqualität, die Baunatals Unternehmen fordern.',
-            localAuthority: 'Baunatals Industrie und Gewerbe verlangen kompromisslose Zuverlässigkeit. Wir bieten Reinigungslösungen, die sich nahtlos in Schichtbetriebe und strenge Sicherheitsvorgaben integrieren lassen.',
-            economicFocus: 'Automobilindustrie (VW), Zulieferer, Logistik & produzierendes Gewerbe',
-            economyFact: 'Mit dem VW-Werk als größtem Arbeitgeber Nordhessens und zahlreichen Hightech-Zulieferern prägt eine hochgradig vernetzte und anspruchsvolle Industrie die Wirtschaft Baunatals.',
+            heroSubline: 'Hohe Sauberkeitsstandards für Nordhessens Wirtschaftsmotor – verlässlich und pünktlich.',
+            introText: 'Als Standort des Volkswagen-Werks und zahlreicher Zulieferer ist Baunatal das industrielle Herz Nordhessens. Wir bei AKAN Dienstleistung verstehen die Anforderungen vor Ort: Von beanspruchten Hallenböden bis zu modernen Büroflächen liefern wir gründliche und verlässliche Reinigungsqualität.',
+            localAuthority: 'Baunatals Industrie und Gewerbe verlangen Zuverlässigkeit. Wir bieten Reinigungslösungen, die sich nahtlos in Schichtbetriebe und betriebliche Vorgaben integrieren lassen.',
+            economicFocus: 'Automobilindustrie, Zulieferer, Logistik & produzierendes Gewerbe',
+            economyFact: 'Mit dem VW-Werk als größtem Arbeitgeber Nordhessens und zahlreichen Zulieferern prägt eine anspruchsvolle Industrie die Wirtschaft Baunatals.',
             localReference: 'Vom VW-Werk bis zum Baunataler Gewerbegebiet',
             painPoints: [
-                'Strenge Sicherheits- und Zugangsauflagen in Industrieanlagen',
-                'Reinigung während des laufenden Schichtbetriebs ohne Störung der Produktion',
-                'Umgang mit hartnäckigen industriellen Verschmutzungen (Öle, Schmierstoffe)',
-                'Hoher Verschleiß in Sanitär- und Sozialräumen bei großer Belegschaft'
+                'Sicherheits- und Zugangsauflagen in gewerblichen Anlagen',
+                'Reinigung flexibel abgestimmt auf Schichtbetrieb und Pausenzeiten',
+                'Umgang mit hartnäckigen gewerblichen Verschmutzungen (Öle, Schmierstoffe)',
+                'Hohe Beanspruchung in Sanitär- und Sozialräumen'
             ],
             benefits: [
                 {
-                    title: 'Industrie-Erprobte Kapazitäten',
-                    description: 'Unsere Teams sind geschult im Umgang mit industriellen Umgebungen und können auch große Flächen in Produktionshallen effizient reinigen.'
+                    title: 'Industrie-Erprobte Ausrüstung',
+                    description: 'Unsere Teams sind geschult im Umgang mit modernen Kärcher Scheuersaugmaschinen und reinigen auch große Hallenflächen gründlich.'
                 },
                 {
-                    title: 'Schicht-Synchronisierte Reinigung',
-                    description: 'Wir passen unsere Reinigungszeiten flexibel an Ihre Schichtpläne an, um Abläufe nicht zu unterbrechen – ob Früh-, Spät- oder Nachtschicht.'
+                    title: 'Flexible Einsatzzeiten',
+                    description: 'Wir passen unsere Reinigungszeiten flexibel an Ihre Betriebszeiten an, um Arbeitsabläufe nicht zu unterbrechen.'
                 },
                 {
-                    title: 'Spezialgeräte für Schwerindustrie',
-                    description: 'Wir setzen moderne Aufsitzmaschinen, Speziallösungsmittel und Hochdrucktechnik ein, um auch hartnäckigste Verschmutzungen in Werkshallen zu beseitigen.'
+                    title: 'Leistungsstarke Reinigungsgeräte',
+                    description: 'Wir setzen moderne Maschinen und geeignete Reiniger ein, um auch hartnäckige Verschmutzungen in Werkshallen sicher zu entfernen.'
                 }
             ]
         },
-        metaTitle: 'Industriereinigung Baunatal | AKAN – Experten für Produktionshallen',
-        metaDescription: 'Spezialisierte Industriereinigung in Baunatal: VW-Zulieferer, Produktionshallen & Logistik. Schicht-Begleitend. Jetzt B2B-Audit anfragen!',
+        metaTitle: 'Industrie- & Gebäudereinigung Baunatal | AKAN Dienstleistung',
+        metaDescription: 'Spezialisierte Gebäudereinigung in Baunatal: Produktionshallen, Büros & Gewerbeobjekte. Schichtbegleitend und zuverlässig. Jetzt Angebot anfragen!',
     },
     'melsungen': {
         slug: 'melsungen',
-        theme: 'light', // Pharma & Medical => clean, bright aesthetic
+        theme: 'light',
         name: 'Melsungen',
         region: 'Schwalm-Eder-Kreis',
         einwohner: '13.500',
@@ -180,35 +180,35 @@ export const locationData: Record<string, LocationDetail> = {
         stadtteile: ['Kernstadt', 'Adelshausen', 'Günsterode', 'Kirchhof', 'Obermelsungen', 'Röhrenfurth'],
         entfernung: '20 km',
         localContent: {
-            heroHeadline: 'Medizin & Premium-Reinigung in Melsungen',
-            heroSubline: 'Klinische Sauberkeit für die Bartenwetzerstadt',
-            introText: 'Melsungen verbindet als Heimat des Weltkonzerns B. Braun höchste globale Medizin-Standards mit lokaler Tradition an der Fulda. AKAN Dienstleistung versteht diese besondere DNA: Wir etablieren kompromisslose Hygiene-Regimes für Medizin, Pharmazie und anspruchsvolles Gewerbe in Melsungen.',
-            economyFact: 'Als Hauptsitz der B. Braun Melsungen AG (65.000+ Mitarbeiter weltweit) setzt die Stadt absolute Maßstäbe in Sachen Hygienekonzepte und Reinraumtechnologie.',
-            localReference: 'Von der Fachwerk-Altstadt bis in die Industriezonen',
-            economicFocus: 'Medizintechnik (B. Braun), Pharma, Forschung & Entwicklung, Verwaltung',
-            localAuthority: 'Melsungen toleriert keine Kompromisse bei der Hygiene. Von hochsensiblen Laboren bis zu repräsentativen Verwaltungsgebäuden: Wir bringen zertifizierte Desinfektions-Protokolle und geschultes Fachpersonal direkt in Ihr Unternehmen – nur 20km von unserer Zentrale entfernt.',
+            heroHeadline: 'Professionelle Gebäudereinigung in Melsungen',
+            heroSubline: 'Zuverlässige Sauberkeit für Praxen, Büros und Kanzleien',
+            introText: 'Melsungen verbindet als Heimat traditionsreicher Unternehmen historische Architektur an der Fulda mit hohen Ansprüchen an Sauberkeit. AKAN Dienstleistung bietet Ihnen verlässliche Unterhalts-, Praxis- und Büroreinigung mit geschultem Personal.',
+            economyFact: 'Mit international tätigen Medizintechnik-Unternehmen und einer belebten Altstadt stellt Melsungen hohe Ansprüche an Qualität und Verlässlichkeit.',
+            localReference: 'Von der Fachwerk-Altstadt bis in die Gewerbezonen',
+            economicFocus: 'Medizintechnik, Dienstleistung, Handwerk und Verwaltung',
+            localAuthority: 'In Melsungen legen Unternehmen großen Wert auf Verlässlichkeit und Hygiene. Wir bieten Ihnen professionelle Reinigungsleistungen mit festen Ansprechpartnern und flexiblen Einsatzzeiten.',
             painPoints: [
-                'Verletzung von Infektionsschutzgesetzen (IfSG) durch unzureichend geschultes Reinigungspersonal in medizinischen/pharmazeutischen Randbereichen.',
-                'Kreuzkontaminationen durch fehlerhafte Farb-Codierungs-Systeme (Vier-Farb-System) bei der Oberflächenreinigung.',
-                'Mangelhafte Diskretion und Sicherheitsbedenken bei der Reinigung sensibler Forschungs- oder Kanzlei-Räumlichkeiten in der Altstadt.'
+                'Wechselnde Reinigungskräfte und mangelnde Absprachen bei der Unterhaltsreinigung.',
+                'Unzureichende Hygiene in sensiblen Praxis- oder Verwaltungsbereichen.',
+                'Mangelnde Flexibilität und Termintreue bei kurzfristigen Reinigungsanforderungen.'
             ],
             benefits: [
                 {
-                    title: 'Klinisches Desinfektions-Protokoll',
-                    description: 'Wir arbeiten streng nach RKI-Richtlinien. Unser medizinisches Reinigungskonzept garantiert lückenlose Desinfektion kritischer Touchpoints für maximalen Infektionsschutz.'
+                    title: 'Geschultes Personal',
+                    description: 'Feste Mitarbeiter mit geschultem Blick für Sauberkeit und Hygiene in Ihren Praxis- und Geschäftsräumen.'
                 },
                 {
-                    title: 'Zertifiziertes Fachpersonal',
-                    description: 'Keine Subunternehmer. Für den Melsunger Raum setzen wir ausschließlich intensiv geschultes Personal ein, das die Relevanz von Hygiene-Schleusen und Reinraum-Protokollen verinnerlicht hat.'
+                    title: 'Diskrete Ausführung',
+                    description: 'Wir reinigen zuverlässig außerhalb Ihrer Öffnungszeiten für einen ungestörten Betriebsablauf.'
                 },
                 {
-                    title: 'Diskrete Elite-Betreuung',
-                    description: 'Für Arztpraxen und Kanzleien im Stadtkern garantieren wir absolute Verschwiegenheit, unsichtbare Arbeitszeiten in den Randstunden und polizeilich geprüfte Mitarbeiter.'
+                    title: 'Persönliche Betreuung',
+                    description: 'Feste Ansprechpartner vor Ort für direkte Kommunikation und verlässliche Absprachen.'
                 }
             ]
         },
-        metaTitle: 'Praxis- & Gebäudereinigung Melsungen | AKAN – Klinische Hygiene',
-        metaDescription: 'Gebäudereinigung in Melsungen: Spezialisten für Praxen, Kliniken & Pharmazie. Strenges Desinfektions-Protokoll. B2B-Consulting anfordern!',
+        metaTitle: 'Praxis- & Gebäudereinigung Melsungen | AKAN Dienstleistung',
+        metaDescription: 'Professionelle Gebäudereinigung in Melsungen: Praxen, Büros, Kanzleien und Gewerbeobjekte. Zuverlässig & diskret. Jetzt Angebot anfordern!',
     },
     'homberg-efze': {
         slug: 'homberg-efze',

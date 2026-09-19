@@ -10,6 +10,8 @@ import {
   Sparkles,
   AlertTriangle,
   Factory,
+  Droplets,
+  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import ImagePlaceholder from "@/shared/components/ImagePlaceholder";
@@ -32,6 +34,8 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
   AlertTriangle,
   Factory,
+  Droplets,
+  ShieldCheck,
 };
 
 export default function ServiceDetailBlueprint({
@@ -47,7 +51,18 @@ export default function ServiceDetailBlueprint({
   return (
     <article className="pb-section-lg overflow-hidden">
       {/* 1. Hero Section (Hook) */}
-      <header className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-surface">
+      <header className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-surface border-b border-border/50">
+        {/* Subtle background image */}
+        {service.imageSrc && (
+          <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none">
+            <ImagePlaceholder
+              alt={service.title}
+              fill
+              className="object-cover"
+              originalSrc={service.imageSrc}
+            />
+          </div>
+        )}
         <div className="container-fluid relative z-10">
           <motion.div
             variants={staggerContainer}

@@ -22,7 +22,7 @@ export default function AGB() {
         >
             <h2 id="geltungsbereich">1. Geltungsbereich und Vertragsgrundlagen</h2>
             <p>
-                Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle gegenwärtigen und zukünftigen Verträge, Lieferungen und sonstigen Leistungen zwischen der <strong>AKAN Dienstleistung</strong>, Odenbergstraße 26, 34281 Gudensberg (im Folgenden &bdquo;Auftragnehmer&ldquo; genannt) und ihren Kunden (im Folgenden &bdquo;Auftraggeber&ldquo; genannt).
+                Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle gegenwärtigen und zukünftigen Verträge, Lieferungen und sonstigen Leistungen zwischen der <strong>AKAN Dienstleistung</strong>, Breslauer Str. 50, 34281 Gudensberg (im Folgenden &bdquo;Auftragnehmer&ldquo; genannt) und ihren Kunden (im Folgenden &bdquo;Auftraggeber&ldquo; genannt).
             </p>
             <p>
                 Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Auftraggebers werden, selbst bei Kenntnis, nicht Vertragsbestandteil, es sei denn, ihrer Geltung wird ausdrücklich schriftlich zugestimmt. Alle Vereinbarungen, die zwischen dem Auftragnehmer und dem Auftraggeber zwecks Ausführung des Vertrages getroffen werden, sind in dem jeweiligen Vertrag und diesen AGB schriftlich niedergelegt.

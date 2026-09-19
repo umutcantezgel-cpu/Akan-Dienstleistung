@@ -33,12 +33,12 @@ const galleryImages: GalleryImage[] = [
     // Gewerbe- & Unterhaltsreinigung
     { src: '/images/galerie/gewerbereinigung/akan-sporthallenreinigung-grossflaeche-sauger.png', title: 'Sporthallen- & Großflächenreinigung mit Industriesauger', category: 'Unterhaltsreinigung' },
     { src: '/images/galerie/gewerbereinigung/akan-unterhaltsreinigung-flur-streifenfrei.jpg', title: 'Büro- & Flurreinigung streifenfrei gepflegt', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-bueroreinigung-glanzboden-gepflegt.jpg', title: 'Gewerbliche Bodenpflege & Glanzversiegelung Büro', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-sanitaer-armaturen-hochglanz-hygiene.jpg', title: 'Sanitär-Armaturen Hochglanzpolitur & Keimschutz', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-arbeitsplatz-tiefenreinigung-desinfektion.jpg', title: 'Büroarbeitsplatz-Tiefenreinigung & Tastaturdesinfektion', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-oberflaechendesinfektion-empfang.jpg', title: 'Empfangsbereich & Thekendesinfektion Gewerbekunden', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-praxisreinigung-hygienestandard-steril.jpg', title: 'Praxis- & Kanzleireinigung nach RKI-Hygienestandards', category: 'Unterhaltsreinigung' },
-    { src: '/images/galerie/gewerbereinigung/akan-bueroboden-versiegelung-pflege.jpg', title: 'Schutzversiegelung für hochfrequentierte Gewerbeböden', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-bueroreinigung-glanzboden-gepflegt.jpg', title: 'Gewerbliche Bodenreinigung und Pflege im Büro', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-sanitaer-armaturen-hochglanz-hygiene.jpg', title: 'Sanitär-Armaturen Reinigung und Hygiene', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-arbeitsplatz-tiefenreinigung-desinfektion.jpg', title: 'Büroarbeitsplatz- und Schreibtischreinigung', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-oberflaechendesinfektion-empfang.jpg', title: 'Empfangsbereich & Thekenreinigung Gewerbekunden', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-praxisreinigung-hygienestandard-steril.jpg', title: 'Praxis- & Kanzleireinigung mit geschultem Personal', category: 'Unterhaltsreinigung' },
+    { src: '/images/galerie/gewerbereinigung/akan-bueroboden-versiegelung-pflege.jpg', title: 'Bodenpflege für hochfrequentierte Gewerbeböden', category: 'Unterhaltsreinigung' },
     { src: '/images/galerie/gewerbereinigung/akan-objektbetreuung-gewerbe-sauberkeit.jpg', title: 'Ganzheitliche Objektbetreuung für Liegenschaften', category: 'Unterhaltsreinigung' },
 ];
 

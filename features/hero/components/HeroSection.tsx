@@ -101,9 +101,9 @@ export default function HeroSection() {
             transition={{ delay: 0.8, ...springs.gentle }}
             className="text-lg lg:text-xl font-light text-text-secondary mb-10 max-w-xl leading-[1.8]"
           >
-            Von einem Team, das Reinigung als Handwerk versteht. 10 Jahre
-            perfektionierte Methoden, die Ihren Reinigungsaufwand auf Null
-            reduzieren. Für 200+ zufriedene Kunden in ganz Nordhessen.
+            Von einem Team, das Reinigung als Handwerk versteht. Langjährige
+            Erfahrung und praxisbewährte Abläufe, die Ihren Reinigungsaufwand auf Null
+            reduzieren. Für zufriedene Unternehmen und Kunden in ganz Nordhessen.
           </motion.p>
 
           {/* CTAs with breathing pulse */}
@@ -157,7 +157,7 @@ export default function HeroSection() {
             </MagneticButton>
           </motion.div>
 
-          {/* Reptilian Brain Trust-Bar */}
+          {/* Trust-Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -170,11 +170,11 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center gap-2 text-sm font-medium text-text-secondary">
               <Award className="w-4 h-4 text-trust-gold" />
-              <span>Meisterbetrieb Niveau</span>
+              <span>Inhabergeführt &amp; Verlässlich</span>
             </div>
             <div className="flex items-center gap-2 text-sm font-medium text-text-secondary">
               <CheckCircle2 className="w-4 h-4 text-trust-gold" />
-              <span>10+ Jahre Erfahrung</span>
+              <span>Langjährige Erfahrung</span>
             </div>
             <div className="flex items-center gap-2 text-sm font-medium text-text-secondary">
               <MapPin className="w-4 h-4 text-trust-gold" />

@@ -1,10 +1,6 @@
 import { notFound } from 'next/navigation';
 import { serviceDetails, getAllServiceSlugs } from '@/features/services/data/serviceDetails';
 import ServiceDetailBlueprint from '@/features/services/components/ServiceDetailBlueprint';
-import BauendreinigungSingularity from '@/features/leistungen/singularities/BauendreinigungSingularity';
-import GlasreinigungSingularity from '@/features/leistungen/singularities/GlasreinigungSingularity';
-import UnterhaltsreinigungSingularity from '@/features/leistungen/singularities/UnterhaltsreinigungSingularity';
-import SonderreinigungSingularity from '@/features/leistungen/singularities/SonderreinigungSingularity';
 import { generateServiceSchema } from '@/shared/utils/seo/SchemaGenerator';
 
 interface PageProps {
@@ -71,12 +67,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}
             />
 
-            {/* Template Selection Engine (Phase 3) */}
-            {service.templateStyle === 'industrial' && <BauendreinigungSingularity service={service} />}
-            {service.templateStyle === 'refraction' && <GlasreinigungSingularity service={service} />}
-            {service.templateStyle === 'rhythm' && <UnterhaltsreinigungSingularity service={service} />}
-            {service.templateStyle === 'surgical' && <SonderreinigungSingularity service={service} />}
-            {(!service.templateStyle || service.templateStyle === 'default') && <ServiceDetailBlueprint service={service} />}
+            <ServiceDetailBlueprint service={service} />
         </>
     );
 }
